@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Axiforma:wght@400;500;600;700&display=swap');
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
+@import "tailwindcss";
+
+/* Hide scrollbar for carousel */
+.carousel-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
