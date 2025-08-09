@@ -1,5 +1,5 @@
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import mockup_wsp from "../assets/mockup-for-whatsApp 1.svg";
 import hero_degradado from "../assets/hero degradado y logos.svg";
@@ -66,9 +66,7 @@ const MessengerIcon = ({ className = "" }) => (
 
   const { darkMode, toggleDarkMode } = useTheme();
 
-  // Carousel control for "Native Integrations" section
-  const integrationsRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
+  // Removed carousel controls - now using CSS animation
 
   // Mobile mockup carousel state
   const [currentMockupIndex, setCurrentMockupIndex] = useState(0);
@@ -130,48 +128,44 @@ const MessengerIcon = ({ className = "" }) => (
     },
   ];
 
-  const scrollIntegrations = (dir) => {
-    const el = integrationsRef.current;
-    if (!el) return;
-    const itemWidth = el.children[0]?.offsetWidth || 0;
-    const gap = 32; // gap-8 = 32px
-    const scrollAmount = itemWidth + gap;
-    el.scrollBy({ left: dir * scrollAmount, behavior: "smooth" });
-  };
+  // Removed scroll function - now using CSS animation
 
-  // Auto-scroll functionality
-  useEffect(() => {
-    if (isHovered) return;
-
-    const interval = setInterval(() => {
-      const el = integrationsRef.current;
-      if (!el) return;
-
-      const maxScroll = el.scrollWidth - el.clientWidth;
-      const currentScroll = el.scrollLeft;
-
-      if (currentScroll >= maxScroll) {
-        // Reset to beginning
-        el.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        // Scroll to next item
-        scrollIntegrations(1);
-      }
-    }, 3000); // Change slide every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [isHovered]);
+  // Auto-scroll functionality - Removed for CSS animation
 
   return (
     <div className="transition-colors duration-300">
+      <style>{`
+        @keyframes floatIcons {
+          0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+          25% { transform: translateY(-3px) translateX(2px) scale(1.02); }
+          50% { transform: translateY(-6px) translateX(0px) scale(1); }
+          75% { transform: translateY(-3px) translateX(-2px) scale(1.02); }
+        }
+        @keyframes breatheBackground {
+          0%, 100% { transform: scale(1); opacity: 0.9; }
+          50% { transform: scale(1.02); opacity: 1; }
+        }
+        @keyframes slideInUp {
+          0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes subtleGlow {
+          0%, 100% { filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15)) drop-shadow(0 0 15px rgba(241, 41, 161, 0.1)); }
+          50% { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.2)) drop-shadow(0 0 25px rgba(241, 41, 161, 0.2)); }
+        }
+        @keyframes infiniteScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
       {/* Hero Section */}
-      <section className="relative  py-12 sm:py-16 lg:py-20">
+      <section className="relative  py-12 sm:py-16 lg:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-[#2C011B] dark:text-[#F5F5F5] dark:bg-[#394B61] font-medium mb-4 text-sm sm:text-base rounded-2xl bg-[#FFE8F7] px-5 py-2 inline-block">
+            <p className="text-[#2C011B] dark:text-[#F5F5F5] dark:bg-[#394B61] font-medium mb-4 text-sm sm:text-base rounded-2xl bg-[#FFE8F7] px-5 py-1 inline-block">
               Convierte mensajes en ventas
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white mb-6 leading-tight">
               Optimiza con IA y{" "}
               <span className="text-pink-600 dark:text-pink-400">
                 automatiza
@@ -193,15 +187,15 @@ const MessengerIcon = ({ className = "" }) => (
               </button>
               <span className="relative">tu negocio</span>
             </h1>
-            <p className="text-lg sm:text-2xl text-[#2C011B] dark:text-[#CCCCCC] mb-8 max-w-3xl mx-auto ">
+            <p className="text-base sm:text-2xl text-[#2C011B] dark:text-[#CCCCCC] mb-8 max-w-3xl mx-auto ">
               Haz que la Inteligencia Artificial atienda consultas frecuentes, y
               dedica tu tiempo a lo que realmente importa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-              <button className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-base sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer" onClick={() => window.location.href = "https://chatby.io/register?ref=WebTrial"} >
+              <button className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent" onClick={() => window.location.href = "https://chatby.io/register?ref=WebTrial"} >
                 Iniciar prueba gratis
               </button>
-              <button className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1]  text-white px-6 sm:px-8 py-2 rounded-full text-base sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer" onClick={() => window.location.href = "https://chatby.io/"} >
+              <button className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1]  text-white px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:from-[#E01A96] hover:to-[#9A35B8]" onClick={() => window.location.href = "https://chatby.io/"} >
                 Asesoría gratuita
               </button>
             </div>
@@ -210,11 +204,23 @@ const MessengerIcon = ({ className = "" }) => (
           {/* Chat mockup - Desktop */}
           <div className="hidden md:flex justify-center px-4">
             <div className="relative flex justify-center items-center">
-              <img src={hero_degradado} alt="hero degradado" />
               <img
+                src={hero_degradado}
+                alt="hero degradado"
+                style={{
+                  animation: "floatIcons 8s ease-in-out infinite, breatheBackground 4s ease-in-out infinite",
+                  animationDelay: "0s, 1s"
+                }}
+                className="select-none pointer-events-none will-change-transform"
+              />
+              <img
+                key={currentDesktopMockupIndex}
                 src={mockups[currentDesktopMockupIndex].src}
                 alt={mockups[currentDesktopMockupIndex].alt}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 h-1/2 w-1/2"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl"
+                style={{
+                  animation: "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s"
+                }}
               />
             </div>
           </div>
@@ -224,11 +230,23 @@ const MessengerIcon = ({ className = "" }) => (
             <div className="relative w-full max-w-[360px] xs:max-w-[400px] sm:max-w-sm">
               {/* Carousel container */}
               <div className="relative flex justify-center items-center">
-                <img src={degradado_rosa} alt="hero degradado" />
                 <img
+                  src={degradado_rosa}
+                  alt="hero degradado"
+                  style={{
+                    animation: "floatIcons 7s ease-in-out infinite, breatheBackground 5s ease-in-out infinite",
+                    animationDelay: "0.5s, 2s"
+                  }}
+                  className="select-none pointer-events-none will-change-transform"
+                />
+                <img
+                  key={currentMockupIndex}
                   src={mockups[currentMockupIndex].src}
                   alt={mockups[currentMockupIndex].alt}
-                  className="absolute max-w-[72%] sm:max-w-[68%] transition-opacity duration-300"
+                  className="absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl"
+                  style={{
+                    animation: "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1.5s"
+                  }}
                 />
               </div>
 
@@ -313,7 +331,7 @@ const MessengerIcon = ({ className = "" }) => (
               onClick={() => setCurrentDesktopMockupIndex(0)}
               role="button"
               tabIndex={0}
-              className="group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg bg-white text-[#A83CC1] border border-[#E6E9FF] shadow-[0_10px_22px_rgba(86,133,255,0.18)] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent cursor-pointer dark:bg-[#12203080]"
+              className="group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border border-[#E6E9FF] dark:border-[#475569] shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent cursor-pointer"
               style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
@@ -338,7 +356,7 @@ const MessengerIcon = ({ className = "" }) => (
               onClick={() => setCurrentDesktopMockupIndex(1)}
               role="button"
               tabIndex={0}
-              className="group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg bg-white text-[#A83CC1] border border-[#E6E9FF] shadow-[0_10px_22px_rgba(86,133,255,0.18)] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent cursor-pointer dark:bg-[#12203080]"
+              className="group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border border-[#E6E9FF] dark:border-[#475569] shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent cursor-pointer"
               style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
@@ -363,7 +381,7 @@ const MessengerIcon = ({ className = "" }) => (
               onClick={() => setCurrentDesktopMockupIndex(2)}
               role="button"
               tabIndex={0}
-              className="group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg bg-white text-[#A83CC1] border border-[#E6E9FF] shadow-[0_10px_22px_rgba(86,133,255,0.18)] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent cursor-pointer dark:bg-[#12203080]"
+              className="group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border border-[#E6E9FF] dark:border-[#475569] shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent cursor-pointer"
               style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
@@ -394,44 +412,45 @@ const MessengerIcon = ({ className = "" }) => (
           </p>
 
           <div className="relative overflow-hidden">
-            {/* Left fade */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-r from-white dark:from-[#122030] to-transparent z-10 pointer-events-none"></div>
+            {/* Left fade - Enhanced */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 lg:w-40 bg-gradient-to-r from-white via-white/80 dark:from-[#122030] dark:via-[#122030]/80 to-transparent z-10 pointer-events-none"></div>
 
-            {/* Right fade */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-l from-white dark:from-[#122030] to-transparent z-10 pointer-events-none"></div>
+            {/* Right fade - Enhanced */}
+            <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 lg:w-40 bg-gradient-to-l from-white via-white/80 dark:from-[#122030] dark:via-[#122030]/80 to-transparent z-10 pointer-events-none"></div>
 
-            {/* Scroll area */}
-            <div
-              ref={integrationsRef}
-              className="carousel-container flex items-center gap-8 sm:gap-10 lg:gap-12 mx-auto px-16 sm:px-24 lg:px-32 overflow-hidden scroll-smooth"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {logos.map((logo, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-center flex-shrink-0 p-4"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className={`${logo.size} object-contain transition-all duration-300`}
-                  />
-                </div>
-              ))}
-              {/* Duplicate logos for infinite scroll effect */}
-              {logos.map((logo, index) => (
-                <div
-                  key={`duplicate-${index}`}
-                  className="flex items-center justify-center flex-shrink-0 p-4"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className={`${logo.size} object-contain transition-all duration-300`}
-                  />
-                </div>
-              ))}
+            {/* Infinite scroll container */}
+            <div className="flex items-center overflow-hidden">
+              <div
+                className="flex items-center gap-4 sm:gap-6 lg:gap-8 animate-[infiniteScroll_20s_linear_infinite]"
+                style={{ width: 'calc(200% + 2rem)' }}
+              >
+                {/* First set of logos */}
+                {logos.map((logo, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`${logo.size.replace('w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24', 'w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20')} object-contain transition-all duration-300 hover:scale-110`}
+                    />
+                  </div>
+                ))}
+                {/* Second set of logos for seamless loop */}
+                {logos.map((logo, index) => (
+                  <div
+                    key={`duplicate-${index}`}
+                    className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`${logo.size.replace('w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24', 'w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20')} object-contain transition-all duration-300 hover:scale-110`}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -442,7 +461,7 @@ const MessengerIcon = ({ className = "" }) => (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
           <div className="text-center mb-12 sm:mb-16">
-            <div className="bg-purple-100 dark:bg-[#394B61] text-purple-black dark:text-[#CCCCCC] text-sm font-normal px-4 py-2 rounded-full inline-block mb-6">
+            <div className="bg-purple-100 dark:bg-[#2C1A29] text-purple-black dark:text-[#CCCCCC] text-sm font-normal px-4 py-2 rounded-full inline-block mb-6">
               Beneficios de la IA
             </div>
             <h2 className="text-lg sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -457,14 +476,13 @@ const MessengerIcon = ({ className = "" }) => (
           {/* Features Stack */}
           <div className="space-y-8 lg:space-y-12">
             {/* Feature 1 - Bot Plantillas */}
-            <div
-              className="bg-white dark:bg-[#0A0A0A99] backdrop-blur-xs rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-2xl border border-gray-100 dark:border-gray-700"
-              style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
-            >
+               <div
+              className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]  backdrop-blur-xs"
+             >
               <img
                 src={bot_plantilla_msn}
                 alt="bot plantilla msn"
-                className="absolute  transform -translate-x-12 sm:-translate-x-40 lg:-translate-x-40  top-30 md:top-20 sm:top-0 w-48 lg:w-80 z-50 md:-translate-x-0"
+                className="absolute  transform -translate-x-12 sm:-translate-x-40 lg:-translate-x-40  top-30 md:top-10 sm:top-0 w-48 lg:w-80 z-50 md:-translate-x-0"
               />
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Image */}
@@ -481,7 +499,7 @@ const MessengerIcon = ({ className = "" }) => (
                     <img
                       src={persona_1}
                       alt="mockup wsp"
-                      className="w-full h-auto max-w-full max-h-full object-contain"
+                      className="w-full h-auto max-w-full max-h-full object-contain opacity-90"
                     />
 
                     {/* Logo de Chatby - posicionado en la esquina superior izquierda */}
@@ -499,14 +517,14 @@ const MessengerIcon = ({ className = "" }) => (
                     IA sin Código
                   </div>
 
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 text-start">
                     <span className="text-[#F129A1] dark:text-[#F129A1]">
                       Cree su primer chatbot con IA
                     </span>{" "}
                     en minutos, sin necesidad de codificar
                   </h3>
 
-                  <p className="text-black dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed text-justify font-medium">
+                  <p className="text-black dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed text-start font-medium">
                     Optimiza la atención al cliente desde una plataforma
                     todo-en-uno que le permite planificar, automatizar y
                     analizar cada interacción fácilmente.
@@ -527,12 +545,11 @@ const MessengerIcon = ({ className = "" }) => (
 
             {/* Feature 2 - Presencia 24/7 */}
             <div
-              className="bg-white dark:bg-[#0A0A0A99] backdrop-blur-xs rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-2xl border border-gray-100 dark:border-gray-700"
-              style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
+              className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] "
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Content */}
-                <div className="flex flex-col sm:inline-block">
+                <div className="flex flex-col sm:inline-block text-start">
                   <div className="bg-purple-100 w-fit mx-auto lg:ml-0 lg:mr-auto dark:bg-[#394B61] text-black dark:text-[#CCCCCC] text-sm font-medium px-4 py-2 rounded-full inline-block mb-6">
                     Presencia 24/7
                   </div>
@@ -544,7 +561,7 @@ const MessengerIcon = ({ className = "" }) => (
                     en más de 7 canales desde una sola plataforma con IA
                   </h3>
 
-                  <p className="text-black dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed text-justify font-medium">
+                  <p className="text-black dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed  font-medium text-start">
                     Centralice y automatice conversaciones en WhatsApp,
                     Instagram, Facebook y más, mientras la Inteligencia
                     Artificial le ayuda a planificar, interactuar y analizar
@@ -623,8 +640,7 @@ const MessengerIcon = ({ className = "" }) => (
 
             {/* Feature 3 - Automatización 24/7 */}
             <div
-              className="bg-white dark:bg-[#0A0A0A99] backdrop-blur-xs rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-2xl border border-gray-100 dark:border-gray-700 "
-              style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
+              className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Content */}

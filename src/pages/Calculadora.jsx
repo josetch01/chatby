@@ -139,10 +139,10 @@ const Calculadora = () => {
 
   // Input values state (for manual amount entry)
   const [inputValues, setInputValues] = useState({
-    marketing: "0.00",
-    utility: "0.00",
-    authentication: "0.00",
-    service: "0.00",
+    marketing: "",
+    utility: "",
+    authentication: "",
+    service: "",
   });
 
   // Country options (labels only for UI) from data file
@@ -191,7 +191,7 @@ const Calculadora = () => {
 
     // Update input value to match slider
     const prices = getCurrentPrices();
-    const newAmount = (newCount * prices[type]).toFixed(4);
+    const newAmount = newCount === 0 ? "" : (newCount * prices[type]).toFixed(4);
     setInputValues((prev) => ({
       ...prev,
       [type]: newAmount,
@@ -205,18 +205,37 @@ const Calculadora = () => {
 
     if (pricePerConversation === 0) return;
 
+    // Allow empty string for better user experience when deleting
+    if (amount === "") {
+      setInputValues((prev) => ({
+        ...prev,
+        [type]: "",
+      }));
+      setConversationCounts((prev) => ({
+        ...prev,
+        [type]: 0,
+      }));
+      return;
+    }
+
     // Calculate the maximum amount allowed (10000 conversations * price per conversation)
     const maxAmount = 10000 * pricePerConversation;
 
     // Parse and validate the input amount
-    const numValue = parseFloat(amount) || 0;
+    const numValue = parseFloat(amount);
+
+    // If the input is not a valid number, don't update anything
+    if (isNaN(numValue)) {
+      return;
+    }
+
     const clampedAmount = Math.max(0, Math.min(maxAmount, numValue));
 
-    // Update input value with the clamped amount
-    const formattedAmount = clampedAmount.toFixed(4);
+    // Update input value - keep the original input if it's valid, otherwise use clamped amount
+    const shouldUseOriginal = numValue >= 0 && numValue <= maxAmount;
     setInputValues((prev) => ({
       ...prev,
-      [type]: formattedAmount,
+      [type]: shouldUseOriginal ? amount : clampedAmount.toFixed(4),
     }));
 
     // Calculate how many conversations this amount represents
@@ -248,12 +267,12 @@ const Calculadora = () => {
     // Initialize input values based on current conversation counts
     const prices = getCurrentPrices();
     setInputValues({
-      marketing: (conversationCounts.marketing * prices.marketing).toFixed(4),
-      utility: (conversationCounts.utility * prices.utility).toFixed(4),
-      authentication: (
+      marketing: conversationCounts.marketing === 0 ? "" : (conversationCounts.marketing * prices.marketing).toFixed(4),
+      utility: conversationCounts.utility === 0 ? "" : (conversationCounts.utility * prices.utility).toFixed(4),
+      authentication: conversationCounts.authentication === 0 ? "" : (
         conversationCounts.authentication * prices.authentication
       ).toFixed(4),
-      service: (conversationCounts.service * prices.service).toFixed(4),
+      service: conversationCounts.service === 0 ? "" : (conversationCounts.service * prices.service).toFixed(4),
     });
   }, []);
 
@@ -271,12 +290,12 @@ const Calculadora = () => {
   useEffect(() => {
     const prices = getCurrentPrices();
     setInputValues({
-      marketing: (conversationCounts.marketing * prices.marketing).toFixed(4),
-      utility: (conversationCounts.utility * prices.utility).toFixed(4),
-      authentication: (
+      marketing: conversationCounts.marketing === 0 ? "" : (conversationCounts.marketing * prices.marketing).toFixed(4),
+      utility: conversationCounts.utility === 0 ? "" : (conversationCounts.utility * prices.utility).toFixed(4),
+      authentication: conversationCounts.authentication === 0 ? "" : (
         conversationCounts.authentication * prices.authentication
       ).toFixed(4),
-      service: (conversationCounts.service * prices.service).toFixed(4),
+      service: conversationCounts.service === 0 ? "" : (conversationCounts.service * prices.service).toFixed(4),
     });
   }, [selectedCountry, selectedCurrency]);
 
@@ -378,7 +397,7 @@ const Calculadora = () => {
   };
 
   return (
-    <div className="min-h-screen  py-8 sm:py-12 dark:bg-gradient-to-t from-[#122030] to-transparent ">
+    <div className="min-h-screen py-8 sm:py-12 dark:bg-gradient-to-t from-[#122030] to-transparent overflow-visible">
       {/* SECCIÓN 1: CALCULADORA DE PRECIOS DE WHATSAPP */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         {/* Header */}
@@ -458,7 +477,7 @@ const Calculadora = () => {
                         )
                       }
                       className="bg-transparent border-none outline-none w-16 text-center text-xs"
-                      placeholder="0.00"
+                      placeholder="0.0000"
                     />
                   </div>
                 </div>
@@ -501,7 +520,7 @@ const Calculadora = () => {
                         handleConversationInputChange("utility", e.target.value)
                       }
                       className="bg-transparent border-none outline-none w-16 text-center text-xs"
-                      placeholder="0.00"
+                      placeholder="0.0000"
                     />
                   </div>
                 </div>
@@ -549,7 +568,7 @@ const Calculadora = () => {
                         )
                       }
                       className="bg-transparent border-none outline-none w-16 text-center text-xs"
-                      placeholder="0.00"
+                      placeholder="0.0000"
                     />
                   </div>
                 </div>
@@ -592,7 +611,7 @@ const Calculadora = () => {
                         handleConversationInputChange("service", e.target.value)
                       }
                       className="bg-transparent border-none outline-none w-16 text-center text-xs"
-                      placeholder="0.00"
+                      placeholder="0.0000"
                     />
                   </div>
                 </div>
@@ -646,18 +665,18 @@ const Calculadora = () => {
       </section>
 
       {/* SECCIÓN 2: INFORMACIÓN SOBRE TIPOS DE CONVERSACIONES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 sm:pt-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 sm:pt-10 overflow-visible">
         {/* WhatsApp Calculator Info Section */}
-        <div className="relative mt-8 mb-16">
+        <div className="relative mt-8 mb-16 overflow-visible">
           {/* Decorative background circle */}
           <img
             src={bgCircle}
             alt=""
-            className="pointer-events-none select-none hidden md:block absolute -left-20 top-40 w-[400px] "
+            className="pointer-events-none select-none hidden md:block absolute -left-32 top-32 w-[500px] opacity-30 z-0"
           />
 
           {/* Top intro row */}
-          <div className="flex flex-col items-center text-center mb-12 sm:flex-row sm:items-start sm:text-left">
+          <div className="relative z-10 flex flex-col items-center text-center mb-12 sm:flex-row sm:items-start sm:text-left">
             <div className="w-full mb-6 sm:w-1/2 sm:mb-0">
               <h2 className="text-lg sm:text-4xl font-bold smfont-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#F129A1] to-[#A83CC1] mb-0 sm:mb-6">
                 Calculadora de WhatsApp
@@ -683,7 +702,7 @@ const Calculadora = () => {
           </div>
 
           {/* Feature card */}
-          <div className="rounded-2xl bg-white dark:bg-[#010F1F80] p-8 sm:p-12 ring-1 ring-gray-200/70 dark:ring-white/10 shadow-sm ">
+          <div className="relative z-10 rounded-2xl bg-white dark:bg-[#010F1F80] p-8 sm:p-12 ring-1 ring-gray-200/70 dark:ring-white/10 shadow-sm ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
               {/* Marketing */}
               <div className="flex gap-4">
@@ -698,7 +717,7 @@ const Calculadora = () => {
                   <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Marketing
                   </h3>
-                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-justify">
+                  <p className="text-[16px]  text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
                     Las conversaciones de marketing se relacionan con tu
                     empresa, productos o servicios. Estas incluyen ofertas y
                     promociones, sugerencias de productos relacionados, mensajes
@@ -717,7 +736,7 @@ const Calculadora = () => {
                   <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Utilidad
                   </h3>
-                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-justify">
+                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
                     Las conversaciones de utilidad se relacionan directamente
                     con una transacción, lo que incluye notificaciones después
                     de la compra y facturas recurrentes.
@@ -734,7 +753,7 @@ const Calculadora = () => {
                   <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Servicio
                   </h3>
-                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-justify">
+                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
                     Las conversaciones de servicio son iniciadas por los
                     usuarios y suelen ser consultas de los clientes. Las
                     empresas pueden responder dentro del intervalo de servicio
@@ -756,7 +775,7 @@ const Calculadora = () => {
                   <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Autenticación
                   </h3>
-                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-justify">
+                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
                     Las conversaciones de autenticación proporcionan a los
                     usuarios códigos de acceso de un solo uso con fines de
                     autenticación. Estos pueden enviarse en cualquier etapa del

@@ -1,4 +1,3 @@
-import degradado_rosa from "../assets/degradado rosa.svg";
 import check from "../assets/check.png";
 import circuloFondo from "../assets/circulo fondo.svg";
 import { useState, useRef, useEffect } from "react";
@@ -163,34 +162,31 @@ const Planes = () => {
             {planes.map((plan, index) => (
               <div
                 key={index}
-                className={`relative rounded-3xl p-6 sm:p-8 transition-all duration-300 overflow-hidden ${
+                className={`relative rounded-3xl p-[2px] transition-all duration-300 overflow-hidden ${
                   plan.destacado
-                    ? "border-2 border-[#F129A1] dark:border-[#F129A1] transform lg:scale-105 shadow-2xl dark:bg-gray-800"
-                    : "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg"
+                    ? "transform lg:scale-105 shadow-2xl bg-gradient-to-b from-[#2a3441] via-[#F129A1] to-[#F129A1]"
+                    : "bg-gradient-to-b from-[#2a3441] via-[#6b7280] to-[#6b7280]"
                 } snap-center flex-shrink-0 w-[85vw] sm:w-[75vw] max-w-[420px] mr-3 last:mr-0 md:w-auto md:max-w-none lg:w-auto lg:flex-shrink lg:mr-0`}
-                style={
-                  plan.destacado
-                    ? {
-                        backgroundImage: `url(${degradado_rosa})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat",
-                      }
-                    : {}
-                }
               >
+                {/* Inner card with glass effect */}
+                <div className="relative rounded-3xl p-6 sm:p-8 h-full bg-gradient-to-b from-[#1a2332]/90 via-[#2a3441]/90 to-[#1a2332]/90 backdrop-blur-sm border border-white/10">
+                  {/* Shine overlay */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/8 via-white/3 to-transparent pointer-events-none"></div>
+
+                  {/* Content wrapper with relative positioning */}
+                  <div className="relative z-10">
                 {/* Header del plan */}
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-2xl font-semibold text-white mb-2">
                     {plan.nombre}
                   </h3>
 
                   {/* Precio */}
                   <div className="mb-6">
-                    <div className="text-3xl sm:text-4xl font-bold text-[#F129A1] dark:text-[#FF5CBD] mb-1">
+                    <div className="text-3xl sm:text-4xl font-bold text-[#F129A1] mb-1">
                       {plan.precio}
                     </div>
-                    <div className="text-[#F129A1] dark:text-[#FF5CBD] text-lg font-semibold">
+                    <div className="text-[#F129A1] text-lg font-semibold">
                       {plan.periodo}
                     </div>
                   </div>
@@ -203,11 +199,11 @@ const Planes = () => {
                       <div className="mr-3 mt-0.5 flex-shrink-0">
                         <img src={check} alt="check" className="w-5 h-5" />
                       </div>
-                      <span className="text-gray-700 dark:text-gray-300 text-base sm:text-lg font-medium">
+                      <span className="text-gray-300 text-base sm:text-lg font-medium">
                         {caracteristica.includes("PRO") ? (
                           <>
                             {caracteristica.replace(" PRO", "")}
-                            <span className="text-[#F129A1] dark:text-[#FF5CBD] font-semibold">
+                            <span className="text-[#F129A1] font-semibold">
                               {" "}
                               PRO
                             </span>
@@ -222,7 +218,7 @@ const Planes = () => {
 
                 {/* Botón */}
                 <button
-                  className="w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
                   onClick={() =>
                     (window.location.href =
                       "https://chatby.io/register/?ref=Web")
@@ -230,6 +226,8 @@ const Planes = () => {
                 >
                   Prueba gratis por 14 días
                 </button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -289,7 +287,7 @@ const Planes = () => {
               {faqData.map((faq, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-[#CFE1FF] bg-white dark:bg-[#0A0A0A99]/90 shadow-[0_6px_16px_rgba(17,24,39,0.06)] backdrop-blur"
+                  className="rounded-2xl bg-[#192643] backdrop-blur-sm border border-white/10 shadow-lg"
                 >
                   <button
                     onClick={() => toggleAccordion(index)}
@@ -297,14 +295,14 @@ const Planes = () => {
                       openAccordion === index ? "" : ""
                     }`}
                   >
-                    <span className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white pr-4">
+                    <span className="text-base sm:text-lg font-semibold text-white pr-4">
                       {faq.question}
                     </span>
                     <div
                       className={`flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 ${
                         openAccordion === index
                           ? "bg-gradient-to-tr from-[#F129A1] to-[#A83CC1] text-white rotate-180"
-                          : "bg-[#FFE8F7] dark:bg-[#192643] text-[#F129A1]"
+                          : "bg-[#192643] text-[#F129A1]"
                       }`}
                     >
                       <svg
@@ -332,7 +330,7 @@ const Planes = () => {
                     }`}
                   >
                     <div className="px-5 sm:px-6 pb-5">
-                      <div className="text-sm sm:text-base text-gray-700 dark:text-gray-300 whitespace-pre-line">
+                      <div className="text-sm sm:text-base text-gray-300 whitespace-pre-line">
                         {faq.answer}
                       </div>
                     </div>

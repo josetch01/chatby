@@ -5,6 +5,24 @@
 @import "@fontsource/montserrat/700.css";
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Axiforma";
+  src: url("https://chatby.io/font/Axiforma-Regular.woff2") format("woff2"),
+    url("https://chatby.io/font/Axiforma-Regular.woff") format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("https://chatby.io/font/Axiforma-Bold.woff2") format("woff2"),
+    url("https://chatby.io/font/Axiforma-Bold.woff") format("woff");
+  font-weight: bold;
+  font-display: swap;
+}
+*{
+  font-family: "Axiforma", sans-serif;
+}
 /* Hide scrollbar for carousel */
 .carousel-container {
   scrollbar-width: none; /* Firefox */
