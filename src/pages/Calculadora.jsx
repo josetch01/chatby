@@ -407,10 +407,10 @@ const Calculadora = () => {
               WhatsApp Pricing Calculator
             </span>
           </div>
-          <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-0 sm:mb-4">
+          <h1 className="text-lg sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-0 sm:mb-4">
             Calcula tus costos con nuestra
           </h1>
-          <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F129A1] to-[#A83CC1] mb-2 sm:mb-6">
+          <h2 className="text-lg sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F129A1] to-[#A83CC1] mb-2 sm:mb-6">
             calculadora de precios de WhatsApp
           </h2>
           <p className="text-xs text-gray-600 dark:text-[#CCCCCC] max-w-2xl mx-auto font-medium">
@@ -640,10 +640,10 @@ const Calculadora = () => {
 
           {/* Right Column - Estimation */}
           <div className="bg-[#0D1D30] dark:bg-[#101A31] rounded-2xl p-10 text-white flex flex-col justify-between ">
-            <h3 className="text-xl font-semibold">Estimación:</h3>
+            <h3 className="text-lg sm:text-xl font-semibold">Estimación:</h3>
             <div>
               <div className="text-right mb-8">
-                <div className="text-4xl font-bold mb-4">
+                <div className="text-2xl sm:text-4xl font-bold mb-4">
                   {getCurrencySymbol()}
                   {calculateEstimation().toFixed(2)}
                 </div>
@@ -678,7 +678,7 @@ const Calculadora = () => {
           {/* Top intro row */}
           <div className="relative z-10 flex flex-col items-center text-center mb-12 sm:flex-row sm:items-start sm:text-left">
             <div className="w-full mb-6 sm:w-1/2 sm:mb-0">
-              <h2 className="text-lg sm:text-4xl font-bold smfont-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#F129A1] to-[#A83CC1] mb-0 sm:mb-6">
+              <h2 className="text-base sm:text-4xl font-bold smfont-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#F129A1] to-[#A83CC1] mb-0 sm:mb-6">
                 Calculadora de WhatsApp
               </h2>
             </div>
@@ -714,7 +714,7 @@ const Calculadora = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
+                  <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Marketing
                   </h3>
                   <p className="text-[16px]  text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
@@ -733,7 +733,7 @@ const Calculadora = () => {
                   <img src={iconUtilidad} alt="Utilidad" className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
+                  <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Utilidad
                   </h3>
                   <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
@@ -750,7 +750,7 @@ const Calculadora = () => {
                   <img src={iconServicio} alt="Servicio" className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
+                  <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Servicio
                   </h3>
                   <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
@@ -772,7 +772,7 @@ const Calculadora = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
+                  <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Autenticación
                   </h3>
                   <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">

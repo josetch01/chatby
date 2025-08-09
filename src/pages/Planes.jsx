@@ -138,14 +138,14 @@ const Planes = () => {
               Valor insuperable para tu inversión
             </span>
           </div>
-          <h1 className="text-xl sm:text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-4 mx-0 md:mx-10 lg:mx-40">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-4 mx-0 md:mx-10 lg:mx-40">
             <span className="text-[#F129A1] dark:text-[#FF5CBD]">
               Optimiza tu comunicación{" "}
             </span>{" "}
             con la tecnología más avanzada
           </h1>
 
-          <p className="text-base sm:text-lg md:text-2xl font-medium text-[#2C011B] dark:text-[#CCCCCC] max-w-2xl mx-auto">
+          <p className="text-sm sm:text-lg md:text-2xl font-medium text-[#2C011B] dark:text-[#CCCCCC] max-w-2xl mx-auto">
             Elige la opción perfecta y disfruta de un servicio excepcional
           </p>
         </div>
@@ -177,16 +177,16 @@ const Planes = () => {
                   <div className="relative z-10">
                 {/* Header del plan */}
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-semibold text-white mb-2">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">
                     {plan.nombre}
                   </h3>
 
                   {/* Precio */}
                   <div className="mb-6">
-                    <div className="text-3xl sm:text-4xl font-bold text-[#F129A1] mb-1">
+                    <div className="text-2xl sm:text-4xl font-bold text-[#F129A1] mb-1">
                       {plan.precio}
                     </div>
-                    <div className="text-[#F129A1] text-lg font-semibold">
+                    <div className="text-[#F129A1] text-base sm:text-lg font-semibold">
                       {plan.periodo}
                     </div>
                   </div>
@@ -199,7 +199,7 @@ const Planes = () => {
                       <div className="mr-3 mt-0.5 flex-shrink-0">
                         <img src={check} alt="check" className="w-5 h-5" />
                       </div>
-                      <span className="text-gray-300 text-base sm:text-lg font-medium">
+                      <span className="text-gray-300 text-sm sm:text-lg font-medium">
                         {caracteristica.includes("PRO") ? (
                           <>
                             {caracteristica.replace(" PRO", "")}
@@ -263,12 +263,12 @@ const Planes = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-0 items-start">
             {/* Left Column - Title and Contact Button */}
             <div className="lg:pr-10 text-center lg:text-left">
-              <h2 className="text-[16px] leading-tight sm:text-[40px] md:text-[48px] font-semibold text-[#F129A1] dark:text-[#FF5CBD] mb-4">
+              <h2 className="text-2xl leading-tight sm:text-[40px] md:text-[48px] font-semibold text-[#F129A1] dark:text-[#FF5CBD] mb-4">
                 Preguntas
                 <br className="hidden sm:block" />
                 Frecuentes
               </h2>
-              <p className="text-base font-semibold sm:text-lg text-gray-700 dark:text-gray-300 mb-5 sm:mb-6">
+              <p className="text-sm font-semibold sm:text-lg text-gray-700 dark:text-gray-300 mb-5 sm:mb-6">
                 Tienes otras preguntas?
               </p>
               <button
@@ -295,7 +295,7 @@ const Planes = () => {
                       openAccordion === index ? "" : ""
                     }`}
                   >
-                    <span className="text-base sm:text-lg font-semibold text-white pr-4">
+                    <span className="text-sm sm:text-lg font-semibold text-white pr-4">
                       {faq.question}
                     </span>
                     <div

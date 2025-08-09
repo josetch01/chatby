@@ -1,66 +1,73 @@
-import { createContext, useContext, useLayoutEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-// Keep backward-compatible API (darkMode/toggleDarkMode) and also expose theme/setTheme
 const ThemeContext = createContext({
-  theme: "light",
   darkMode: false,
-  setTheme: () => {},
   toggleDarkMode: () => {},
 });
 
-const getInitialTheme = () => {
-  // 1) Explicit persisted theme
-  if (typeof window !== "undefined") {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark" || storedTheme === "light") return storedTheme;
-
-    // 2) Backward compatibility with previous "darkMode" boolean flag
-    const storedBool = localStorage.getItem("darkMode");
-    if (storedBool !== null) return storedBool === "true" ? "dark" : "light";
-
-    // 3) System preference
-    try {
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
-    } catch {
-      /* ignore */
-    }
-
-    // 4) Current DOM state
-    try {
-      if (document?.documentElement?.classList?.contains("dark")) return "dark";
-    } catch {
-      /* ignore */
-    }
-  }
-  return "light";
-};
-
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(getInitialTheme);
+  // Initialize with system preference or localStorage
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      // Check localStorage first
+      const saved = localStorage.getItem("theme");
+      if (saved) {
+        return saved === "dark";
+      }
 
-  // Apply class/attr ASAP to avoid flicker and ensure Tailwind dark: styles activate
-  useLayoutEffect(() => {
+      // Check old darkMode key for backward compatibility
+      const oldSaved = localStorage.getItem("darkMode");
+      if (oldSaved !== null) {
+        return oldSaved === "true";
+      }
+
+      // Check system preference
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    return false;
+  });
+
+  // Apply theme to DOM whenever darkMode changes
+  useEffect(() => {
     const root = document.documentElement;
-    const isDark = theme === "dark";
 
-    root.classList.toggle("dark", isDark);
-    root.setAttribute("data-theme", isDark ? "dark" : "light");
+    // Remove both classes first to ensure clean state
+    root.classList.remove("dark", "light");
 
-    // Persist both new and legacy keys
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    localStorage.setItem("darkMode", isDark ? "true" : "false");
-  }, [theme]);
+    if (darkMode) {
+      root.classList.add("dark");
+    } else {
+      root.classList.add("light");
+    }
 
-  const toggleDarkMode = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    // Save to localStorage
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+    localStorage.setItem("darkMode", darkMode.toString());
 
-  const value = useMemo(
-    () => ({ theme, darkMode: theme === "dark", setTheme, toggleDarkMode }),
-    [theme]
+    // Debug log
+    console.log("Theme applied:", darkMode ? "dark" : "light", "HTML classes:", root.className);
+
+    // Force a repaint
+    root.style.display = 'none';
+    root.offsetHeight; // Trigger reflow
+    root.style.display = '';
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(prev => !prev);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
+      {children}
+    </ThemeContext.Provider>
   );
-
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+};

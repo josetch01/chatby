@@ -464,7 +464,7 @@ const MessengerIcon = ({ className = "" }) => (
             <div className="bg-purple-100 dark:bg-[#2C1A29] text-purple-black dark:text-[#CCCCCC] text-sm font-normal px-4 py-2 rounded-full inline-block mb-6">
               Beneficios de la IA
             </div>
-            <h2 className="text-lg sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Conoce cómo la Inteligencia Artificial{" "}
               <span className="text-[#F129A1] dark:text-[#F129A1]">
                 simplifica y potencia
@@ -517,7 +517,7 @@ const MessengerIcon = ({ className = "" }) => (
                     IA sin Código
                   </div>
 
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 text-start">
+                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 text-start">
                     <span className="text-[#F129A1] dark:text-[#F129A1]">
                       Cree su primer chatbot con IA
                     </span>{" "}
@@ -554,7 +554,7 @@ const MessengerIcon = ({ className = "" }) => (
                     Presencia 24/7
                   </div>
 
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                     <span className="text-pink-600 dark:text-pink-400">
                       Conecte con sus clientes
                     </span>{" "}
@@ -649,7 +649,7 @@ const MessengerIcon = ({ className = "" }) => (
                     Automatización 24/7
                   </div>
 
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                     Potencia tu chatbot con{" "}
                     <span className="text-pink-600 dark:text-pink-400">
                       Inteligencia Artificial avanzada

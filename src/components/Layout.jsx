@@ -207,7 +207,7 @@ const Layout = ({ children }) => {
               <p className="text-sm text-gray-600 mb-2 bg-[#FFE8F7] rounded-2xl dark:bg-[#2C1A29] dark:text-[#CCCCCC] px-4 py-2 inline-block">
                 Sin complicaciones con nuestras
               </p>
-              <h2 className="text-xl sm:text-4xl font-semibold text-gray-900 dark:text-white mb-8">
+              <h2 className="text-lg sm:text-4xl font-semibold text-gray-900 dark:text-white mb-8">
                 Integraciones nativas
               </h2>
             </div>
@@ -320,15 +320,15 @@ const Layout = ({ children }) => {
             {/* Bottom section with CTA */}
             <div className="absolute bottom-0 left-0 w-full text-center text-white pb-16 sm:pb-20 lg:pb-24">
               <div className="max-w-4xl mx-auto px-4">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6">
+                <h3 className="text-xl sm:text-3xl lg:text-4xl font-semibold mb-6">
                   Automatiza, escala y vende más con Chatby
                 </h3>
-                <p className="text-xl sm:text-2xl mb-8 text-pink-100 font-medium">
+                <p className="text-lg sm:text-2xl mb-8 text-pink-100 font-medium">
                   ¡Comienza ahora!
                 </p>
                 <div className="flex flex-row gap-2 sm:gap-4 justify-center items-center">
                   <button
-                    className="bg-transparent text-white px-3 py-2 sm:px-5 sm:py-2 rounded-3xl font-normal border-[1px] border-white cursor-pointer transition-colors text-sm sm:text-2xl hover:bg-[#fff] hover:text-[#F129A1] hover:border-[#F129A1]"
+                    className="bg-transparent text-white px-3 py-2 sm:px-5 sm:py-2 rounded-3xl font-normal border-[1px] border-white cursor-pointer transition-colors text-xs sm:text-2xl hover:bg-[#fff] hover:text-[#F129A1] hover:border-[#F129A1]"
                     onClick={() =>
                       (window.location.href =
                         "https://chatby.io/register?ref=WebTrial")
@@ -337,7 +337,7 @@ const Layout = ({ children }) => {
                     Iniciar prueba gratis
                   </button>
                   <button
-                    className="border border-white text-[#F129A1] bg-white px-3 py-2 sm:px-5 sm:py-2 rounded-3xl font-normal cursor-pointer text-sm sm:text-2xl transition-colors"
+                    className="border border-white text-[#F129A1] bg-white px-3 py-2 sm:px-5 sm:py-2 rounded-3xl font-normal cursor-pointer text-xs sm:text-2xl transition-colors"
                     onClick={() =>
                       (window.location.href = "https://chatby.io/")
                     }
