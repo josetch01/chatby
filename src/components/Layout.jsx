@@ -78,7 +78,7 @@ const Layout = ({ children }) => {
         <img
           src={cuadricula}
           alt=""
-          className="w-full h-full object-cover object-center opacity-20 dark:opacity-20"
+          className="w-full h-full object-cover object-center opacity-20 dark:opacity-10"
         />
       </div>
 
