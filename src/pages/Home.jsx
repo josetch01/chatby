@@ -275,7 +275,7 @@ const Home = () => {
                 key={currentDesktopMockupIndex}
                 src={mockups[currentDesktopMockupIndex].src}
                 alt={mockups[currentDesktopMockupIndex].alt}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl "
                 style={{
                   animation:
                     "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s",
