@@ -161,71 +161,72 @@ const Planes = () => {
           >
             {planes.map((plan, index) => (
               <div
+                style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
                 key={index}
-                className={`relative rounded-3xl p-[2px] transition-all duration-300 overflow-hidden ${
+                className={` relative rounded-3xl p-[2px] transition-all duration-300 overflow-hidden ${
                   plan.destacado
-                    ? "transform lg:scale-105 shadow-2xl bg-gradient-to-b from-[#2a3441] via-[#F129A1] to-[#F129A1]"
-                    : "bg-gradient-to-b from-[#2a3441] via-[#6b7280] to-[#6b7280]"
+                    ? "transform lg:scale-105 shadow-2xl dark:bg-gradient-to-b from-[#2a3441] via-[#F129A1] to-[#F129A1] "
+                    : "dark:bg-gradient-to-b dark:from-[#2a3441] via-[#6b7280] to-[#6b7280]"
                 } snap-center flex-shrink-0 w-[85vw] sm:w-[75vw] max-w-[420px] mr-3 last:mr-0 md:w-auto md:max-w-none lg:w-auto lg:flex-shrink lg:mr-0`}
               >
                 {/* Inner card with glass effect */}
-                <div className="relative rounded-3xl p-6 sm:p-8 h-full bg-gradient-to-b from-[#1a2332]/90 via-[#2a3441]/90 to-[#1a2332]/90 backdrop-blur-sm border border-white/10">
+                <div className="relative rounded-3xl p-6 sm:p-8 h-full dark:bg-gradient-to-b from-[#1a2332]/90 via-[#2a3441]/90 to-[#1a2332]/90 backdrop-blur-sm border border-white/10">
                   {/* Shine overlay */}
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/8 via-white/3 to-transparent pointer-events-none"></div>
 
                   {/* Content wrapper with relative positioning */}
                   <div className="relative z-10">
-                {/* Header del plan */}
-                <div className="text-center mb-8">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">
-                    {plan.nombre}
-                  </h3>
+                    {/* Header del plan */}
+                    <div className="text-center mb-8">
+                      <h3 className="text-xl sm:text-2xl font-semibold text-[#2C011B] dark:text-white mb-2">
+                        {plan.nombre}
+                      </h3>
 
-                  {/* Precio */}
-                  <div className="mb-6">
-                    <div className="text-2xl sm:text-4xl font-bold text-[#F129A1] mb-1">
-                      {plan.precio}
-                    </div>
-                    <div className="text-[#F129A1] text-base sm:text-lg font-semibold">
-                      {plan.periodo}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Características */}
-                <ul className="space-y-1 mb-8">
-                  {plan.caracteristicas.map((caracteristica, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <div className="mr-3 mt-0.5 flex-shrink-0">
-                        <img src={check} alt="check" className="w-5 h-5" />
+                      {/* Precio */}
+                      <div className="mb-6">
+                        <div className="text-2xl sm:text-4xl font-bold text-[#F129A1] mb-1">
+                          {plan.precio}
+                        </div>
+                        <div className="text-[#F129A1] text-base sm:text-lg font-semibold">
+                          {plan.periodo}
+                        </div>
                       </div>
-                      <span className="text-gray-300 text-sm sm:text-lg font-medium">
-                        {caracteristica.includes("PRO") ? (
-                          <>
-                            {caracteristica.replace(" PRO", "")}
-                            <span className="text-[#F129A1] font-semibold">
-                              {" "}
-                              PRO
-                            </span>
-                          </>
-                        ) : (
-                          caracteristica
-                        )}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
 
-                {/* Botón */}
-                <button
-                  className="w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
-                  onClick={() =>
-                    (window.location.href =
-                      "https://chatby.io/register/?ref=Web")
-                  }
-                >
-                  Prueba gratis por 14 días
-                </button>
+                    {/* Características */}
+                    <ul className="space-y-1 mb-8">
+                      {plan.caracteristicas.map((caracteristica, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <div className="mr-3 mt-0.5 flex-shrink-0">
+                            <img src={check} alt="check" className="w-5 h-5" />
+                          </div>
+                          <span className="text-[#2C011B] dark:text-gray-300 text-sm sm:text-lg font-medium">
+                            {caracteristica.includes("PRO") ? (
+                              <>
+                                {caracteristica.replace(" PRO", "")}
+                                <span className="text-[#F129A1] font-semibold">
+                                  {" "}
+                                  PRO
+                                </span>
+                              </>
+                            ) : (
+                              caracteristica
+                            )}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Botón */}
+                    <button
+                      className="w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
+                      onClick={() =>
+                        (window.location.href =
+                          "https://chatby.io/register/?ref=Web")
+                      }
+                    >
+                      Prueba gratis por 14 días
+                    </button>
                   </div>
                 </div>
               </div>
@@ -256,7 +257,7 @@ const Planes = () => {
         <img
           src={circuloFondo}
           alt="círculo decorativo"
-          className="pointer-events-none select-none absolute -z-10 dark:z-0 left-1/2 md:-translate-x-120 lg:-translate-x-250  -translate-x-60 top-10 w-[280px] opacity-80 sm:translate-x-0 sm:left-auto sm:right-[-20%] sm:top-6 sm:w-[520px] md:w-[640px] lg:w-[760px] xl:w-[880px]"
+          className="pointer-events-none select-none absolute -z-10 dark:z-0 left-1/2 md:-translate-x-120 lg:-translate-x-400  -translate-x-60 top-10 w-[280px] opacity-80 sm:translate-x-0 sm:left-auto sm:right-[-20%] sm:top-6 sm:w-[520px] md:w-[640px] lg:w-[760px] xl:w-[880px]"
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -287,7 +288,7 @@ const Planes = () => {
               {faqData.map((faq, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl bg-[#192643] backdrop-blur-sm border border-white/10 shadow-lg"
+                  className="rounded-2xl dark:bg-[#192643] backdrop-blur-sm border border-white/10 shadow-lg"
                 >
                   <button
                     onClick={() => toggleAccordion(index)}
@@ -295,14 +296,14 @@ const Planes = () => {
                       openAccordion === index ? "" : ""
                     }`}
                   >
-                    <span className="text-sm sm:text-lg font-semibold text-white pr-4">
+                    <span className="text-sm sm:text-lg font-semibold text-[#2C011B] dark:text-white pr-4">
                       {faq.question}
                     </span>
                     <div
                       className={`flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 ${
                         openAccordion === index
-                          ? "bg-gradient-to-tr from-[#F129A1] to-[#A83CC1] text-white rotate-180"
-                          : "bg-[#192643] text-[#F129A1]"
+                          ? "dark:bg-gradient-to-tr from-[#F129A1] to-[#A83CC1] text-[#2C011B] dark:text-white rotate-180"
+                          : "dark:bg-[#192643] text-[#F129A1]"
                       }`}
                     >
                       <svg
@@ -330,7 +331,7 @@ const Planes = () => {
                     }`}
                   >
                     <div className="px-5 sm:px-6 pb-5">
-                      <div className="text-sm sm:text-base text-gray-300 whitespace-pre-line">
+                      <div className="text-sm sm:text-base text-[#2C011B] dark:text-gray-300 whitespace-pre-line">
                         {faq.answer}
                       </div>
                     </div>

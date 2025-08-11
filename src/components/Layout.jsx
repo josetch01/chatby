@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
     { src: bag, alt: "bag" },
     { src: exsheet, alt: "exsheet" },
     { src: msn, alt: "msn" },
-    { src: gpt, alt: "gpt", isCenter: true },
+    // { src: gpt, alt: "gpt", isCenter: true },
     { src: mail_google, alt: "mail_google" },
     { src: boton, alt: "boton" },
     { src: spinner, alt: "spinner" },
@@ -274,9 +274,9 @@ const Layout = ({ children }) => {
                   {/* Position 3 - Center logo (largest) */}
                   <div className="w-15 h-15 sm:w-32 sm:h-32 md:w-26 md:h-26 rounded-full lg:w-32 lg:h-32 bg-white dark:bg-[#0D1D30] shadow-lg flex items-center justify-center transform -translate-y-8 md:-translate-y-5 sm:-translate-y-6 border-8 border-[#F129A1] transition-all duration-1000 ease-in-out">
                     <img
-                      src={getIconAtPosition(3).src}
-                      alt={getIconAtPosition(3).alt}
-                      className={`w-full h-full rounded-full transition-all duration-1000 ease-in-out ${getIconAtPosition(3).alt === 'gpt' ? 'dark:invert' : ''}`}
+                      src={gpt}
+                      alt={"gpt"}
+                      className={`w-full h-full rounded-full transition-all duration-1000 ease-in-out dark:invert `}
                     />
                   </div>
 

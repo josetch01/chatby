@@ -15,6 +15,8 @@ import persona_3 from "../assets/persona 3.svg";
 import bot_plantilla_msn from "../assets/bot plantilla msg.svg";
 import chatby_logo from "../assets/chatby loguito.svg";
 import degradado_rosa from "../assets/degradado rosa.svg";
+import mba_blanco from "../assets/logos empresas/mba blanco.png";
+import triidy_blanco from "../assets/logos empresas/triidy logo blanco.svg";
 
 import msn_logo from "../assets/logos integraciones/5.svg";
 import ig_logo from "../assets/logos integraciones/10.svg";
@@ -27,42 +29,49 @@ import gemini from "../assets/logos integraciones/gemini.svg";
 
 import mockup_ig from "../assets/mockup-for-instagram 1.svg";
 import mockup_msn from "../assets/mockup-for-messenger 1.svg";
-
 const Home = () => {
+  // Inline SVG icons (reuse the same paths as desktop cards)
+  const WhatsAppIcon = ({ className = "" }) => (
+    <svg
+      viewBox="0 0 27 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`w-6 h-6 ${className}`}
+    >
+      <path
+        fill="currentColor"
+        d="M21.4316 5.52382C20.4002 4.48198 19.1717 3.65594 17.8177 3.09387C16.4637 2.53181 15.0114 2.24496 13.5454 2.25007C7.40289 2.25007 2.39664 7.25632 2.39664 13.3988C2.39664 15.3676 2.91414 17.2801 3.88164 18.9676L2.30664 24.7501L8.21289 23.1976C9.84414 24.0863 11.6779 24.5588 13.5454 24.5588C19.6879 24.5588 24.6941 19.5526 24.6941 13.4101C24.6941 10.4288 23.5354 7.62757 21.4316 5.52382ZM13.5454 22.6688C11.8804 22.6688 10.2491 22.2188 8.82039 21.3751L8.48289 21.1726L4.97289 22.0951L5.90664 18.6751L5.68164 18.3263C4.75661 16.8492 4.26542 15.1417 4.26414 13.3988C4.26414 8.29132 8.42664 4.12882 13.5341 4.12882C16.0091 4.12882 18.3379 5.09632 20.0816 6.85132C20.9451 7.71078 21.6293 8.73306 22.0947 9.85892C22.5601 10.9848 22.7974 12.1918 22.7929 13.4101C22.8154 18.5176 18.6529 22.6688 13.5454 22.6688ZM18.6304 15.7388C18.3491 15.6038 16.9766 14.9288 16.7291 14.8276C16.4704 14.7376 16.2904 14.6926 16.0991 14.9626C15.9079 15.2438 15.3791 15.8738 15.2216 16.0538C15.0641 16.2451 14.8954 16.2676 14.6141 16.1213C14.3329 15.9863 13.4329 15.6826 12.3754 14.7376C11.5429 13.9951 10.9916 13.0838 10.8229 12.8026C10.6654 12.5213 10.8004 12.3751 10.9466 12.2288C11.0704 12.1051 11.2279 11.9026 11.3629 11.7451C11.4979 11.5876 11.5541 11.4638 11.6441 11.2838C11.7341 11.0926 11.6891 10.9351 11.6216 10.8001C11.5541 10.6651 10.9916 9.29257 10.7666 8.73007C10.5416 8.19007 10.3054 8.25757 10.1366 8.24632H9.59664C9.40539 8.24632 9.11289 8.31382 8.85414 8.59507C8.60664 8.87632 7.88664 9.55132 7.88664 10.9238C7.88664 12.2963 8.88789 13.6238 9.02289 13.8038C9.15789 13.9951 10.9916 16.8076 13.7816 18.0113C14.4454 18.3038 14.9629 18.4726 15.3679 18.5963C16.0316 18.8101 16.6391 18.7763 17.1229 18.7088C17.6629 18.6301 18.7766 18.0338 19.0016 17.3813C19.2379 16.7288 19.2379 16.1776 19.1591 16.0538C19.0804 15.9301 18.9116 15.8738 18.6304 15.7388Z"
+      ></path>
+    </svg>
+  );
 
-// Inline SVG icons (reuse the same paths as desktop cards)
-const WhatsAppIcon = ({ className = "" }) => (
-  <svg
-    viewBox="0 0 27 27"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={`w-6 h-6 ${className}`}
-  >
-    <path fill="currentColor" d="M21.4316 5.52382C20.4002 4.48198 19.1717 3.65594 17.8177 3.09387C16.4637 2.53181 15.0114 2.24496 13.5454 2.25007C7.40289 2.25007 2.39664 7.25632 2.39664 13.3988C2.39664 15.3676 2.91414 17.2801 3.88164 18.9676L2.30664 24.7501L8.21289 23.1976C9.84414 24.0863 11.6779 24.5588 13.5454 24.5588C19.6879 24.5588 24.6941 19.5526 24.6941 13.4101C24.6941 10.4288 23.5354 7.62757 21.4316 5.52382ZM13.5454 22.6688C11.8804 22.6688 10.2491 22.2188 8.82039 21.3751L8.48289 21.1726L4.97289 22.0951L5.90664 18.6751L5.68164 18.3263C4.75661 16.8492 4.26542 15.1417 4.26414 13.3988C4.26414 8.29132 8.42664 4.12882 13.5341 4.12882C16.0091 4.12882 18.3379 5.09632 20.0816 6.85132C20.9451 7.71078 21.6293 8.73306 22.0947 9.85892C22.5601 10.9848 22.7974 12.1918 22.7929 13.4101C22.8154 18.5176 18.6529 22.6688 13.5454 22.6688ZM18.6304 15.7388C18.3491 15.6038 16.9766 14.9288 16.7291 14.8276C16.4704 14.7376 16.2904 14.6926 16.0991 14.9626C15.9079 15.2438 15.3791 15.8738 15.2216 16.0538C15.0641 16.2451 14.8954 16.2676 14.6141 16.1213C14.3329 15.9863 13.4329 15.6826 12.3754 14.7376C11.5429 13.9951 10.9916 13.0838 10.8229 12.8026C10.6654 12.5213 10.8004 12.3751 10.9466 12.2288C11.0704 12.1051 11.2279 11.9026 11.3629 11.7451C11.4979 11.5876 11.5541 11.4638 11.6441 11.2838C11.7341 11.0926 11.6891 10.9351 11.6216 10.8001C11.5541 10.6651 10.9916 9.29257 10.7666 8.73007C10.5416 8.19007 10.3054 8.25757 10.1366 8.24632H9.59664C9.40539 8.24632 9.11289 8.31382 8.85414 8.59507C8.60664 8.87632 7.88664 9.55132 7.88664 10.9238C7.88664 12.2963 8.88789 13.6238 9.02289 13.8038C9.15789 13.9951 10.9916 16.8076 13.7816 18.0113C14.4454 18.3038 14.9629 18.4726 15.3679 18.5963C16.0316 18.8101 16.6391 18.7763 17.1229 18.7088C17.6629 18.6301 18.7766 18.0338 19.0016 17.3813C19.2379 16.7288 19.2379 16.1776 19.1591 16.0538C19.0804 15.9301 18.9116 15.8738 18.6304 15.7388Z"></path>
-  </svg>
-);
+  const InstagramIcon = ({ className = "" }) => (
+    <svg
+      viewBox="0 0 27 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`w-6 h-6 ${className}`}
+    >
+      <path
+        fill="currentColor"
+        d="M8.96 2H19.04C22.88 2 26 5.12 26 8.96V19.04C26 20.8859 25.2667 22.6562 23.9615 23.9615C22.6562 25.2667 20.8859 26 19.04 26H8.96C5.12 26 2 22.88 2 19.04V8.96C2 7.11409 2.73328 5.34379 4.03854 4.03854C5.34379 2.73328 7.11409 2 8.96 2ZM8.72 4.4C7.57427 4.4 6.47546 4.85514 5.6653 5.6653C4.85514 6.47546 4.4 7.57427 4.4 8.72V19.28C4.4 21.668 6.332 23.6 8.72 23.6H19.28C20.4257 23.6 21.5245 23.1449 22.3347 22.3347C23.1449 21.5245 23.6 20.4257 23.6 19.28V8.72C23.6 6.332 21.668 4.4 19.28 4.4H8.72ZM20.3 6.2C20.6978 6.2 21.0794 6.35804 21.3607 6.63934C21.642 6.92064 21.8 7.30218 21.8 7.7C21.8 8.09783 21.642 8.47936 21.3607 8.76066C21.0794 9.04197 20.6978 9.2 20.3 9.2C19.9022 9.2 19.5206 9.04197 19.2393 8.76066C18.958 8.47936 18.8 8.09783 18.8 7.7C18.8 7.30218 18.958 6.92064 19.2393 6.63934C19.5206 6.35804 19.9022 6.2 20.3 6.2ZM14 8C15.5913 8 17.1174 8.63214 18.2426 9.75736C19.3679 10.8826 20 12.4087 20 14C20 15.5913 19.3679 17.1174 18.2426 18.2426C17.1174 19.3679 15.5913 20 14 20C12.4087 20 10.8826 19.3679 9.75736 18.2426C8.63214 17.1174 8 15.5913 8 14C8 12.4087 8.63214 10.8826 9.75736 9.75736C10.8826 8.63214 12.4087 8 14 8ZM14 10.4C13.0452 10.4 12.1295 10.7793 11.4544 11.4544C10.7793 12.1295 10.4 13.0452 10.4 14C10.4 14.9548 10.7793 15.8705 11.4544 16.5456C12.1295 17.2207 13.0452 17.6 14 17.6C14.9548 17.6 15.8705 17.2207 16.5456 16.5456C17.2207 15.8705 17.6 14.9548 17.6 14C17.6 13.0452 17.2207 12.1295 16.5456 11.4544C15.8705 10.7793 14.9548 10.4 14 10.4Z"
+      ></path>
+    </svg>
+  );
 
-const InstagramIcon = ({ className = "" }) => (
-  <svg
-    viewBox="0 0 27 27"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={`w-6 h-6 ${className}`}
-  >
-    <path fill="currentColor" d="M8.96 2H19.04C22.88 2 26 5.12 26 8.96V19.04C26 20.8859 25.2667 22.6562 23.9615 23.9615C22.6562 25.2667 20.8859 26 19.04 26H8.96C5.12 26 2 22.88 2 19.04V8.96C2 7.11409 2.73328 5.34379 4.03854 4.03854C5.34379 2.73328 7.11409 2 8.96 2ZM8.72 4.4C7.57427 4.4 6.47546 4.85514 5.6653 5.6653C4.85514 6.47546 4.4 7.57427 4.4 8.72V19.28C4.4 21.668 6.332 23.6 8.72 23.6H19.28C20.4257 23.6 21.5245 23.1449 22.3347 22.3347C23.1449 21.5245 23.6 20.4257 23.6 19.28V8.72C23.6 6.332 21.668 4.4 19.28 4.4H8.72ZM20.3 6.2C20.6978 6.2 21.0794 6.35804 21.3607 6.63934C21.642 6.92064 21.8 7.30218 21.8 7.7C21.8 8.09783 21.642 8.47936 21.3607 8.76066C21.0794 9.04197 20.6978 9.2 20.3 9.2C19.9022 9.2 19.5206 9.04197 19.2393 8.76066C18.958 8.47936 18.8 8.09783 18.8 7.7C18.8 7.30218 18.958 6.92064 19.2393 6.63934C19.5206 6.35804 19.9022 6.2 20.3 6.2ZM14 8C15.5913 8 17.1174 8.63214 18.2426 9.75736C19.3679 10.8826 20 12.4087 20 14C20 15.5913 19.3679 17.1174 18.2426 18.2426C17.1174 19.3679 15.5913 20 14 20C12.4087 20 10.8826 19.3679 9.75736 18.2426C8.63214 17.1174 8 15.5913 8 14C8 12.4087 8.63214 10.8826 9.75736 9.75736C10.8826 8.63214 12.4087 8 14 8ZM14 10.4C13.0452 10.4 12.1295 10.7793 11.4544 11.4544C10.7793 12.1295 10.4 13.0452 10.4 14C10.4 14.9548 10.7793 15.8705 11.4544 16.5456C12.1295 17.2207 13.0452 17.6 14 17.6C14.9548 17.6 15.8705 17.2207 16.5456 16.5456C17.2207 15.8705 17.6 14.9548 17.6 14C17.6 13.0452 17.2207 12.1295 16.5456 11.4544C15.8705 10.7793 14.9548 10.4 14 10.4Z"></path>
-  </svg>
-);
-
-const MessengerIcon = ({ className = "" }) => (
-  <svg
-    viewBox="0 0 27 27"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={`w-6 h-6 ${className}`}
-  >
-    <path fill="currentColor" d="M24 14C24 8.48 19.52 4 14 4C8.48 4 4 8.48 4 14C4 18.84 7.44 22.87 12 23.8V17H10V14H12V11.5C12 9.57 13.57 8 15.5 8H18V11H16C15.45 11 15 11.45 15 12V14H18V17H15V23.95C20.05 23.45 24 19.19 24 14Z"></path>
-  </svg>
-);
+  const MessengerIcon = ({ className = "" }) => (
+    <svg
+      viewBox="0 0 27 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`w-6 h-6 ${className}`}
+    >
+      <path
+        fill="currentColor"
+        d="M24 14C24 8.48 19.52 4 14 4C8.48 4 4 8.48 4 14C4 18.84 7.44 22.87 12 23.8V17H10V14H12V11.5C12 9.57 13.57 8 15.5 8H18V11H16C15.45 11 15 11.45 15 12V14H18V17H15V23.95C20.05 23.45 24 19.19 24 14Z"
+      ></path>
+    </svg>
+  );
 
   const { darkMode, toggleDarkMode } = useTheme();
 
@@ -70,7 +79,6 @@ const MessengerIcon = ({ className = "" }) => (
 
   // Mobile mockup carousel state
   const [currentMockupIndex, setCurrentMockupIndex] = useState(0);
-
 
   // Desktop hero mockup state
   const [currentDesktopMockupIndex, setCurrentDesktopMockupIndex] = useState(0);
@@ -83,11 +91,19 @@ const MessengerIcon = ({ className = "" }) => (
 
   // Channel cards (same order as mockups) - inline SVG components
   const channelCards = [
-    { lines: ["WhatsApp", "Business"], icon: <WhatsAppIcon className="fill-white" /> },
-    { lines: ["Instagram", "Direct"], icon: <InstagramIcon className="fill-white" /> },
-    { lines: ["Facebook", "Messenger"], icon: <MessengerIcon className="fill-white" /> },
+    {
+      lines: ["WhatsApp", "Business"],
+      icon: <WhatsAppIcon className="fill-white" />,
+    },
+    {
+      lines: ["Instagram", "Direct"],
+      icon: <InstagramIcon className="fill-white" />,
+    },
+    {
+      lines: ["Facebook", "Messenger"],
+      icon: <MessengerIcon className="fill-white" />,
+    },
   ];
-
 
   const nextMockup = () => {
     setCurrentMockupIndex((prev) => (prev + 1) % mockups.length);
@@ -99,6 +115,38 @@ const MessengerIcon = ({ className = "" }) => (
     );
   };
 
+  const logos_oscuro = [
+    {
+      src: dropi,
+      alt: "dropi",
+      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
+    },
+    {
+      src: triidy_blanco,
+      alt: "triidy",
+      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
+    },
+    {
+      src: rocketfy,
+      alt: "rocketfy",
+      size: "w-18 h-18 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
+    },
+    {
+      src: shiipy,
+      alt: "shiipy",
+      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
+    },
+    {
+      src: mba_blanco,
+      alt: "mba",
+      size: "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
+    },
+    {
+      src: hoko,
+      alt: "hoko",
+      size: "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
+    },
+  ];
   const logos = [
     {
       src: dropi,
@@ -192,10 +240,19 @@ const MessengerIcon = ({ className = "" }) => (
               dedica tu tiempo a lo que realmente importa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-              <button className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent" onClick={() => window.location.href = "https://chatby.io/register?ref=WebTrial"} >
+              <button
+                className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent"
+                onClick={() =>
+                  (window.location.href =
+                    "https://chatby.io/register?ref=WebTrial")
+                }
+              >
                 Iniciar prueba gratis
               </button>
-              <button className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1]  text-white px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:from-[#E01A96] hover:to-[#9A35B8]" onClick={() => window.location.href = "https://chatby.io/"} >
+              <button
+                className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1]  text-white px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:from-[#E01A96] hover:to-[#9A35B8]"
+                onClick={() => (window.location.href = "https://chatby.io/")}
+              >
                 Asesoría gratuita
               </button>
             </div>
@@ -208,8 +265,9 @@ const MessengerIcon = ({ className = "" }) => (
                 src={hero_degradado}
                 alt="hero degradado"
                 style={{
-                  animation: "floatIcons 8s ease-in-out infinite, breatheBackground 4s ease-in-out infinite",
-                  animationDelay: "0s, 1s"
+                  animation:
+                    "floatIcons 8s ease-in-out infinite, breatheBackground 4s ease-in-out infinite",
+                  animationDelay: "0s, 1s",
                 }}
                 className="select-none pointer-events-none will-change-transform"
               />
@@ -219,7 +277,8 @@ const MessengerIcon = ({ className = "" }) => (
                 alt={mockups[currentDesktopMockupIndex].alt}
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl"
                 style={{
-                  animation: "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s"
+                  animation:
+                    "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s",
                 }}
               />
             </div>
@@ -234,8 +293,9 @@ const MessengerIcon = ({ className = "" }) => (
                   src={degradado_rosa}
                   alt="hero degradado"
                   style={{
-                    animation: "floatIcons 7s ease-in-out infinite, breatheBackground 5s ease-in-out infinite",
-                    animationDelay: "0.5s, 2s"
+                    animation:
+                      "floatIcons 7s ease-in-out infinite, breatheBackground 5s ease-in-out infinite",
+                    animationDelay: "0.5s, 2s",
                   }}
                   className="select-none pointer-events-none will-change-transform"
                 />
@@ -245,7 +305,8 @@ const MessengerIcon = ({ className = "" }) => (
                   alt={mockups[currentMockupIndex].alt}
                   className="absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl"
                   style={{
-                    animation: "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1.5s"
+                    animation:
+                      "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1.5s",
                   }}
                 />
               </div>
@@ -422,34 +483,72 @@ const MessengerIcon = ({ className = "" }) => (
             <div className="flex items-center overflow-hidden">
               <div
                 className="flex items-center gap-4 sm:gap-6 lg:gap-8 animate-[infiniteScroll_20s_linear_infinite]"
-                style={{ width: 'calc(200% + 2rem)' }}
+                style={{ width: "calc(200% + 2rem)" }}
               >
                 {/* First set of logos */}
-                {logos.map((logo, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
-                  >
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className={`${logo.size.replace('w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24', 'w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20')} object-contain transition-all duration-300 hover:scale-110`}
-                    />
-                  </div>
-                ))}
+                {darkMode
+                  ? logos.map((logo, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className={`${logo.size.replace(
+                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
+                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
+                          )} object-contain transition-all duration-300 hover:scale-110 `}
+                        />
+                      </div>
+                    ))
+                  : logos_oscuro.map((logo, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className={`${logo.size.replace(
+                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
+                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
+                          )} object-contain transition-all duration-300 hover:scale-110`}
+                        />
+                      </div>
+                    ))}
+                {darkMode
+                  ? logos.map((logo, index) => (
+                      <div
+                        key={`duplicate-${index}`}
+                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className={`${logo.size.replace(
+                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
+                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
+                          )} object-contain transition-all duration-300 hover:scale-110 `}
+                        />
+                      </div>
+                    ))
+                  : logos_oscuro.map((logo, index) => (
+                      <div
+                        key={`duplicate-${index}`}
+                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className={`${logo.size.replace(
+                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
+                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
+                          )} object-contain transition-all duration-300 hover:scale-110 `}
+                        />
+                      </div>
+                    ))}
                 {/* Second set of logos for seamless loop */}
-                {logos.map((logo, index) => (
-                  <div
-                    key={`duplicate-${index}`}
-                    className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
-                  >
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className={`${logo.size.replace('w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24', 'w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20')} object-contain transition-all duration-300 hover:scale-110`}
-                    />
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -476,9 +575,7 @@ const MessengerIcon = ({ className = "" }) => (
           {/* Features Stack */}
           <div className="space-y-8 lg:space-y-12">
             {/* Feature 1 - Bot Plantillas */}
-               <div
-              className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]  backdrop-blur-xs"
-             >
+            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]  backdrop-blur-xs">
               <img
                 src={bot_plantilla_msn}
                 alt="bot plantilla msn"
@@ -506,7 +603,7 @@ const MessengerIcon = ({ className = "" }) => (
                     <img
                       src={chatby_logo}
                       alt="chatby logo"
-                      className="absolute top-40 left-4 w-16 h-16 lg:w-20 lg:h-20 z-10 rounded-lg p-2"
+                      className="absolute top-40 left-4 w-16 h-16 lg:w-20 lg:h-20 z-10 rounded-lg p-2 "
                     />
                   </div>
                 </div>
@@ -544,9 +641,7 @@ const MessengerIcon = ({ className = "" }) => (
             </div>
 
             {/* Feature 2 - Presencia 24/7 */}
-            <div
-              className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] "
-            >
+            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] ">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Content */}
                 <div className="flex flex-col sm:inline-block text-start">
@@ -639,9 +734,7 @@ const MessengerIcon = ({ className = "" }) => (
             </div>
 
             {/* Feature 3 - Automatización 24/7 */}
-            <div
-              className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
-            >
+            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Content */}
                 <div className="flex flex-col sm:inline-block">
@@ -662,7 +755,9 @@ const MessengerIcon = ({ className = "" }) => (
                     día, sin esfuerzo.
                   </p>
 
-                  <button className="hidden sm:inline-block bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white px-8 py-2 text-xl rounded-full font-normal transition-all duration-300 transform hover:scale-105 cursor-pointer" onClick={() =>
+                  <button
+                    className="hidden sm:inline-block bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white px-8 py-2 text-xl rounded-full font-normal transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                    onClick={() =>
                       (window.location.href =
                         "https://chatby.io/register?ref=WebCTA1")
                     }
