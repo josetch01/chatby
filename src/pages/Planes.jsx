@@ -165,7 +165,7 @@ const Planes = () => {
                 key={index}
                 className={` relative rounded-3xl p-[2px] transition-all duration-300 overflow-hidden ${
                   plan.destacado
-                    ? "transform lg:scale-105 shadow-2xl dark:bg-gradient-to-b from-[#2a3441] via-[#F129A1] to-[#F129A1] "
+                    ? "transform lg:scale-105 shadow-2xl  dark:bg-gradient-to-b dark:from-[#2a3441] dark:via-[#F129A1] dark:to-[#F129A1] bg-gradient-to-b from-[#ffffff] via-[#f9d2e5] to-[#fce4f6]"
                     : "dark:bg-gradient-to-b dark:from-[#2a3441] via-[#6b7280] to-[#6b7280]"
                 } snap-center flex-shrink-0 w-[85vw] sm:w-[75vw] max-w-[420px] mr-3 last:mr-0 md:w-auto md:max-w-none lg:w-auto lg:flex-shrink lg:mr-0`}
               >
