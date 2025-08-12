@@ -5,6 +5,7 @@
 @import "@fontsource/montserrat/700.css";
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 @font-face {
   font-family: "Axiforma";
   src: url("https://chatby.io/font/Axiforma-Regular.woff2") format("woff2"),

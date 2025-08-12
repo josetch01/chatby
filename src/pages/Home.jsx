@@ -29,6 +29,7 @@ import gemini from "../assets/logos integraciones/gemini.svg";
 
 import mockup_ig from "../assets/mockup-for-instagram 1.svg";
 import mockup_msn from "../assets/mockup-for-messenger 1.svg";
+
 const Home = () => {
   // Inline SVG icons (reuse the same paths as desktop cards)
   const WhatsAppIcon = ({ className = "" }) => (
