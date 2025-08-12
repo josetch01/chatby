@@ -488,7 +488,7 @@ const Home = () => {
               >
                 {/* First set of logos */}
                 {darkMode
-                  ? logos.map((logo, index) => (
+                  ? logos_oscuro.map((logo, index) => (
                       <div
                         key={index}
                         className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
@@ -503,7 +503,7 @@ const Home = () => {
                         />
                       </div>
                     ))
-                  : logos_oscuro.map((logo, index) => (
+                  : logos.map((logo, index) => (
                       <div
                         key={index}
                         className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
@@ -519,7 +519,7 @@ const Home = () => {
                       </div>
                     ))}
                 {darkMode
-                  ? logos.map((logo, index) => (
+                  ? logos_oscuro.map((logo, index) => (
                       <div
                         key={`duplicate-${index}`}
                         className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
@@ -534,7 +534,7 @@ const Home = () => {
                         />
                       </div>
                     ))
-                  : logos_oscuro.map((logo, index) => (
+                  : logos.map((logo, index) => (
                       <div
                         key={`duplicate-${index}`}
                         className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
