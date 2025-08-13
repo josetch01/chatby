@@ -83,11 +83,11 @@ const Layout = ({ children }) => {
       </div>
 
       {/* Header */}
-      <header className="relative bg-transparent   ">
+      <header className="relative bg-transparent py-4 ">
         <nav className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <div className="flex items-center mt-3">
+            <div className="flex items-center ">
               <Link
                 to="/"
                 className="flex items-center space-x-2  "
@@ -119,7 +119,7 @@ const Layout = ({ children }) => {
               {/* Dark Mode Toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-full bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#D91C88] hover:to-[#8A2BB5] text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
+                className="p-2 rounded-full bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#D91C88] hover:to-[#8A2BB5] text-white  transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
                 aria-label={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
               >
                 {darkMode ? (
@@ -251,7 +251,7 @@ const Layout = ({ children }) => {
               <defs>
                 <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#F129A1" />
-                  <stop offset="100%" stopColor="#A83CC1" />
+                  <stop offset="100%" stopColor="#a718c7" />
                 </linearGradient>
               </defs>
               <path
@@ -396,7 +396,7 @@ const Layout = ({ children }) => {
                 y2="0%"
               >
                 <stop offset="0%" stopColor="#F129A1" />
-                <stop offset="100%" stopColor="#A83CC1" />
+                <stop offset="100%" stopColor="#a718c7" />
               </linearGradient>
             </defs>
             <path
@@ -408,14 +408,14 @@ const Layout = ({ children }) => {
       )}
 
       {/* Footer */}
-      <footer className="relative z-10 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] dark:from-[#F129A1] dark:to-[#A83CC1] text-white mt-0">
+      <footer className="relative z-10 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] dark:from-[#F129A1] dark:to-[#a718c7]  text-white mt-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Logo and description */}
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-transparent rounded-lg flex items-center justify-center">
-                  <img src={chatby} alt="Chatby" />
+                  <img src={"https://chatby.io/images/favicon.svg"} alt="Chatby" />
                 </div>
                 <span className="text-xl font-bold font-axiforma">Chatby</span>
               </div>

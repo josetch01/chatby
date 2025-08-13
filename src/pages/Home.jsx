@@ -632,7 +632,7 @@ const Home = () => {
 
                     {/* Logo de Chatby - posicionado en la esquina superior izquierda */}
                     <img
-                      src={chatby_logo}
+                      src={"https://chatby.io/images/favicon.svg"}
                       alt="chatby logo"
                       className="absolute top-40 left-4 w-16 h-16 lg:w-20 lg:h-20 z-10 rounded-lg p-2 "
                     />

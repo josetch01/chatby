@@ -80,47 +80,65 @@ const Planes = () => {
 
   const planes = [
     {
-      nombre: "Plan Business",
-      precio: "$28",
+      nombre: "Basic",
+      precio: "$29",
       periodo: "USD/mes",
       caracteristicas: [
         "1 Bot Omnicanal",
         "1,000 Contactos",
         "5 Miembros",
         "CRM",
-        "Soporte",
-        "Acceso a todas las funcionalidades PRO",
+        "Soporte T1",
+        
       ],
       popular: false,
       destacado: false,
     },
     {
-      nombre: "Plan Business Lite",
-      precio: "$54",
+      nombre: "Lite",
+      precio: "$69",
       periodo: "USD/mes",
       caracteristicas: [
         "1 Bot Omnicanal",
         "10,000 Contactos",
         "5 Miembros",
+        "Agentes de IA",
         "CRM",
-        "Soporte Pro",
-        "Acceso a todas las funcionalidades PRO",
+        "Soporte T2",
       ],
-      popular: true,
-      destacado: true,
+      popular: false,
+      destacado: false,
       icono: "⚡",
     },
     {
-      nombre: "Plan Business Pro",
-      precio: "$197",
+      nombre: "Pro",
+      precio: "$109",
       periodo: "USD/mes",
       caracteristicas: [
         "1 Bot Omnicanal",
+        "4 Bots Extra",
+        "11,000 Contactos",
+        "5 Miembros",
+        "Agentes de IA",
+        "CRM",
+        "Soporte T2",
+      ],
+      popular: true,
+      destacado: true,
+    },
+    {
+      nombre: "Plus",
+      precio: "$219",
+      periodo: "USD/mes",
+      caracteristicas: [
+        "1 Bot Omnicanal",
+        "4 Bots Extra",
         "50,000 Contactos",
         "10 Miembros",
+        "Agentes de IA",
         "CRM",
-        "Soporte Prioritario",
-        "Acceso a todas las funcionalidades PRO",
+        "TikTok Comentarios (Beta)",
+        "Soporte T3",
       ],
       popular: false,
       destacado: false,
@@ -157,7 +175,7 @@ const Planes = () => {
           <div
             ref={carouselRef}
             onScroll={updateCurrentSlide}
-            className="carousel-container flex lg:grid lg:grid-cols-3 gap-3 lg:gap-8 max-w-6xl overflow-x-auto lg:overflow-visible scroll-smooth snap-x snap-mandatory lg:snap-none px-3 sm:px-4 lg:px-0"
+            className="carousel-container flex lg:grid lg:grid-cols-4 gap-3 lg:gap-6 max-w-7xl overflow-x-auto lg:overflow-visible scroll-smooth snap-x snap-mandatory lg:snap-none px-3 sm:px-4 lg:px-0"
           >
             {planes.map((plan, index) => (
               <div
@@ -175,7 +193,7 @@ const Planes = () => {
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/8 via-white/3 to-transparent pointer-events-none"></div>
 
                   {/* Content wrapper with relative positioning */}
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex flex-col h-full">
                     {/* Header del plan */}
                     <div className="text-center mb-8">
                       <h3 className="text-xl sm:text-2xl font-semibold text-[#2C011B] dark:text-white mb-2">
@@ -219,7 +237,7 @@ const Planes = () => {
 
                     {/* Botón */}
                     <button
-                      className="w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
+                      className=" mt-auto w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer" 
                       onClick={() =>
                         (window.location.href =
                           "https://chatby.io/register/?ref=Web")
