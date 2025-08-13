@@ -116,11 +116,11 @@ const Layout = ({ children }) => {
 
             {/* Desktop Auth buttons and Dark mode toggle */}
             <div className="hidden md:flex items-center space-x-3">
-              {/* Dark mode toggle */}
+              {/* Dark Mode Toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="cursor-pointer p-2 rounded-md text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                aria-label="Toggle dark mode"
+                className="p-2 rounded-full bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#D91C88] hover:to-[#8A2BB5] text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
+                aria-label={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
               >
                 {darkMode ? (
                   <SunIcon className="h-5 w-5" />
@@ -149,11 +149,11 @@ const Layout = ({ children }) => {
             </div>
 
             <div className="md:hidden flex items-center space-x-2">
-              {/* Dark mode toggle for mobile */}
+              {/* Mobile Dark Mode Toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-md text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                aria-label="Toggle dark mode"
+                className="p-2 rounded-full bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#D91C88] hover:to-[#8A2BB5] text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                aria-label={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
               >
                 {darkMode ? (
                   <SunIcon className="h-5 w-5" />

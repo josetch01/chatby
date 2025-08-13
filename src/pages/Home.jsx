@@ -83,13 +83,12 @@ const Home = () => {
 
   // Desktop hero mockup state
   const [currentDesktopMockupIndex, setCurrentDesktopMockupIndex] = useState(0);
-  
+
   const mockups = [
     { src: mockup_wsp, alt: "WhatsApp Business mockup" },
     { src: mockup_ig, alt: "Instagram Direct mockup" },
     { src: mockup_msn, alt: "Facebook Messenger mockup" },
   ];
-
   // Auto-carousel for desktop
   useEffect(() => {
     const interval = setInterval(() => {
@@ -97,9 +96,7 @@ const Home = () => {
     }, 4000); // Change every 4 seconds
 
     return () => clearInterval(interval);
-  }, [mockups.length]);
-
-  
+  }, [mockups.length]); 
 
   // Channel cards (same order as mockups) - inline SVG components
   const channelCards = [
@@ -193,7 +190,7 @@ const Home = () => {
   // Auto-scroll functionality - Removed for CSS animation
 
   return (
-    <div className="transition-colors duration-300 ">
+    <div className="transition-colors duration-300">
       <style>{`
         @keyframes floatIcons {
           0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
@@ -399,7 +396,7 @@ const Home = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center hidden md:block">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 lg:gap-4 mb-8">
-            {/* WhatsApp Business */}
+            {/* WhatsApp Business (seleccionado) */}
             <div
               onClick={() => setCurrentDesktopMockupIndex(0)}
               role="button"
@@ -408,8 +405,7 @@ const Home = () => {
                 currentDesktopMockupIndex === 0
                   ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
                   : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
-              }`}
-              style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
+              }`}style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
                 width="27"
@@ -487,8 +483,7 @@ const Home = () => {
                   currentDesktopMockupIndex === 2
                     ? "fill-white"
                     : "fill-[#A83CC1] group-hover:fill-white"
-                }`}
-              >
+                }`}              >
                 <path d="M24 14C24 8.48 19.52 4 14 4C8.48 4 4 8.48 4 14C4 18.84 7.44 22.87 12 23.8V17H10V14H12V11.5C12 9.57 13.57 8 15.5 8H18V11H16C15.45 11 15 11.45 15 12V14H18V17H15V23.95C20.05 23.45 24 19.19 24 14Z"></path>
               </svg>
               <span className="text-[16px] font-medium leading-tight text-left">
@@ -599,7 +594,7 @@ const Home = () => {
             <div className="bg-purple-100 dark:bg-[#2C1A29] text-purple-black dark:text-[#CCCCCC] text-sm font-normal px-4 py-2 rounded-full inline-block mb-6">
               Beneficios de la IA
             </div>
-            <h2 className="text-xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-relaxed ">
+            <h2 className="text-xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-relaxed">
               Conoce cómo la Inteligencia Artificial{" "}
               <span className="text-[#F129A1] dark:text-[#F129A1]">
                 simplifica y potencia
@@ -609,7 +604,7 @@ const Home = () => {
           </div>
 
           {/* Features Stack */}
-          <div className="space-y-8 lg:space-y-12 ">
+          <div className="space-y-8 lg:space-y-12">
             {/* Feature 1 - Bot Plantillas */}
             <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]  backdrop-blur-xs">
               <img
@@ -650,14 +645,14 @@ const Home = () => {
                     IA sin Código
                   </div>
 
-                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 text-start ">
+                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 text-start">
                     <span className="text-[#F129A1] dark:text-[#F129A1]">
                       Cree su primer chatbot con IA
                     </span>{" "}
                     en minutos, sin necesidad de codificar
                   </h3>
 
-                  <p className="text-black dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed text-start font-medium ">
+                  <p className="text-black dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed text-start font-medium">
                     Optimiza la atención al cliente desde una plataforma
                     todo-en-uno que le permite planificar, automatizar y
                     analizar cada interacción fácilmente.
@@ -685,7 +680,7 @@ const Home = () => {
                     Presencia 24/7
                   </div>
 
-                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 ">
+                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                     <span className="text-pink-600 dark:text-pink-400">
                       Conecte con sus clientes
                     </span>{" "}
