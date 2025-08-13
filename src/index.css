@@ -14,6 +14,10 @@
   font-display: swap;
 }
 
+html {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
 @font-face {
   font-family: "Axiforma";
   src: url("https://chatby.io/font/Axiforma-Bold.woff2") format("woff2"),

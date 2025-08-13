@@ -462,66 +462,44 @@ const Calculadora = () => {
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Conversación de marketing
                   </label>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400">
-                        {getCurrencySymbol()}
-                      </span>
-                      <input
-                        type="number"
-                        min="0"
-                        max={(10000 * getCurrentPrices().marketing).toFixed(4)}
-                        step="0.01"
-                        value={inputValues.marketing}
-                        onChange={(e) =>
-                          handleConversationInputChange(
-                            "marketing",
-                            e.target.value
-                          )
-                        }
-                        className="w-24 pl-6 pr-2 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                        placeholder="0.0000"
-                      />
-                    </div>
+                  <div className="text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center">
+                    <span className="mr-1">{getCurrencySymbol()}</span>
+                    <input
+                      type="number"
+                      min="0"
+                      max={(10000 * getCurrentPrices().marketing).toFixed(4)}
+                      step="0.01"
+                      value={inputValues.marketing}
+                      onChange={(e) =>
+                        handleConversationInputChange(
+                          "marketing",
+                          e.target.value
+                        )
+                      }
+                      className="bg-transparent border-none outline-none w-16 text-center text-xs"
+                      placeholder="0.0000"
+                    />
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {getCurrencySymbol()}
                   {getCurrentPrices().marketing.toFixed(4)} / 24 horas
                 </p>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="range"
-                    min="0"
-                    max="10000"
-                    value={conversationCounts.marketing}
-                    className="flex-1 h-2 rounded-lg appearance-none cursor-pointer slider-pink"
-                    onInput={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("marketing", e.target.value);
-                    }}
-                    onChange={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("marketing", e.target.value);
-                    }}
-                  />
-                  <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
-                    <input
-                      type="number"
-                      inputMode="numeric"
-                      min="0"
-                      max="10000"
-                      value={conversationCounts.marketing}
-                      onChange={(e) => {
-                        const value = Math.max(0, Math.min(10000, parseInt(e.target.value) || 0));
-                        handleSliderChange("marketing", value.toString());
-                      }}
-                      className="w-12 px-1 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                    />
-                  </div>
-                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="10000"
+                  value={conversationCounts.marketing}
+                  className="w-full h-2 rounded-lg appearance-none cursor-pointer slider-pink"
+                  onInput={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("marketing", e.target.value);
+                  }}
+                  onChange={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("marketing", e.target.value);
+                  }}
+                />
               </div>
 
               {/* Utility Conversations */}
@@ -530,62 +508,41 @@ const Calculadora = () => {
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Conversación Utilitaria (Utility)
                   </label>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400">
-                        {getCurrencySymbol()}
-                      </span>
-                      <input
-                        type="number"
-                        min="0"
-                        max={(10000 * getCurrentPrices().utility).toFixed(4)}
-                        step="0.01"
-                        value={inputValues.utility}
-                        onChange={(e) =>
-                          handleConversationInputChange("utility", e.target.value)
-                        }
-                        className="w-24 pl-6 pr-2 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                        placeholder="0.0000"
-                      />
-                    </div>
+                  <div className="text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center">
+                    <span className="mr-1">{getCurrencySymbol()}</span>
+                    <input
+                      type="number"
+                      min="0"
+                      max={(10000 * getCurrentPrices().utility).toFixed(4)}
+                      step="0.01"
+                      value={inputValues.utility}
+                      onChange={(e) =>
+                        handleConversationInputChange("utility", e.target.value)
+                      }
+                      className="bg-transparent border-none outline-none w-16 text-center text-xs"
+                      placeholder="0.0000"
+                    />
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {getCurrencySymbol()}
                   {getCurrentPrices().utility.toFixed(4)} / 24 horas
                 </p>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="range"
-                    min="0"
-                    max="10000"
-                    value={conversationCounts.utility}
-                    className="flex-1 h-2 rounded-lg appearance-none cursor-pointer slider-pink"
-                    onInput={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("utility", e.target.value);
-                    }}
-                    onChange={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("utility", e.target.value);
-                    }}
-                  />
-                  <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
-                    <input
-                      type="number"
-                      min="0"
-                      max="10000"
-                      value={conversationCounts.utility}
-                      onChange={(e) => {
-                        const value = Math.max(0, Math.min(10000, parseInt(e.target.value) || 0));
-                        handleSliderChange("utility", value.toString());
-                      }}
-                      className="w-12 px-1 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                    />
-                  </div>
-                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="10000"
+                  value={conversationCounts.utility}
+                  className="w-full h-2 rounded-lg appearance-none cursor-pointer slider-pink"
+                  onInput={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("utility", e.target.value);
+                  }}
+                  onChange={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("utility", e.target.value);
+                  }}
+                />
               </div>
 
               {/* Authentication Conversations */}
@@ -594,67 +551,46 @@ const Calculadora = () => {
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Conversación de autenticación (Authentication)
                   </label>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400">
-                        {getCurrencySymbol()}
-                      </span>
-                      <input
-                        type="number"
-                        min="0"
-                        max={(10000 * getCurrentPrices().authentication).toFixed(
-                          4
-                        )}
-                        step="0.01"
-                        value={inputValues.authentication}
-                        onChange={(e) =>
-                          handleConversationInputChange(
-                            "authentication",
-                            e.target.value
-                          )
-                        }
-                        className="w-24 pl-6 pr-2 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                        placeholder="0.0000"
-                      />
-                    </div>
+                  <div className="text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center">
+                    <span className="mr-1">{getCurrencySymbol()}</span>
+                    <input
+                      type="number"
+                      min="0"
+                      max={(10000 * getCurrentPrices().authentication).toFixed(
+                        4
+                      )}
+                      step="0.01"
+                      value={inputValues.authentication}
+                      onChange={(e) =>
+                        handleConversationInputChange(
+                          "authentication",
+                          e.target.value
+                        )
+                      }
+                      className="bg-transparent border-none outline-none w-16 text-center text-xs"
+                      placeholder="0.0000"
+                    />
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {getCurrencySymbol()}
                   {getCurrentPrices().authentication.toFixed(4)} / 24 horas
                 </p>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="range"
-                    min="0"
-                    max="10000"
-                    value={conversationCounts.authentication}
-                    className="flex-1 h-2 rounded-lg appearance-none cursor-pointer slider-pink"
-                    onInput={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("authentication", e.target.value);
-                    }}
-                    onChange={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("authentication", e.target.value);
-                    }}
-                  />
-                  <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
-                    <input
-                      type="number"
-                      min="0"
-                      max="10000"
-                      value={conversationCounts.authentication}
-                      onChange={(e) => {
-                        const value = Math.max(0, Math.min(10000, parseInt(e.target.value) || 0));
-                        handleSliderChange("authentication", value.toString());
-                      }}
-                      className="w-12 px-1 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                    />
-                  </div>
-                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="10000"
+                  value={conversationCounts.authentication}
+                  className="w-full h-2 rounded-lg appearance-none cursor-pointer slider-pink"
+                  onInput={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("authentication", e.target.value);
+                  }}
+                  onChange={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("authentication", e.target.value);
+                  }}
+                />
               </div>
 
               {/* Service Conversations */}
@@ -663,62 +599,41 @@ const Calculadora = () => {
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Conversación de Servicio
                   </label>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400">
-                        {getCurrencySymbol()}
-                      </span>
-                      <input
-                        type="number"
-                        min="0"
-                        max={(10000 * getCurrentPrices().service).toFixed(4)}
-                        step="0.01"
-                        value={inputValues.service}
-                        onChange={(e) =>
-                          handleConversationInputChange("service", e.target.value)
-                        }
-                        className="w-24 pl-6 pr-2 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                        placeholder="0.0000"
-                      />
-                    </div>
+                  <div className="text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center">
+                    <span className="mr-1">{getCurrencySymbol()}</span>
+                    <input
+                      type="number"
+                      min="0"
+                      max={(10000 * getCurrentPrices().service).toFixed(4)}
+                      step="0.01"
+                      value={inputValues.service}
+                      onChange={(e) =>
+                        handleConversationInputChange("service", e.target.value)
+                      }
+                      className="bg-transparent border-none outline-none w-16 text-center text-xs"
+                      placeholder="0.0000"
+                    />
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {getCurrencySymbol()}
                   {getCurrentPrices().service.toFixed(4)} / 24 horas
                 </p>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="range"
-                    min="0"
-                    max="10000"
-                    value={conversationCounts.service}
-                    className="flex-1 h-2 rounded-lg appearance-none cursor-pointer slider-pink"
-                    onInput={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("service", e.target.value);
-                    }}
-                    onChange={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("service", e.target.value);
-                    }}
-                  />
-                  <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
-                    <input
-                      type="number"
-                      min="0"
-                      max="10000"
-                      value={conversationCounts.service}
-                      onChange={(e) => {
-                        const value = Math.max(0, Math.min(10000, parseInt(e.target.value) || 0));
-                        handleSliderChange("service", value.toString());
-                      }}
-                      className="w-12 px-1 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                    />
-                  </div>
-                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="10000"
+                  value={conversationCounts.service}
+                  className="w-full h-4 rounded-lg appearance-none cursor-pointer slider-pink"
+                  onInput={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("service", e.target.value);
+                  }}
+                  onChange={(e) => {
+                    setSliderProgress(e.target);
+                    handleSliderChange("service", e.target.value);
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -734,7 +649,7 @@ const Calculadora = () => {
                 </div>
               </div>
               <div className="border-b border-white/20 mb-6" />
-              <div className="text-sm text-gray-300">
+              <div className="text-sm text-gray-300 leading-relaxed ">
                 <p>
                   Para obtener más información sobre la estructura de precios de
                   las conversaciones de WhatsApp, póngase en{" "}
@@ -757,7 +672,7 @@ const Calculadora = () => {
           <img
             src={bgCircle}
             alt=""
-            className="pointer-events-none select-none hidden md:block absolute -left-32 top-32 w-[500px] opacity-30 z-0 "
+            className="pointer-events-none select-none hidden md:block absolute -left-32 top-32 w-[500px] opacity-30 z-0"
           />
 
           {/* Top intro row */}
@@ -767,7 +682,7 @@ const Calculadora = () => {
                 Calculadora de WhatsApp
               </h2>
             </div>
-            <div className="text-[#2C011B] dark:text-gray-300 text-sm font-medium w-full sm:w-1/2">
+            <div className="text-[#2C011B] dark:text-gray-300 text-sm font-medium w-full sm:w-1/2 leading-relaxed text-justify">
               <p>
                 Todo lo que necesitas es una plantilla de mensaje para iniciar
                 un chat con tus clientes. Las tarifas varían en función de la
@@ -802,7 +717,7 @@ const Calculadora = () => {
                   <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Marketing
                   </h3>
-                  <p className="text-[16px]  text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
+                  <p className="text-[16px]  text-[#2C011B] dark:text-gray-400 font-medium space-y-0 leading-relaxed text-justify">
                     Las conversaciones de marketing se relacionan con tu
                     empresa, productos o servicios. Estas incluyen ofertas y
                     promociones, sugerencias de productos relacionados, mensajes
@@ -821,7 +736,7 @@ const Calculadora = () => {
                   <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Utilidad
                   </h3>
-                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
+                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 leading-relaxed text-justify">
                     Las conversaciones de utilidad se relacionan directamente
                     con una transacción, lo que incluye notificaciones después
                     de la compra y facturas recurrentes.
@@ -838,7 +753,7 @@ const Calculadora = () => {
                   <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Servicio
                   </h3>
-                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
+                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0  leading-relaxed text-justify">
                     Las conversaciones de servicio son iniciadas por los
                     usuarios y suelen ser consultas de los clientes. Las
                     empresas pueden responder dentro del intervalo de servicio
@@ -860,7 +775,7 @@ const Calculadora = () => {
                   <h3 className="text-xl sm:text-3xl font-semibold text-[#2C011B] dark:text-white mb-2">
                     Autenticación
                   </h3>
-                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 text-start">
+                  <p className="text-[16px] text-[#2C011B] dark:text-gray-400 font-medium space-y-0 leading-relaxed text-justify">
                     Las conversaciones de autenticación proporcionan a los
                     usuarios códigos de acceso de un solo uso con fines de
                     autenticación. Estos pueden enviarse en cualquier etapa del

@@ -331,7 +331,7 @@ const Planes = () => {
                     }`}
                   >
                     <div className="px-5 sm:px-6 pb-5">
-                      <div className="text-sm sm:text-base text-[#2C011B] dark:text-gray-300 whitespace-pre-line">
+                      <div className="text-sm sm:text-base text-[#2C011B] dark:text-gray-300 whitespace-pre-line leading-relaxed text-justify">
                         {faq.answer}
                       </div>
                     </div>
