@@ -417,7 +417,7 @@ const Layout = ({ children }) => {
                 <div className="w-8 h-8 bg-transparent rounded-lg flex items-center justify-center">
                   <img src={"https://chatby.io/images/favicon.svg"} alt="Chatby" />
                 </div>
-                <span className="text-xl font-bold font-axiforma">Chatby</span>
+                <span className="text-xl font-bold">Chatby</span>
               </div>
 
               {/* Social Media Icons */}

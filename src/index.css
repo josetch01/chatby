@@ -25,8 +25,32 @@ html {
   font-weight: bold;
   font-display: swap;
 }
-*{
-  font-family: "Axiforma", sans-serif;
+*, *::before, *::after {
+  font-family: "Axiforma", sans-serif !important;
+}
+
+body, html {
+  font-family: "Axiforma", sans-serif !important;
+}
+
+/* Asegurar que todos los elementos usen Axiforma */
+h1, h2, h3, h4, h5, h6, p, span, div, button, input, textarea, select, label, a {
+  font-family: "Axiforma", sans-serif !important;
+}
+
+/* Sobrescribir cualquier clase de Tailwind que pueda usar otra fuente */
+.font-sans, .font-mono, .font-serif {
+  font-family: "Axiforma", sans-serif !important;
+}
+
+/* Asegurar que los elementos con clases específicas de Tailwind usen Axiforma */
+[class*="font-"], [class*="text-"] {
+  font-family: "Axiforma", sans-serif !important;
+}
+
+/* Regla final para forzar Axiforma en todo */
+#root, #root * {
+  font-family: "Axiforma", sans-serif !important;
 }
 /* Hide scrollbar for carousel */
 .carousel-container {
