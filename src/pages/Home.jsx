@@ -30,6 +30,11 @@ import gemini from "../assets/logos integraciones/gemini.svg";
 import mockup_ig from "../assets/mockup-for-instagram 1.svg";
 import mockup_msn from "../assets/mockup-for-messenger 1.svg";
 
+import chatwoot from "../assets/chatwoot icono.svg";
+import messenger_icon from "../assets/messenger icono.svg";
+import tele from "../assets/telegram icono.svg";
+import wechat from "../assets/wechat icono.svg";
+
 const Home = () => {
   // Inline SVG icons (reuse the same paths as desktop cards)
   const WhatsAppIcon = ({ className = "" }) => (
@@ -96,7 +101,7 @@ const Home = () => {
     }, 4000); // Change every 4 seconds
 
     return () => clearInterval(interval);
-  }, [mockups.length]); 
+  }, [mockups.length]);
 
   // Channel cards (same order as mockups) - inline SVG components
   const channelCards = [
@@ -405,7 +410,8 @@ const Home = () => {
                 currentDesktopMockupIndex === 0
                   ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
                   : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
-              }`}style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
+              }`}
+              style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
                 width="27"
@@ -483,7 +489,8 @@ const Home = () => {
                   currentDesktopMockupIndex === 2
                     ? "fill-white"
                     : "fill-[#A83CC1] group-hover:fill-white"
-                }`}              >
+                }`}
+              >
                 <path d="M24 14C24 8.48 19.52 4 14 4C8.48 4 4 8.48 4 14C4 18.84 7.44 22.87 12 23.8V17H10V14H12V11.5C12 9.57 13.57 8 15.5 8H18V11H16C15.45 11 15 11.45 15 12V14H18V17H15V23.95C20.05 23.45 24 19.19 24 14Z"></path>
               </svg>
               <span className="text-[16px] font-medium leading-tight text-left">
@@ -716,7 +723,7 @@ const Home = () => {
 
                     {/* Social Media Icons positioned around the image */}
                     {/* WhatsApp - Top Left */}
-                    <div className="absolute top-8 left-8 md:left-40 lg:top-12 lg:left-20 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
+                    <div className="absolute top-8 left-8 md:left-50 lg:top-12 lg:left-20 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
                       <img
                         src={wsp_logo}
                         alt="WhatsApp logo"
@@ -725,25 +732,25 @@ const Home = () => {
                     </div>
 
                     {/* Email - Top Center */}
-                    <div className="absolute top-4 left-1/2 transform -translate-x-1/2 -translate-y-10 lg:-translate-y-14 w-12 h-12 lg:w-16 lg:h-16 dark:bg-transparent bg-white rounded-full shadow-lg flex items-center justify-center z-10">
+                    <div className="absolute lg:top-5 md:top-1 top-5 left-1/2 transform -translate-x-1/2 -translate-y-10 lg:-translate-y-14 w-12 h-12 lg:w-16 lg:h-16 dark:bg-transparent bg-white rounded-full shadow-lg flex items-center justify-center z-10 ">
                       <img
-                        src={mensaje}
+                        src={wechat}
                         alt="Email logo"
-                        className="w-8 h-8 lg:w-10 lg:h-10"
+                        className="w-8 h-8 lg:w-8 lg:h-8"
                       />
                     </div>
 
                     {/* Line - Top Right */}
-                    <div className="absolute top-8 right-8 md:right-40 lg:top-12 lg:right-15 w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full dark:bg-transparent shadow-lg flex items-center justify-center z-10">
+                    <div className="absolute top-8 right-8 md:right-50 lg:top-12 lg:right-15 w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full dark:bg-transparent shadow-lg flex items-center justify-center z-10">
                       <img
-                        src={line_logo}
+                        src={tele}
                         alt="Line logo"
-                        className="w-8 h-8 lg:w-10 lg:h-10"
+                        className="w-8 h-8 lg:w-8 lg:h-8"
                       />
                     </div>
 
                     {/* Messenger - Middle Left */}
-                    <div className="absolute top-1/2 left-4 md:left-30 transform -translate-y-1/2 lg:left-10 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
+                    <div className="absolute top-1/2 left-4 md:left-45 transform  -translate-y-1/2 lg:left-10 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
                       <img
                         src={msn_logo}
                         alt="Messenger logo"
@@ -752,11 +759,11 @@ const Home = () => {
                     </div>
 
                     {/* Instagram - Middle Right */}
-                    <div className="absolute top-1/2 right-4 md:right-30  transform -translate-y-1/2 lg:right-8 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
+                    <div className="absolute top-1/2 right-4  md:right-40 transform -translate-y-1/2 lg:right-8 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
                       <img
                         src={ig_logo}
                         alt="Instagram logo"
-                        className="w-8 h-8 lg:w-10 lg:h-10"
+                        className="w-8 h-8 lg:w-10 lg:h-10 md:w-10 md:h-10"
                       />
                     </div>
                   </div>
@@ -781,7 +788,7 @@ const Home = () => {
                   </h3>
 
                   <p className="text-black font-medium dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed text-justify">
-                    Integra ChatGPT y Dialogflow para atraer visitantes y
+                    Integra ChatGPT, Gemini y DeepSeek para atraer visitantes y
                     responder consultas frecuentes al instante, las 24 horas del
                     día, sin esfuerzo.
                   </p>
