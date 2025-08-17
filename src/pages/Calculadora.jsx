@@ -460,7 +460,7 @@ const Calculadora = () => {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Conversación de marketing
+                    Conversación de Marketing
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
@@ -592,7 +592,7 @@ const Calculadora = () => {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Conversación de autenticación (Authentication)
+                    Conversación de Autenticación (Authentication)
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>

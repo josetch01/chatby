@@ -237,10 +237,9 @@ const Planes = () => {
 
                     {/* Botón */}
                     <button
-                      className=" mt-auto w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer" 
+                      className=" mt-auto w-full py-3 px-6 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
                       onClick={() =>
-                        (window.location.href =
-                          "https://chatby.io/register/?ref=Web")
+                        window.open("https://chatby.io/register/?ref=Web", "_blank", "noopener,noreferrer")
                       }
                     >
                       Prueba gratis por 14 días
@@ -293,8 +292,7 @@ const Planes = () => {
               <button
                 className="bg-[#F129A1] hover:bg-[#E01A96] text-white px-6 sm:px-7 py-2.5 rounded-full font-medium transition-all duration-200 shadow-md cursor-pointer"
                 onClick={() =>
-                  (window.location.href =
-                    "https://api.whatsapp.com/message/MMX5O7MBCJBWE1?autoload=1&app_absent=0")
+                  window.open("https://api.whatsapp.com/message/MMX5O7MBCJBWE1?autoload=1&app_absent=0", "_blank", "noopener,noreferrer")
                 }
               >
                 Contáctanos

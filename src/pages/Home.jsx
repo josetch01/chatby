@@ -258,15 +258,14 @@ const Home = () => {
               <button
                 className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent"
                 onClick={() =>
-                  (window.location.href =
-                    "https://chatby.io/register?ref=WebTrial")
+                  window.open("https://chatby.io/register?ref=WebTrial", "_blank", "noopener,noreferrer")
                 }
               >
                 Iniciar prueba gratis
               </button>
               <button
                 className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1]  text-white px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:from-[#E01A96] hover:to-[#9A35B8]"
-                onClick={() => (window.location.href = "https://chatby.io/")}
+                onClick={() => window.open("https://chatby.io/", "_blank", "noopener,noreferrer")}
               >
                 Asesoría gratuita
               </button>
@@ -669,8 +668,7 @@ const Home = () => {
                   <button
                     className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white px-8 py-2 text-xl rounded-full font-normal transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     onClick={() =>
-                      (window.location.href =
-                        "https://chatby.io/register?ref=WebCTA1")
+                      window.open("https://chatby.io/register?ref=WebCTA1", "_blank", "noopener,noreferrer")
                     }
                   >
                     Comenzar Ahora
@@ -705,8 +703,7 @@ const Home = () => {
                   <button
                     className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white px-8 py-2 text-xl rounded-full font-normal transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     onClick={() =>
-                      (window.location.href =
-                        "https://chatby.io/register?ref=WebCTA1")
+                      window.open("https://chatby.io/register?ref=WebCTA1", "_blank", "noopener,noreferrer")
                     }
                   >
                     Comenzar Ahora
@@ -797,8 +794,7 @@ const Home = () => {
                   <button
                     className="hidden sm:inline-block bg-gradient-to-r from-[#F129A1] to-[#A83CC1] hover:from-[#E01A96] hover:to-[#9A35B8] text-white px-8 py-2 text-xl rounded-full font-normal transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     onClick={() =>
-                      (window.location.href =
-                        "https://chatby.io/register?ref=WebCTA1")
+                      (window.open("https://chatby.io/register?ref=WebCTA1", "_blank", "noopener,noreferrer"))
                     }
                   >
                     Comenzar Ahora
