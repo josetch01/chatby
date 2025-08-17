@@ -34,7 +34,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Montserrat', 'system-ui', 'sans-serif'],
+        sans: ['Axiforma', 'Montserrat', 'system-ui', 'sans-serif'],
         axiforma: ['Axiforma', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       animation: {
