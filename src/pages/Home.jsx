@@ -90,6 +90,9 @@ const Home = () => {
   // Desktop hero mockup state
   const [currentDesktopMockupIndex, setCurrentDesktopMockupIndex] = useState(0);
 
+  // Estado para controlar la carga de imágenes
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
   const mockups = [
     { src: mockup_wsp, alt: "WhatsApp Business mockup" },
     { src: mockup_ig, alt: "Instagram Direct mockup" },
@@ -129,6 +132,42 @@ const Home = () => {
       (prev) => (prev - 1 + mockups.length) % mockups.length
     );
   };
+
+  // Precargar imágenes críticas
+  useEffect(() => {
+    const imagesToPreload = [
+      hero_degradado,
+      hero_degradado_dark,
+      ...mockups.map(mockup => mockup.src)
+    ];
+
+    let loadedCount = 0;
+    const totalImages = imagesToPreload.length;
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.src = src;
+    });
+
+    // Fallback: marcar como cargado después de 2 segundos
+    const fallbackTimer = setTimeout(() => {
+      setImagesLoaded(true);
+    }, 2000);
+
+    return () => clearTimeout(fallbackTimer);
+  }, []);
 
   const logos_oscuro = [
     {
@@ -199,26 +238,32 @@ const Home = () => {
     <div className="transition-colors duration-300">
       <style>{`
         @keyframes floatIcons {
-          0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
-          25% { transform: translateY(-3px) translateX(2px) scale(1.02); }
-          50% { transform: translateY(-6px) translateX(0px) scale(1); }
-          75% { transform: translateY(-3px) translateX(-2px) scale(1.02); }
+          0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+          25% { transform: translate3d(2px, -3px, 0) scale(1.02); }
+          50% { transform: translate3d(0px, -6px, 0) scale(1); }
+          75% { transform: translate3d(-2px, -3px, 0) scale(1.02); }
         }
         @keyframes breatheBackground {
-          0%, 100% { transform: scale(1); opacity: 0.9; }
-          50% { transform: scale(1.02); opacity: 1; }
+          0%, 100% { transform: scale3d(1, 1, 1); opacity: 0.9; }
+          50% { transform: scale3d(1.02, 1.02, 1); opacity: 1; }
         }
         @keyframes slideInUp {
-          0% { opacity: 0; transform: translateY(20px) scale(0.9); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
+          0% { opacity: 0; transform: translate3d(0, 20px, 0) scale3d(0.9, 0.9, 1); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
         }
         @keyframes subtleGlow {
           0%, 100% { filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15)) drop-shadow(0 0 15px rgba(241, 41, 161, 0.1)); }
           50% { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.2)) drop-shadow(0 0 25px rgba(241, 41, 161, 0.2)); }
         }
         @keyframes infiniteScroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
+        }
+        /* Optimización de rendimiento */
+        .will-change-transform {
+          will-change: transform;
+          backface-visibility: hidden;
+          perspective: 1000px;
         }
       `}</style>
       {/* Hero Section */}
@@ -274,54 +319,79 @@ const Home = () => {
 
           {/* Chat mockup - Desktop */}
           <div className="hidden md:flex justify-center px-4">
-            <div className="relative flex justify-center items-center">
+            <div className="relative flex justify-center items-center min-h-[400px]">
+              {/* Placeholder mientras cargan las imágenes */}
+              {!imagesLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg w-full h-96"></div>
+                </div>
+              )}
+
+              {/* Imagen de fondo con degradado */}
               <img
-                src={darkMode ?  hero_degradado_dark : hero_degradado}
+                src={darkMode ? hero_degradado_dark : hero_degradado}
                 alt="hero degradado"
+                className={`select-none pointer-events-none will-change-transform transition-opacity duration-300 ${
+                  imagesLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
                 style={{
-                  animation:
-                    "floatIcons 8s ease-in-out infinite, breatheBackground 4s ease-in-out infinite",
+                  animation: imagesLoaded ? "floatIcons 8s ease-in-out infinite, breatheBackground 4s ease-in-out infinite" : "none",
                   animationDelay: "0s, 1s",
                 }}
-                className="select-none pointer-events-none will-change-transform"
+                loading="eager"
               />
+
+              {/* Mockup superpuesto */}
               <img
                 key={currentDesktopMockupIndex}
                 src={mockups[currentDesktopMockupIndex].src}
                 alt={mockups[currentDesktopMockupIndex].alt}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl "
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl ${
+                  imagesLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
                 style={{
-                  animation:
-                    "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s",
+                  animation: imagesLoaded ? "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s" : "none"
                 }}
+                loading="eager"
               />
             </div>
           </div>
 
           {/* Chat mockup carousel - Mobile */}
           <div className="md:hidden flex justify-center px-3 sm:px-4 mt-6">
-            <div className="relative w-full max-w-[360px] xs:max-w-[400px] sm:max-w-sm">
+            <div className="relative w-full max-w-[360px] xs:max-w-[400px] sm:max-w-sm min-h-[300px]">
+              {/* Placeholder para móvil */}
+              {!imagesLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg w-full h-72"></div>
+                </div>
+              )}
+
               {/* Carousel container */}
               <div className="relative flex justify-center items-center">
                 <img
                   src={degradado_rosa}
                   alt="hero degradado"
+                  className={`select-none pointer-events-none will-change-transform transition-opacity duration-300 ${
+                    imagesLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
                   style={{
-                    animation:
-                      "floatIcons 7s ease-in-out infinite, breatheBackground 5s ease-in-out infinite",
+                    animation: imagesLoaded ? "floatIcons 7s ease-in-out infinite, breatheBackground 5s ease-in-out infinite" : "none",
                     animationDelay: "0.5s, 2s",
                   }}
-                  className="select-none pointer-events-none will-change-transform"
+                  loading="eager"
                 />
                 <img
                   key={currentMockupIndex}
                   src={mockups[currentMockupIndex].src}
                   alt={mockups[currentMockupIndex].alt}
-                  className="absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl"
+                  className={`absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl ${
+                    imagesLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
                   style={{
-                    animation:
-                      "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1.5s",
+                    animation: imagesLoaded ? "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1.5s" : "none",
                   }}
+                  loading="eager"
                 />
               </div>
 
