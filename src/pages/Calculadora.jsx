@@ -455,12 +455,12 @@ const Calculadora = () => {
             </div>
 
             {/* Bottom: conversation types 2x2 */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 j">
               {/* Marketing Conversations */}
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Conversación de Marketing
+                    Plantilla de Marketing
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
@@ -488,7 +488,7 @@ const Calculadora = () => {
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {getCurrencySymbol()}
-                  {getCurrentPrices().marketing.toFixed(4)} / 24 horas
+                  {getCurrentPrices().marketing.toFixed(4)} / Mensaje
                 </p>
                 <div className="flex items-center space-x-3">
                   <input
@@ -507,7 +507,7 @@ const Calculadora = () => {
                     }}
                   />
                   <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Mensajes:</span>
                     <input
                       type="number"
                       inputMode="numeric"
@@ -528,7 +528,7 @@ const Calculadora = () => {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Conversación Utilitaria (Utility)
+                    Plantilla de Utilidad (Utility)
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
@@ -553,7 +553,7 @@ const Calculadora = () => {
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {getCurrencySymbol()}
-                  {getCurrentPrices().utility.toFixed(4)} / 24 horas
+                  {getCurrentPrices().utility.toFixed(4)} / Mensaje
                 </p>
                 <div className="flex items-center space-x-3">
                   <input
@@ -572,7 +572,7 @@ const Calculadora = () => {
                     }}
                   />
                   <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Mensajes:</span>
                     <input
                       type="number"
                       min="0"
@@ -592,7 +592,7 @@ const Calculadora = () => {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Conversación de Autenticación (Authentication)
+                    Plantilla de Autenticación (Authentication)
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
@@ -622,7 +622,7 @@ const Calculadora = () => {
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {getCurrencySymbol()}
-                  {getCurrentPrices().authentication.toFixed(4)} / 24 horas
+                  {getCurrentPrices().authentication.toFixed(4)} / Mensaje
                 </p>
                 <div className="flex items-center space-x-3">
                   <input
@@ -641,7 +641,7 @@ const Calculadora = () => {
                     }}
                   />
                   <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Mensajes:</span>
                     <input
                       type="number"
                       min="0"
@@ -657,69 +657,7 @@ const Calculadora = () => {
                 </div>
               </div>
 
-              {/* Service Conversations */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Conversación de Servicio
-                  </label>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400">
-                        {getCurrencySymbol()}
-                      </span>
-                      <input
-                        type="number"
-                        min="0"
-                        max={(10000 * getCurrentPrices().service).toFixed(4)}
-                        step="0.01"
-                        value={inputValues.service}
-                        onChange={(e) =>
-                          handleConversationInputChange("service", e.target.value)
-                        }
-                        className="w-24 pl-6 pr-2 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                        placeholder="0.0000"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
-                  {getCurrencySymbol()}
-                  {getCurrentPrices().service.toFixed(4)} / 24 horas
-                </p>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="range"
-                    min="0"
-                    max="10000"
-                    value={conversationCounts.service}
-                    className="flex-1 h-2 rounded-lg appearance-none cursor-pointer slider-pink"
-                    onInput={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("service", e.target.value);
-                    }}
-                    onChange={(e) => {
-                      setSliderProgress(e.target);
-                      handleSliderChange("service", e.target.value);
-                    }}
-                  />
-                  <div className="flex items-center space-x-1 min-w-[80px]">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Conv:</span>
-                    <input
-                      type="number"
-                      min="0"
-                      max="10000"
-                      value={conversationCounts.service}
-                      onChange={(e) => {
-                        const value = Math.max(0, Math.min(10000, parseInt(e.target.value) || 0));
-                        handleSliderChange("service", value.toString());
-                      }}
-                      className="w-12 px-1 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                    />
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
 
