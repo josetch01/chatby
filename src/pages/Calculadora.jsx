@@ -455,7 +455,7 @@ const Calculadora = () => {
             </div>
 
             {/* Bottom: conversation types 2x2 */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 j">
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 ">
               {/* Marketing Conversations */}
               <div>
                 <div className="flex justify-between items-center mb-2">
@@ -589,7 +589,11 @@ const Calculadora = () => {
               </div>
 
               {/* Authentication Conversations */}
-              <div>
+
+             
+            </div>
+                        <div className="mt-8 grid grid-cols-1 md:grid-cols-1 gap-8 ">
+                          <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Plantilla de Autenticación (Authentication)
@@ -656,9 +660,7 @@ const Calculadora = () => {
                   </div>
                 </div>
               </div>
-
-             
-            </div>
+</div>
           </div>
 
           {/* Right Column - Estimation */}
