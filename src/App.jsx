@@ -31,6 +31,9 @@ function AppContent() {
   return (
     <Layout>
       <Routes>
+        {/* Rutas de la aplicación */}
+                <Route path="/*" element={<Home />} />
+
         <Route path="/" element={<Home />} />
         <Route path="/calculadora" element={<Calculadora />} />
         <Route path="/planes" element={<Planes />} />
