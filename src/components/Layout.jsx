@@ -863,13 +863,13 @@ const Layout = ({ children }) => {
               </p>
               <div className=""></div>
               <div className="flex justify-between space-x-4">
-                <p className="text-sm text-white dark:text-white">
+                <a className="text-sm text-white dark:text-white decoration-none" href="#" target="_blank">
                   POLÍTICA DE PRIVACIDAD
 
-                </p>
-                <p className="text-sm text-white dark:text-white">
+                </a>
+                <a className="text-sm text-white dark:text-white decoration-none" href="#" target="_blank">
                   TÉRMINOS DE SERVICIO
-                </p>
+                </a>
               </div>
               
             </div>
