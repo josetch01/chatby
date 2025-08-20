@@ -863,11 +863,11 @@ const Layout = ({ children }) => {
               </p>
               <div className=""></div>
               <div className="flex justify-between space-x-4">
-                <a className="text-sm text-white dark:text-white decoration-none" href="#" target="_blank">
+                <a className="text-sm text-white dark:text-white decoration-none" href="https://chatby.io/privacy/" target="_blank">
                   POLÍTICA DE PRIVACIDAD
 
                 </a>
-                <a className="text-sm text-white dark:text-white decoration-none" href="#" target="_blank">
+                <a className="text-sm text-white dark:text-white decoration-none" href="https://chatby.io/terms/" target="_blank">
                   TÉRMINOS DE SERVICIO
                 </a>
               </div>
