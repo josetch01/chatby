@@ -106,8 +106,8 @@ const Planes = () => {
         "CRM",
         "Soporte T2",
       ],
-      popular: false,
-      destacado: false,
+      popular: true,
+      destacado: true,
       icono: "⚡",
     },
     {
@@ -123,8 +123,8 @@ const Planes = () => {
         "CRM",
         "Soporte T2",
       ],
-      popular: true,
-      destacado: true,
+      popular: false,
+      destacado: false,
     },
     {
       nombre: "Plus",

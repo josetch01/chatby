@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
 
+
   // Estado para la animación de iconos
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
 
@@ -533,10 +534,10 @@ const Layout = ({ children }) => {
       >
         <div className="relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {/* Logo and description */}
               <div className="sm:col-span-2 lg:col-span-1">
-                <div className="flex items-center space-x-2 mb-4">
+                <div className="flex items-center space-x-2 mb-10">
                   <svg
                     width="191"
                     height="60"
@@ -645,7 +646,7 @@ const Layout = ({ children }) => {
                     aria-label="Facebook"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -660,7 +661,7 @@ const Layout = ({ children }) => {
                     aria-label="LinkedIn"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -675,7 +676,7 @@ const Layout = ({ children }) => {
                     aria-label="TikTok"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -690,7 +691,7 @@ const Layout = ({ children }) => {
                     aria-label="YouTube"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -705,7 +706,7 @@ const Layout = ({ children }) => {
                     aria-label="Instagram"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -725,10 +726,9 @@ const Layout = ({ children }) => {
                   </div>
                 </div>
               </div>
-
-              {/* Chatby links */}
+               {/* Chatby links */}
               <div>
-                <h3 className="text-lg font-semibold mb-4">Chatby</h3>
+                <h3 className="text-lg font-semibold mb-10">Chatby</h3>
                 <ul className="space-y-2">
                   <div className="grid grid-cols-2">
                     <li>
@@ -791,7 +791,7 @@ const Layout = ({ children }) => {
 
               {/* Resources */}
               <div>
-                <h3 className="text-lg font-semibold mb-4">Recursos</h3>
+                <h3 className="text-lg font-semibold mb-10">Recursos</h3>
                 <ul className="space-y-2">
                   <div className="grid grid-cols-2">
                     <li>
@@ -856,6 +856,22 @@ const Layout = ({ children }) => {
                   </div>
                 </ul>
               </div>
+            </div>
+            <div className="mt-10    pt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              <p className="text-sm text-white dark:text-white">
+                ©2025, CHATBY SAC, RUC 20606449993
+              </p>
+              <div className=""></div>
+              <div className="flex justify-between space-x-4">
+                <p className="text-sm text-white dark:text-white">
+                  POLÍTICA DE PRIVACIDAD
+
+                </p>
+                <p className="text-sm text-white dark:text-white">
+                  TÉRMINOS DE SERVICIO
+                </p>
+              </div>
+              
             </div>
           </div>
         </div>
