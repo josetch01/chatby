@@ -310,7 +310,14 @@ const Home = () => {
               </button>
               <button
                 className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1]  text-white px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:from-[#E01A96] hover:to-[#9A35B8]"
-                onClick={() => window.open("https://chatby.io/", "_blank", "noopener,noreferrer")}
+                onClick={() => {
+                  if (window.Calendly) {
+                    window.Calendly.initPopupWidget({url: 'https://calendly.com/chatby/chatby-soporte'});
+                  } else {
+                    window.open("https://calendly.com/chatby/chatby-soporte", "_blank", "noopener,noreferrer");
+                  }
+                  return false;
+                }}
               >
                 Asesoría gratuita
               </button>
