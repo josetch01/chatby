@@ -14,9 +14,25 @@ export const usePersistedNavigation = (options = {}) => {
     excludeHomePage = true // No restaurar si estamos en home y la última página también era home
   } = options;
 
+  // Función para verificar si una ruta es válida (incluyendo rutas dinámicas)
+  const isValidRoute = (pathname) => {
+    // Verificar rutas exactas
+    if (validRoutes.includes(pathname)) return true;
+
+    // Verificar rutas dinámicas (como /partner/:name)
+    return validRoutes.some(route => {
+      if (route.includes(':')) {
+        const routePattern = route.replace(/:[^/]+/g, '[^/]+');
+        const regex = new RegExp(`^${routePattern}$`);
+        return regex.test(pathname);
+      }
+      return false;
+    });
+  };
+
   // Guardar la ruta actual en localStorage cuando cambie
   useEffect(() => {
-    if (validRoutes.includes(location.pathname)) {
+    if (isValidRoute(location.pathname)) {
       localStorage.setItem(storageKey, location.pathname);
       localStorage.setItem(timestampKey, Date.now().toString());
 
@@ -28,6 +44,14 @@ export const usePersistedNavigation = (options = {}) => {
   // Restaurar la última página visitada al cargar la aplicación
   const restoreLastPage = () => {
     try {
+      // Verificar si estamos navegando programáticamente
+      const isNavigatingToPartner = sessionStorage.getItem('navigatingToPartner');
+      if (isNavigatingToPartner) {
+        sessionStorage.removeItem('navigatingToPartner');
+        console.log('🚫 Navegación programática detectada, no restaurando');
+        return;
+      }
+
       const lastPage = localStorage.getItem(storageKey);
       const timestamp = localStorage.getItem(timestampKey);
 
@@ -49,9 +73,10 @@ export const usePersistedNavigation = (options = {}) => {
       // Lógica de restauración
       const shouldRestore =
         lastPage !== location.pathname && // No restaurar si ya estamos en esa página
-        validRoutes.includes(lastPage) && // Solo restaurar rutas válidas
+        isValidRoute(lastPage) && // Solo restaurar rutas válidas (incluyendo dinámicas)
         (!excludeHomePage || lastPage !== '/') && // Excluir home si está configurado
-        (location.pathname === '/' || !excludeHomePage); // Solo restaurar desde home o si no excluimos home
+        (location.pathname === '/' || !excludeHomePage) && // Solo restaurar desde home o si no excluimos home
+        !location.pathname.startsWith('/partner/'); // No restaurar si estamos navegando a un perfil de partner
 
       if (shouldRestore) {
         console.log('🔄 Restaurando página:', lastPage);

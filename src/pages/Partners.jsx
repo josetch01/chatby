@@ -1,17 +1,19 @@
 import { useMemo, useRef, useState, useEffect } from "react";
 import bgCircle from "../assets/circulo fondo.svg";
+import { useNavigate } from "react-router-dom";
 
 const partnersSeed = [
   {
     id: 1,
-    name: "Para Emprendedores",
+    name: "José Salinas | Para Emprendedores",
     logo: "../assets/logos empresas/logo_cliente.svg",
     country: "Perú",
-    tier: "Silver Partner",
+    tier: "Gold Partner",
     category: "Para Emprendedores",
     description:
       "Somos una agencia especializada en el desarrollo de software y la automatización de WhatsApp utilizando inteligencia artificial. Ofrecemos soluciones innovadoras y personalizadas que optimizan la comunicación y la eficiencia operativa de nuestros clientes. Nuestro equipo de expertos...",
-    url: "#",
+    url: "www.paraemprendedores.pe",
+    correo: "hola@paraemprendedores.pe"
   },
   // {
   //   id: 2,
@@ -29,6 +31,7 @@ export default function Partners() {
   const [query, setQuery] = useState("");
   const [partners] = useState(partnersSeed);
   const listRef = useRef(null);
+  const navigate = useNavigate();
 
   // Enfocar input al entrar a la página (mejor UX)
   const inputRef = useRef(null);
@@ -46,7 +49,12 @@ export default function Partners() {
         .includes(q)
     );
   }, [query, partners]);
-
+ const handleClick = (companyName, companyCountry, companyAbout, classification, imgSrc,url,correo) => () => {
+      const formattedName = companyName.toLowerCase().replace(/\s+/g, '-');
+      // Marcar que estamos navegando programáticamente
+      sessionStorage.setItem('navigatingToPartner', 'true');
+      navigate(`/partner/${formattedName}`, { state: { companyName, companyCountry, companyAbout, classification, imgSrc ,url,correo } });
+    };
   // Mapeo de assets para resolver rutas dinámicas desde JSON/seed
   const logoMap = import.meta.glob('../assets/**/*.{svg,png,jpg,jpeg}', { eager: true, import: 'default' });
   const resolveSrc = (path) => logoMap[path] || path;
@@ -140,13 +148,13 @@ export default function Partners() {
                     <span className="inline-block w-2 h-2 rounded-full bg-gradient-to-r from-[#F129A1] to-[#A83CC1]" />
                     {p.tier}
                   </div>
-                  <a
-                    href={p.url}
+                  <button
+                    onClick={handleClick(p.name, p.country, p.description, p.category, p.logo, p.url, p.correo)}
                     className="text-[#F129A1] hover:text-[#A83CC1] text-sm font-medium inline-flex items-center gap-1"
                   >
                     Ver perfil
                     <span aria-hidden>➜</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>

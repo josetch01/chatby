@@ -111,7 +111,7 @@ const Planes = () => {
       icono: "⚡",
     },
     {
-      nombre: "Pro",
+      nombre: "Plus",
       precio: "$109",
       periodo: "USD/mes",
       caracteristicas: [
@@ -127,7 +127,7 @@ const Planes = () => {
       destacado: false,
     },
     {
-      nombre: "Plus",
+      nombre: "Pro",
       precio: "$219",
       periodo: "USD/mes",
       caracteristicas: [
