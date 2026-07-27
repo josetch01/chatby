@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { countriesDialCodeAndFlags } from '../data/datapaises';
+import { countriesDialCodeAndFlags } from '../data/DataPaises';
 import Select from 'react-select';
 
 export default function ContactPartnerModal({ isOpen, onClose, partnerName, partnerEmail }) {
