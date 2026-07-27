@@ -5,6 +5,8 @@ import Calculadora from './pages/Calculadora';
 import Planes from './pages/Planes';
 import Partners from './pages/Partners';
 import PartnerProfile from './pages/PartnerProfile';
+import Ecommerce from './pages/Ecommerce';
+import MarcaBlanca from './pages/MarcaBlanca';
 import './App.css'
 import { ThemeProvider } from './context/ThemeContext';
 import { usePersistedNavigation } from './hooks/usePersistedNavigation';
@@ -14,7 +16,7 @@ import { useEffect } from 'react';
 // Componente interno que usa el hook de navegación persistente
 function AppContent() {
   const { restoreLastPage } = usePersistedNavigation({
-    validRoutes: ['/', '/calculadora', '/planes', '/partners', '/partner/:partnerName'],
+    validRoutes: ['/', '/calculadora', '/planes', '/partners', '/partner/:partnerName', '/ecommerce', '/marca-blanca'],
     expirationHours: 48, // 2 días
     excludeHomePage: false // Permitir restaurar a home también
   });
@@ -38,6 +40,8 @@ function AppContent() {
         <Route path="/planes" element={<Planes />} />
         <Route path="/partners" element={<Partners />} />
         <Route path="/partner/:partnerName" element={<PartnerProfile />} />
+        <Route path="/ecommerce" element={<Ecommerce />} />
+        <Route path="/marca-blanca" element={<MarcaBlanca />} />
         <Route path="/*" element={<Home />} />
       </Routes>
       {/* Componente de debug - quitar en producción */}

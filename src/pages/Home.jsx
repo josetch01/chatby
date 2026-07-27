@@ -23,6 +23,15 @@ import msn_logo from "../assets/logos integraciones/5.svg";
 import ig_logo from "../assets/logos integraciones/10.svg";
 import wsp_logo from "../assets/logos integraciones/16.svg";
 import mensaje from "../assets/logos integraciones/20.svg";
+
+// Alianzas logos
+import shalomLogo from "../assets/logo-alianzas/shalom-wt-web.svg";
+import venndeloLogo from "../assets/logo-alianzas/venndelo-web.svg";
+import dropeaLogo from "../assets/logo-alianzas/dropea-wt-web.svg";
+import rocketLogo from "../assets/logos empresas/rocket.svg";
+import dropiLogo from "../assets/logo-alianzas/dropi-wt-web.svg";
+import beepingLogo from "../assets/logo-alianzas/beeping-web.svg";
+import dropiproLogo from "../assets/logo-alianzas/dropipro-wt-web.svg";
 import line_logo from "../assets/logos integraciones/23.svg";
 import gpt from "../assets/logos integraciones/6.svg";
 import deepseek from "../assets/logos integraciones/deppseek.svg";
@@ -35,6 +44,29 @@ import chatwoot from "../assets/chatwoot icono.svg";
 import messenger_icon from "../assets/messenger icono.svg";
 import tele from "../assets/telegram icono.svg";
 import wechat from "../assets/wechat icono.svg";
+
+const supportCountries = [
+  { code: 'PE', name: 'Perú', time: '11:00 a. m. – 12:00 p. m.' },
+  { code: 'CO', name: 'Colombia', time: '11:00 a. m. – 12:00 p. m.' },
+  { code: 'EC', name: 'Ecuador', time: '11:00 a. m. – 12:00 p. m.' },
+  { code: 'CL', name: 'Chile', time: '12:00 p. m. – 1:00 p. m.' },
+  { code: 'AR', name: 'Argentina', time: '1:00 p. m. – 2:00 p. m.' },
+  { code: 'VE', name: 'Venezuela', time: '12:00 p. m. – 1:00 p. m.' },
+  { code: 'PY', name: 'Paraguay', time: '1:00 p. m. – 2:00 p. m.' },
+  { code: 'BO', name: 'Bolivia', time: '12:00 p. m. – 1:00 p. m.' },
+  { code: 'BR', name: 'Brasil', time: '1:00 p. m. – 2:00 p. m.' },
+  { code: 'PA', name: 'Panamá', time: '11:00 a. m. – 12:00 p. m.' },
+  { code: 'MX', name: 'México', time: '10:00 a. m. – 11:00 a. m.' },
+  { code: 'HN', name: 'Honduras', time: '10:00 a. m. – 11:00 a. m.' },
+  { code: 'SV', name: 'El Salvador', time: '10:00 a. m. – 11:00 a. m.' },
+  { code: 'GT', name: 'Guatemala', time: '10:00 a. m. – 11:00 a. m.' },
+  { code: 'CR', name: 'Costa Rica', time: '10:00 a. m. – 11:00 a. m.' },
+  { code: 'US', name: 'EE. UU. (Este)', time: '12:00 p. m. – 1:00 p. m.' },
+  { code: 'ES', name: 'España', time: '6:00 p. m. – 7:00 p. m.' },
+  { code: 'PT', name: 'Portugal', time: '5:00 p. m. – 6:00 p. m.' },
+  { code: 'IT', name: 'Italia', time: '6:00 p. m. – 7:00 p. m.' },
+  { code: 'RO', name: 'Rumania', time: '7:00 p. m. – 8:00 p. m.' },
+];
 
 const Home = () => {
   // Inline SVG icons (reuse the same paths as desktop cards)
@@ -92,6 +124,28 @@ const Home = () => {
 
   // Estado para controlar la carga de imágenes
   const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Estado para el soporte en vivo (11:00 AM - 12:00 PM hora Perú)
+  const [isLiveSupport, setIsLiveSupport] = useState(false);
+
+  useEffect(() => {
+    const checkLiveStatus = () => {
+      const now = new Date();
+      const peruTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Lima" }));
+      const hours = peruTime.getHours();
+
+      // En vivo si la hora en Perú es 11 (11:00 am a 11:59 am)
+      if (hours === 11) {
+        setIsLiveSupport(true);
+      } else {
+        setIsLiveSupport(false);
+      }
+    };
+
+    checkLiveStatus();
+    const interval = setInterval(checkLiveStatus, 60000); // Revisar cada minuto
+    return () => clearInterval(interval);
+  }, []);
 
   const mockups = [
     { src: mockup_wsp, alt: "WhatsApp Business mockup" },
@@ -169,65 +223,14 @@ const Home = () => {
     return () => clearTimeout(fallbackTimer);
   }, []);
 
-  const logos_oscuro = [
-    {
-      src: dropi,
-      alt: "dropi",
-      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    {
-      src: triidy_blanco,
-      alt: "triidy",
-      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    {
-      src: rocketfy,
-      alt: "rocketfy",
-      size: "w-18 h-18 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    {
-      src: shiipy,
-      alt: "shiipy",
-      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    {
-      src: mba_blanco,
-      alt: "mba",
-      size: "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
-    },
-    {
-      src: hoko,
-      alt: "hoko",
-      size: "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
-    },
-  ];
-  const logos = [
-    {
-      src: dropi,
-      alt: "dropi",
-      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    {
-      src: triidy,
-      alt: "triidy",
-      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    {
-      src: rocketfy,
-      alt: "rocketfy",
-      size: "w-18 h-18 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    {
-      src: shiipy,
-      alt: "shiipy",
-      size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28",
-    },
-    { src: mba, alt: "mba", size: "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24" },
-    {
-      src: hoko,
-      alt: "hoko",
-      size: "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
-    },
+  const logos_alianzas = [
+    { src: shalomLogo, alt: "Shalom", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: venndeloLogo, alt: "Venndelo", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: dropeaLogo, alt: "Dropea", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: rocketLogo, alt: "Rocket", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: dropiLogo, alt: "Dropi", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: beepingLogo, alt: "Beeping", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: dropiproLogo, alt: "Dropi Pro", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
   ];
 
   // Removed scroll function - now using CSS animation
@@ -268,40 +271,28 @@ const Home = () => {
       `}</style>
       {/* Hero Section */}
       <section className="relative  py-12 sm:py-16 lg:py-10">
+        {/* Glow destello detrás del texto principal */}
+        <div className="absolute  left-1/2 -translate-x-1/2 w-[50%] max-w-[900px] h-[400px] sm:h-[200px] bg-pink-500/35 dark:bg-pink-600/25 blur-[120px] sm:blur-[140px] rounded-full pointer-events-none -z-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-[#2C011B] dark:text-[#F5F5F5] dark:bg-[#394B61] font-medium mb-4 text-sm sm:text-base rounded-2xl bg-[#FFE8F7] px-5 py-1 inline-block">
               Convierte mensajes en ventas
             </p>
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white mb-6 leading-tight">
-              Optimiza con IA y{" "}
+              Responde al instante y{" "}
               <span className="text-pink-600 dark:text-pink-400">
-                automatiza
+                vende más
               </span>
               <br className="hidden sm:block" />
-              <span className="block sm:inline"> los chats de</span>
-              <button
-                onClick={toggleDarkMode}
-                className="relative inline-flex items-center w-16 h-8 sm:w-20 sm:h-10 md:w-24 md:h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full transition-all duration-300 mx-2 sm:mx-3 align-middle cursor-pointer "
-                aria-label="Toggle dark mode"
-              >
-                <span
-                  className={`absolute w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-white rounded-full shadow-md transform transition-transform duration-300 flex items-center justify-center ${
-                    darkMode
-                      ? "translate-x-8 sm:translate-x-10 md:translate-x-12"
-                      : "translate-x-1 sm:translate-x-1 md:translate-x-1"
-                  }`}
-                ></span>
-              </button>
-              <span className="relative">tu negocio</span>
+              <span className="block sm:inline"> en WhatsApp, con IA sin código</span>
+
             </h1>
             <p className="text-base sm:text-2xl text-[#2C011B] dark:text-[#CCCCCC] mb-8 max-w-3xl mx-auto leading-relaxed ">
-              Haz que la Inteligencia Artificial atienda consultas frecuentes, y
-              dedica tu tiempo a lo que realmente importa.
+              Chatby atiende a tus clientes 24/7, automatiza tus chats y cierra ventas por ti — y un equipo humano te respalda en vivo, todos los días.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <button
-                className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent"
+                className="bg-gradient-to-r from-[#F129A1]/90 to-[#A83CC1]/90 backdrop-blur-sm shadow-lg shadow-[#F129A1]/40 text-white px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-all duration-300 w-full sm:w-auto cursor-pointer hover:from-[#E01A96] hover:to-[#9A35B8] hover:shadow-[#F129A1]/60"
                 onClick={() =>
                   window.open("https://chatby.io/register?ref=WebTrial", "_blank", "noopener,noreferrer")
                 }
@@ -309,17 +300,17 @@ const Home = () => {
                 Iniciar prueba gratis
               </button>
               <button
-                className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1]  text-white px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:from-[#E01A96] hover:to-[#9A35B8]"
+                className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent"
                 onClick={() => {
                   if (window.Calendly) {
-                    window.Calendly.initPopupWidget({url: 'https://calendly.com/chatby/chatby-soporte'});
+                    window.Calendly.initPopupWidget({ url: 'https://calendly.com/chatby/chatby-soporte' });
                   } else {
                     window.open("https://calendly.com/chatby/chatby-soporte", "_blank", "noopener,noreferrer");
                   }
                   return false;
                 }}
               >
-                Asesoría gratuita
+                Soporte en vivo
               </button>
             </div>
           </div>
@@ -338,9 +329,8 @@ const Home = () => {
               <img
                 src={darkMode ? hero_degradado_dark : hero_degradado}
                 alt="hero degradado"
-                className={`select-none pointer-events-none will-change-transform transition-opacity duration-300 ${
-                  imagesLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`select-none pointer-events-none will-change-transform transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
                 style={{
                   animation: imagesLoaded ? "floatIcons 8s ease-in-out infinite, breatheBackground 4s ease-in-out infinite" : "none",
                   animationDelay: "0s, 1s",
@@ -353,9 +343,8 @@ const Home = () => {
                 key={currentDesktopMockupIndex}
                 src={mockups[currentDesktopMockupIndex].src}
                 alt={mockups[currentDesktopMockupIndex].alt}
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl ${
-                  imagesLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl ${imagesLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
                 style={{
                   animation: imagesLoaded ? "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s" : "none"
                 }}
@@ -379,9 +368,8 @@ const Home = () => {
                 <img
                   src={degradado_rosa}
                   alt="hero degradado"
-                  className={`select-none pointer-events-none will-change-transform transition-opacity duration-300 ${
-                    imagesLoaded ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  className={`select-none pointer-events-none will-change-transform transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
                   style={{
                     animation: imagesLoaded ? "floatIcons 7s ease-in-out infinite, breatheBackground 5s ease-in-out infinite" : "none",
                     animationDelay: "0.5s, 2s",
@@ -392,9 +380,8 @@ const Home = () => {
                   key={currentMockupIndex}
                   src={mockups[currentMockupIndex].src}
                   alt={mockups[currentMockupIndex].alt}
-                  className={`absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl ${
-                    imagesLoaded ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  className={`absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl ${imagesLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
                   style={{
                     animation: imagesLoaded ? "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1.5s" : "none",
                   }}
@@ -449,11 +436,10 @@ const Home = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentMockupIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === currentMockupIndex
-                        ? "bg-pink-600 dark:bg-pink-400"
-                        : "bg-gray-300 dark:bg-gray-600"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-colors ${index === currentMockupIndex
+                      ? "bg-pink-600 dark:bg-pink-400"
+                      : "bg-gray-300 dark:bg-gray-600"
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
@@ -483,11 +469,10 @@ const Home = () => {
               onClick={() => setCurrentDesktopMockupIndex(0)}
               role="button"
               tabIndex={0}
-              className={`group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg border shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 cursor-pointer ${
-                currentDesktopMockupIndex === 0
-                  ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
-                  : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
-              }`}
+              className={`group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg border shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 cursor-pointer ${currentDesktopMockupIndex === 0
+                ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
+                : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
+                }`}
               style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
@@ -496,11 +481,10 @@ const Home = () => {
                 viewBox="0 0 27 27"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className={`transition-colors ${
-                  currentDesktopMockupIndex === 0
-                    ? "fill-white"
-                    : "fill-[#A83CC1] group-hover:fill-white"
-                }`}
+                className={`transition-colors ${currentDesktopMockupIndex === 0
+                  ? "fill-white"
+                  : "fill-[#A83CC1] group-hover:fill-white"
+                  }`}
               >
                 <path d="M21.4316 5.52382C20.4002 4.48198 19.1717 3.65594 17.8177 3.09387C16.4637 2.53181 15.0114 2.24496 13.5454 2.25007C7.40289 2.25007 2.39664 7.25632 2.39664 13.3988C2.39664 15.3676 2.91414 17.2801 3.88164 18.9676L2.30664 24.7501L8.21289 23.1976C9.84414 24.0863 11.6779 24.5588 13.5454 24.5588C19.6879 24.5588 24.6941 19.5526 24.6941 13.4101C24.6941 10.4288 23.5354 7.62757 21.4316 5.52382ZM13.5454 22.6688C11.8804 22.6688 10.2491 22.2188 8.82039 21.3751L8.48289 21.1726L4.97289 22.0951L5.90664 18.6751L5.68164 18.3263C4.75661 16.8492 4.26542 15.1417 4.26414 13.3988C4.26414 8.29132 8.42664 4.12882 13.5341 4.12882C16.0091 4.12882 18.3379 5.09632 20.0816 6.85132C20.9451 7.71078 21.6293 8.73306 22.0947 9.85892C22.5601 10.9848 22.7974 12.1918 22.7929 13.4101C22.8154 18.5176 18.6529 22.6688 13.5454 22.6688ZM18.6304 15.7388C18.3491 15.6038 16.9766 14.9288 16.7291 14.8276C16.4704 14.7376 16.2904 14.6926 16.0991 14.9626C15.9079 15.2438 15.3791 15.8738 15.2216 16.0538C15.0641 16.2451 14.8954 16.2676 14.6141 16.1213C14.3329 15.9863 13.4329 15.6826 12.3754 14.7376C11.5429 13.9951 10.9916 13.0838 10.8229 12.8026C10.6654 12.5213 10.8004 12.3751 10.9466 12.2288C11.0704 12.1051 11.2279 11.9026 11.3629 11.7451C11.4979 11.5876 11.5541 11.4638 11.6441 11.2838C11.7341 11.0926 11.6891 10.9351 11.6216 10.8001C11.5541 10.6651 10.9916 9.29257 10.7666 8.73007C10.5416 8.19007 10.3054 8.25757 10.1366 8.24632H9.59664C9.40539 8.24632 9.11289 8.31382 8.85414 8.59507C8.60664 8.87632 7.88664 9.55132 7.88664 10.9238C7.88664 12.2963 8.88789 13.6238 9.02289 13.8038C9.15789 13.9951 10.9916 16.8076 13.7816 18.0113C14.4454 18.3038 14.9629 18.4726 15.3679 18.5963C16.0316 18.8101 16.6391 18.7763 17.1229 18.7088C17.6629 18.6301 18.7766 18.0338 19.0016 17.3813C19.2379 16.7288 19.2379 16.1776 19.1591 16.0538C19.0804 15.9301 18.9116 15.8738 18.6304 15.7388Z"></path>
               </svg>
@@ -516,11 +500,10 @@ const Home = () => {
               onClick={() => setCurrentDesktopMockupIndex(1)}
               role="button"
               tabIndex={0}
-              className={`group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg border shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 cursor-pointer ${
-                currentDesktopMockupIndex === 1
-                  ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
-                  : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
-              }`}
+              className={`group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg border shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 cursor-pointer ${currentDesktopMockupIndex === 1
+                ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
+                : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
+                }`}
               style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
@@ -529,11 +512,10 @@ const Home = () => {
                 viewBox="0 0 27 27"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className={`transition-colors ${
-                  currentDesktopMockupIndex === 1
-                    ? "fill-white"
-                    : "fill-[#A83CC1] group-hover:fill-white"
-                }`}
+                className={`transition-colors ${currentDesktopMockupIndex === 1
+                  ? "fill-white"
+                  : "fill-[#A83CC1] group-hover:fill-white"
+                  }`}
               >
                 <path d="M8.96 2H19.04C22.88 2 26 5.12 26 8.96V19.04C26 20.8859 25.2667 22.6562 23.9615 23.9615C22.6562 25.2667 20.8859 26 19.04 26H8.96C5.12 26 2 22.88 2 19.04V8.96C2 7.11409 2.73328 5.34379 4.03854 4.03854C5.34379 2.73328 7.11409 2 8.96 2ZM8.72 4.4C7.57427 4.4 6.47546 4.85514 5.6653 5.6653C4.85514 6.47546 4.4 7.57427 4.4 8.72V19.28C4.4 21.668 6.332 23.6 8.72 23.6H19.28C20.4257 23.6 21.5245 23.1449 22.3347 22.3347C23.1449 21.5245 23.6 20.4257 23.6 19.28V8.72C23.6 6.332 21.668 4.4 19.28 4.4H8.72ZM20.3 6.2C20.6978 6.2 21.0794 6.35804 21.3607 6.63934C21.642 6.92064 21.8 7.30218 21.8 7.7C21.8 8.09783 21.642 8.47936 21.3607 8.76066C21.0794 9.04197 20.6978 9.2 20.3 9.2C19.9022 9.2 19.5206 9.04197 19.2393 8.76066C18.958 8.47936 18.8 8.09783 18.8 7.7C18.8 7.30218 18.958 6.92064 19.2393 6.63934C19.5206 6.35804 19.9022 6.2 20.3 6.2ZM14 8C15.5913 8 17.1174 8.63214 18.2426 9.75736C19.3679 10.8826 20 12.4087 20 14C20 15.5913 19.3679 17.1174 18.2426 18.2426C17.1174 19.3679 15.5913 20 14 20C12.4087 20 10.8826 19.3679 9.75736 18.2426C8.63214 17.1174 8 15.5913 8 14C8 12.4087 8.63214 10.8826 9.75736 9.75736C10.8826 8.63214 12.4087 8 14 8ZM14 10.4C13.0452 10.4 12.1295 10.7793 11.4544 11.4544C10.7793 12.1295 10.4 13.0452 10.4 14C10.4 14.9548 10.7793 15.8705 11.4544 16.5456C12.1295 17.2207 13.0452 17.6 14 17.6C14.9548 17.6 15.8705 17.2207 16.5456 16.5456C17.2207 15.8705 17.6 14.9548 17.6 14C17.6 13.0452 17.2207 12.1295 16.5456 11.4544C15.8705 10.7793 14.9548 10.4 14 10.4Z"></path>
               </svg>
@@ -549,11 +531,10 @@ const Home = () => {
               onClick={() => setCurrentDesktopMockupIndex(2)}
               role="button"
               tabIndex={0}
-              className={`group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg border shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 cursor-pointer ${
-                currentDesktopMockupIndex === 2
-                  ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
-                  : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
-              }`}
+              className={`group flex items-center gap-4 w-[176px] h-[72px] px-5 rounded-lg border shadow-[0_10px_22px_rgba(86,133,255,0.18)] dark:shadow-[0_10px_22px_rgba(241,41,161,0.15)] transition-all duration-300 cursor-pointer ${currentDesktopMockupIndex === 2
+                ? "bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white border-transparent"
+                : "bg-white dark:bg-[#1E293B] text-[#A83CC1] dark:text-[#F8FAFC] border-[#E6E9FF] dark:border-[#475569] hover:bg-gradient-to-r hover:from-[#F129A1] hover:to-[#A83CC1] hover:text-white hover:border-transparent"
+                }`}
               style={{ boxShadow: "0px 2px 2px 0px #156CFF4D" }}
             >
               <svg
@@ -562,11 +543,10 @@ const Home = () => {
                 viewBox="0 0 27 27"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className={`transition-colors duration-300 ${
-                  currentDesktopMockupIndex === 2
-                    ? "fill-white"
-                    : "fill-[#A83CC1] group-hover:fill-white"
-                }`}
+                className={`transition-colors duration-300 ${currentDesktopMockupIndex === 2
+                  ? "fill-white"
+                  : "fill-[#A83CC1] group-hover:fill-white"
+                  }`}
               >
                 <path d="M24 14C24 8.48 19.52 4 14 4C8.48 4 4 8.48 4 14C4 18.84 7.44 22.87 12 23.8V17H10V14H12V11.5C12 9.57 13.57 8 15.5 8H18V11H16C15.45 11 15 11.45 15 12V14H18V17H15V23.95C20.05 23.45 24 19.19 24 14Z"></path>
               </svg>
@@ -601,68 +581,30 @@ const Home = () => {
                 style={{ width: "calc(200% + 2rem)" }}
               >
                 {/* First set of logos */}
-                {darkMode
-                  ? logos_oscuro.map((logo, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
-                      >
-                        <img
-                          src={logo.src}
-                          alt={logo.alt}
-                          className={`${logo.size.replace(
-                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
-                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
-                          )} object-contain transition-all duration-300 hover:scale-110 `}
-                        />
-                      </div>
-                    ))
-                  : logos.map((logo, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
-                      >
-                        <img
-                          src={logo.src}
-                          alt={logo.alt}
-                          className={`${logo.size.replace(
-                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
-                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
-                          )} object-contain transition-all duration-300 hover:scale-110`}
-                        />
-                      </div>
-                    ))}
-                {darkMode
-                  ? logos_oscuro.map((logo, index) => (
-                      <div
-                        key={`duplicate-${index}`}
-                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
-                      >
-                        <img
-                          src={logo.src}
-                          alt={logo.alt}
-                          className={`${logo.size.replace(
-                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
-                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
-                          )} object-contain transition-all duration-300 hover:scale-110 `}
-                        />
-                      </div>
-                    ))
-                  : logos.map((logo, index) => (
-                      <div
-                        key={`duplicate-${index}`}
-                        className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
-                      >
-                        <img
-                          src={logo.src}
-                          alt={logo.alt}
-                          className={`${logo.size.replace(
-                            "w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24",
-                            "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
-                          )} object-contain transition-all duration-300 hover:scale-110 `}
-                        />
-                      </div>
-                    ))}
+                {logos_alianzas.map((logo, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`${logo.size} object-contain transition-all duration-300 hover:scale-110`}
+                    />
+                  </div>
+                ))}
+                {logos_alianzas.map((logo, index) => (
+                  <div
+                    key={`duplicate-${index}`}
+                    className="flex items-center justify-center flex-shrink-0 p-2 sm:p-3"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`${logo.size} object-contain transition-all duration-300 hover:scale-110`}
+                    />
+                  </div>
+                ))}
                 {/* Second set of logos for seamless loop */}
               </div>
             </div>
@@ -690,7 +632,7 @@ const Home = () => {
           {/* Features Stack */}
           <div className="space-y-8 lg:space-y-12">
             {/* Feature 1 - Bot Plantillas */}
-            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]  backdrop-blur-xs">
+            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-[0_8px_30px_rgba(241,41,161,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]  backdrop-blur-xs">
               <img
                 src={bot_plantilla_msn}
                 alt="bot plantilla msn"
@@ -755,7 +697,7 @@ const Home = () => {
             </div>
 
             {/* Feature 2 - Presencia 24/7 */}
-            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] ">
+            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-[0_8px_30px_rgba(241,41,161,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] ">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Content */}
                 <div className="flex flex-col sm:inline-block text-start">
@@ -847,7 +789,7 @@ const Home = () => {
             </div>
 
             {/* Feature 3 - Automatización 24/7 */}
-            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-lg dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-[0_8px_30px_rgba(241,41,161,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Content */}
                 <div className="flex flex-col sm:inline-block">
@@ -911,6 +853,66 @@ const Home = () => {
                     />
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Feature 4 - Soporte en Vivo Section */}
+            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-[0_8px_30px_rgba(241,41,161,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8 lg:mb-10">
+                <div>
+                  {isLiveSupport && (
+                    <div className="flex items-center gap-2 bg-green-100 dark:bg-[#0F291E] text-green-700 dark:text-[#4ADE80] px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-wider w-fit mb-4 uppercase">
+                      <span className="w-2 h-2 bg-green-500 dark:bg-[#4ADE80] rounded-full animate-pulse"></span>
+                      En vivo ahora
+                    </div>
+                  )}
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight">
+                    Soporte en vivo, <span className="text-pink-600 dark:text-[#F129A1]">todos los días</span>
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Habla por videollamada con una persona real del equipo Chatby. Sin tickets, sin esperas — te acompañamos a configurar y a vender.
+                  </p>
+                </div>
+                <button
+                  onClick={() => window.open("https://meet.google.com/epq-kqqc-dam", "_blank")}
+                  className="cursor-pointer bg-gradient-to-r from-[#F129A1] to-[#A83CC1] text-white px-6 py-3.5 rounded-xl text-sm md:text-base font-semibold shadow-lg shadow-[#F129A1]/30 flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-[#F129A1]/50 whitespace-nowrap w-full lg:w-auto justify-center"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                  </svg>
+                  Unirme a la sala en vivo
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                {supportCountries.map((country, idx) => (
+                  <div key={idx} className="bg-gray-50/50 dark:bg-[#151D2C] border border-gray-100 dark:border-gray-800/60 rounded-2xl p-4 flex flex-col justify-between hover:border-pink-500/30 dark:hover:border-pink-500/30 transition-colors group">
+                    <div className="flex justify-between items-center mb-3">
+                      <div className="flex items-center gap-2 text-gray-900 dark:text-white font-bold text-[15px]">
+                        <span className="text-gray-400 dark:text-gray-500 font-semibold">{country.code}</span> {country.name}
+                      </div>
+                      {isLiveSupport ? (
+                        <div className="bg-green-100 dark:bg-[#0F291E] text-green-700 dark:text-[#4ADE80] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider transition-colors">
+                          En vivo
+                        </div>
+                      ) : (
+                        <div className="bg-gray-200 dark:bg-[#20293A] text-gray-500 dark:text-gray-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider group-hover:bg-pink-100 dark:group-hover:bg-pink-900/30 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                          Cerrado
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400/80 font-medium">{country.time}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-sm text-gray-600 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800/60 pt-6">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p>
+                  Todos los días <strong className="text-gray-900 dark:text-white font-semibold">11:00 a.m. – 12:00 p.m. (hora Perú)</strong> — 1 hora en vivo. Cada país se ajusta a su zona horaria automáticamente.
+                </p>
               </div>
             </div>
           </div>

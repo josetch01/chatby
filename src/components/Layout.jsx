@@ -68,6 +68,8 @@ const Layout = ({ children }) => {
 
   const navLinks = [
     { to: "/", label: "Home" },
+    { to: "/ecommerce", label: "Ecommerce" },
+    { to: "/marca-blanca", label: "Marca blanca" },
     { to: "/calculadora", label: "Calculadora" },
     { to: "/planes", label: "Planes" },
   ];
