@@ -27,7 +27,8 @@ import mensaje from "../assets/logos integraciones/20.svg";
 // Alianzas logos
 import shalomLogo from "../assets/logo-alianzas/shalom-wt-web.svg";
 import venndeloLogo from "../assets/logo-alianzas/venndelo-web.svg";
-import dropeaLogo from "../assets/logo-alianzas/dropea-wt-web.svg";
+import dropeaLogoLight from "../assets/logo-alianzas/dropea-wt-web.svg";
+import dropeaLogoDark from "../assets/logo-alianzas/dropea-web.svg";
 import rocketLogo from "../assets/logos empresas/rocket.svg";
 import dropiLogo from "../assets/logo-alianzas/dropi-wt-web.svg";
 import beepingLogo from "../assets/logo-alianzas/beeping-web.svg";
@@ -232,7 +233,7 @@ const Home = () => {
   const logos_alianzas = [
     { src: shalomLogo, alt: "Shalom", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: venndeloLogo, alt: "Venndelo", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
-    { src: dropeaLogo, alt: "Dropea", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: darkMode ? dropeaLogoDark : dropeaLogoLight, alt: "Dropea", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: rocketLogo, alt: "Rocket", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: dropiLogo, alt: "Dropi", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: beepingLogo, alt: "Beeping", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
