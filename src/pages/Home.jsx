@@ -36,6 +36,8 @@ import line_logo from "../assets/logos integraciones/23.svg";
 import gpt from "../assets/logos integraciones/6.svg";
 import deepseek from "../assets/logos integraciones/deppseek.svg";
 import gemini from "../assets/logos integraciones/gemini.svg";
+import grok from "../assets/logos integraciones/grok.svg";
+import xai from "../assets/logos integraciones/xai.svg";
 
 import mockup_ig from "../assets/mockup-for-instagram 1.svg";
 import mockup_msn from "../assets/mockup-for-messenger 1.svg";
@@ -44,28 +46,32 @@ import chatwoot from "../assets/chatwoot icono.svg";
 import messenger_icon from "../assets/messenger icono.svg";
 import tele from "../assets/telegram icono.svg";
 import wechat from "../assets/wechat icono.svg";
+import slack from "../assets/logos integraciones/slack.svg";
+import tiktok from "../assets/logos integraciones/tiktok.svg";
+import facebook from "../assets/logos integraciones/facebook.svg";
+import { PhoneIcon } from "@heroicons/react/24/solid";
 
 const supportCountries = [
-  { code: 'PE', name: 'Perú', time: '11:00 a. m. – 12:00 p. m.' },
-  { code: 'CO', name: 'Colombia', time: '11:00 a. m. – 12:00 p. m.' },
-  { code: 'EC', name: 'Ecuador', time: '11:00 a. m. – 12:00 p. m.' },
-  { code: 'CL', name: 'Chile', time: '12:00 p. m. – 1:00 p. m.' },
-  { code: 'AR', name: 'Argentina', time: '1:00 p. m. – 2:00 p. m.' },
-  { code: 'VE', name: 'Venezuela', time: '12:00 p. m. – 1:00 p. m.' },
-  { code: 'PY', name: 'Paraguay', time: '1:00 p. m. – 2:00 p. m.' },
-  { code: 'BO', name: 'Bolivia', time: '12:00 p. m. – 1:00 p. m.' },
-  { code: 'BR', name: 'Brasil', time: '1:00 p. m. – 2:00 p. m.' },
-  { code: 'PA', name: 'Panamá', time: '11:00 a. m. – 12:00 p. m.' },
-  { code: 'MX', name: 'México', time: '10:00 a. m. – 11:00 a. m.' },
-  { code: 'HN', name: 'Honduras', time: '10:00 a. m. – 11:00 a. m.' },
-  { code: 'SV', name: 'El Salvador', time: '10:00 a. m. – 11:00 a. m.' },
-  { code: 'GT', name: 'Guatemala', time: '10:00 a. m. – 11:00 a. m.' },
-  { code: 'CR', name: 'Costa Rica', time: '10:00 a. m. – 11:00 a. m.' },
-  { code: 'US', name: 'EE. UU. (Este)', time: '12:00 p. m. – 1:00 p. m.' },
-  { code: 'ES', name: 'España', time: '6:00 p. m. – 7:00 p. m.' },
-  { code: 'PT', name: 'Portugal', time: '5:00 p. m. – 6:00 p. m.' },
-  { code: 'IT', name: 'Italia', time: '6:00 p. m. – 7:00 p. m.' },
-  { code: 'RO', name: 'Rumania', time: '7:00 p. m. – 8:00 p. m.' },
+  { flag: '🇵🇪', code: 'PE', name: 'Perú', time: '11:00 a. m. – 12:00 p. m.' },
+  { flag: '🇨🇴', code: 'CO', name: 'Colombia', time: '11:00 a. m. – 12:00 p. m.' },
+  { flag: '🇪🇨', code: 'EC', name: 'Ecuador', time: '11:00 a. m. – 12:00 p. m.' },
+  { flag: '🇨🇱', code: 'CL', name: 'Chile', time: '12:00 p. m. – 1:00 p. m.' },
+  { flag: '🇦🇷', code: 'AR', name: 'Argentina', time: '1:00 p. m. – 2:00 p. m.' },
+  { flag: '🇻🇪', code: 'VE', name: 'Venezuela', time: '12:00 p. m. – 1:00 p. m.' },
+  { flag: '🇵🇾', code: 'PY', name: 'Paraguay', time: '1:00 p. m. – 2:00 p. m.' },
+  { flag: '🇧🇴', code: 'BO', name: 'Bolivia', time: '12:00 p. m. – 1:00 p. m.' },
+  { flag: '🇧🇷', code: 'BR', name: 'Brasil', time: '1:00 p. m. – 2:00 p. m.' },
+  { flag: '🇵🇦', code: 'PA', name: 'Panamá', time: '11:00 a. m. – 12:00 p. m.' },
+  { flag: '🇲🇽', code: 'MX', name: 'México', time: '10:00 a. m. – 11:00 a. m.' },
+  { flag: '🇭🇳', code: 'HN', name: 'Honduras', time: '10:00 a. m. – 11:00 a. m.' },
+  { flag: '🇸🇻', code: 'SV', name: 'El Salvador', time: '10:00 a. m. – 11:00 a. m.' },
+  { flag: '🇬🇹', code: 'GT', name: 'Guatemala', time: '10:00 a. m. – 11:00 a. m.' },
+  { flag: '🇨🇷', code: 'CR', name: 'Costa Rica', time: '10:00 a. m. – 11:00 a. m.' },
+  { flag: '🇺🇸', code: 'US', name: 'EE. UU. (Este)', time: '12:00 p. m. – 1:00 p. m.' },
+  { flag: '🇪🇸', code: 'ES', name: 'España', time: '6:00 p. m. – 7:00 p. m.' },
+  { flag: '🇵🇹', code: 'PT', name: 'Portugal', time: '5:00 p. m. – 6:00 p. m.' },
+  { flag: '🇮🇹', code: 'IT', name: 'Italia', time: '6:00 p. m. – 7:00 p. m.' },
+  { flag: '🇷🇴', code: 'RO', name: 'Rumania', time: '7:00 p. m. – 8:00 p. m.' },
 ];
 
 const Home = () => {
@@ -738,50 +744,38 @@ const Home = () => {
                       className="w-full h-auto max-w-full max-h-full object-contain"
                     />
 
-                    {/* Social Media Icons positioned around the image */}
-                    {/* WhatsApp - Top Left */}
-                    <div className="absolute top-8 left-8 md:left-50 lg:top-12 lg:left-20 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
-                      <img
-                        src={wsp_logo}
-                        alt="WhatsApp logo"
-                        className="w-8 h-8 lg:w-10 lg:h-10"
-                      />
+                    {/* Social Media Icons (8 on 3 orbital rings) */}
+                    {/* Facebook - Outer Top */}
+                    <div className="absolute left-[50%] top-[6%] -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 bg-white rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <img src={facebook} alt="Facebook logo" className="w-full h-full object-contain" />
                     </div>
-
-                    {/* Email - Top Center */}
-                    <div className="absolute lg:top-5 md:top-1 top-5 left-1/2 transform -translate-x-1/2 -translate-y-10 lg:-translate-y-14 w-12 h-12 lg:w-16 lg:h-16 dark:bg-transparent bg-white rounded-full shadow-lg flex items-center justify-center z-10 ">
-                      <img
-                        src={wechat}
-                        alt="Email logo"
-                        className="w-8 h-8 lg:w-8 lg:h-8"
-                      />
+                    {/* Slack - Inner Left */}
+                    <div className="absolute lg:left-[38%] lg:top-[22%] left-[35%] top-[22%] -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 bg-white rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <img src={slack} alt="Slack logo" className="w-full h-full object-contain" />
                     </div>
-
-                    {/* Line - Top Right */}
-                    <div className="absolute top-8 right-8 md:right-50 lg:top-12 lg:right-15 w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full dark:bg-transparent shadow-lg flex items-center justify-center z-10">
-                      <img
-                        src={tele}
-                        alt="Line logo"
-                        className="w-8 h-8 lg:w-8 lg:h-8"
-                      />
+                    {/* TikTok - Inner Right */}
+                    <div className="absolute left-[66%] top-[22%] -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 bg-white rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <img src={tiktok} alt="TikTok logo" className="w-full h-full object-contain" />
                     </div>
-
-                    {/* Messenger - Middle Left */}
-                    <div className="absolute top-1/2 left-4 md:left-45 transform  -translate-y-1/2 lg:left-10 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
-                      <img
-                        src={msn_logo}
-                        alt="Messenger logo"
-                        className="w-8 h-8 lg:w-10 lg:h-10 "
-                      />
+                    {/* Voice - Outer Left */}
+                    <div className="absolute lg:left-[20%] lg:top-[30%] left-[20%] top-[32%] -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 bg-[#25D366] rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <PhoneIcon className="w-full h-full text-white" />
                     </div>
-
+                    {/* WhatsApp - Outer Right */}
+                    <div className="absolute left-[84%] top-[30%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 lg:w-18 lg:h-18 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <img src={wsp_logo} alt="WhatsApp logo" className="w-full h-full object-contain" />
+                    </div>
+                    {/* SMS - Middle Left */}
+                    <div className="absolute lg:left-[24%] lg:top-[50%] left-[15%] top-[52%] -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 bg-white rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <img src={mensaje} alt="SMS logo" className="w-full h-full object-contain" />
+                    </div>
                     {/* Instagram - Middle Right */}
-                    <div className="absolute top-1/2 right-4  md:right-40 transform -translate-y-1/2 lg:right-8 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-transparent rounded-full shadow-lg flex items-center justify-center z-10">
-                      <img
-                        src={ig_logo}
-                        alt="Instagram logo"
-                        className="w-8 h-8 lg:w-10 lg:h-10 md:w-10 md:h-10"
-                      />
+                    <div className="absolute lg:left-[76%] lg:top-[50%] left-[88%] top-[52%] -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 bg-white rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <img src={ig_logo} alt="Instagram logo" className="w-full h-full object-contain" />
+                    </div>
+                    {/* Telegram - Outer Bottom-Right */}
+                    <div className="absolute lg:left-[82%] lg:top-[68%] left-[90%] top-[68%] -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 bg-white rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center justify-center z-10 p-1.5">
+                      <img src={tele} alt="Telegram logo" className="w-full h-full object-contain" />
                     </div>
                   </div>
                 </div>
@@ -805,7 +799,7 @@ const Home = () => {
                   </h3>
 
                   <p className="text-black font-medium dark:text-gray-300 mb-8 text-base lg:text-lg leading-relaxed text-justify">
-                    Integra ChatGPT, Gemini y DeepSeek para atraer visitantes y
+                    Integra ChatGPT, Gemini, DeepSeek, Grok y xAI para atraer visitantes y
                     responder consultas frecuentes al instante, las 24 horas del
                     día, sin esfuerzo.
                   </p>
@@ -830,26 +824,44 @@ const Home = () => {
                     />
                   </div>
                   {/* WhatsApp icon */}
-                  <div className="absolute top-4 right-8 lg:right-40 md:right-50 sm:w-20 sm:h-20 w-15 h-15 md:h-15 md:w-15  bg-white dark:bg-transparent rounded-full flex items-center justify-center shadow-lg">
+                  {/* Deepseek icon - Top */}
+                  <div className="absolute left-1/2 top-[12%] -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white dark:bg-transparent rounded-full flex items-center justify-center shadow-lg p-2">
                     <img
                       src={deepseek}
                       alt="Deepseek logo"
-                      className="w-full h-full "
+                      className="w-full h-full object-contain"
                     />
                   </div>
-                  {/* Decorative elements */}
-                  <div className="absolute bottom-20 left-0 lg:left-20 md:left-40 sm:w-20 sm:h-20 w-15 h-15 md:h-15 md:w-15 bg-white dark:bg-transparent rounded-full shadow-lg">
+                  {/* xAI icon - Top Right */}
+                  <div className="absolute left-[86%] top-[38%] -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white dark:bg-transparent rounded-full flex items-center justify-center shadow-lg p-2">
                     <img
-                      src={gemini}
-                      alt="Gemini logo"
-                      className="w-full h-full"
+                      src={xai}
+                      alt="xAI logo"
+                      className="w-full h-full object-contain filter brightness-0 saturate-100 dark:invert"
                     />
                   </div>
-                  <div className="absolute bottom-12 right-5 lg:right-30 md:right-50   sm:w-20 sm:h-20 w-15 h-15 md:h-15 md:w-15 bg-white dark:bg-transparent rounded-full shadow-lg">
+                  {/* GPT icon - Bottom Right */}
+                  <div className="absolute left-[72%] top-[81%] -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white dark:bg-transparent rounded-full flex items-center justify-center shadow-lg p-2">
                     <img
                       src={gpt}
                       alt="gpt logo"
-                      className="w-full h-full filter brightness-0 saturate-100 dark:invert"
+                      className="w-full h-full object-contain filter brightness-0 saturate-100 dark:invert"
+                    />
+                  </div>
+                  {/* Gemini icon - Bottom Left */}
+                  <div className="absolute left-[28%] top-[81%] -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white dark:bg-transparent rounded-full flex items-center justify-center shadow-lg p-2">
+                    <img
+                      src={gemini}
+                      alt="Gemini logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  {/* Grok icon - Top Left */}
+                  <div className="absolute left-[14%] top-[38%] -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white dark:bg-transparent rounded-full flex items-center justify-center shadow-lg p-2">
+                    <img
+                      src={grok}
+                      alt="Grok logo"
+                      className="w-full h-full object-contain filter brightness-0 saturate-100 dark:invert"
                     />
                   </div>
                 </div>
@@ -889,7 +901,7 @@ const Home = () => {
                   <div key={idx} className="bg-gray-50/50 dark:bg-[#151D2C] border border-gray-100 dark:border-gray-800/60 rounded-2xl p-4 flex flex-col justify-between hover:border-pink-500/30 dark:hover:border-pink-500/30 transition-colors group">
                     <div className="flex justify-between items-center mb-3">
                       <div className="flex items-center gap-2 text-gray-900 dark:text-white font-bold text-[15px]">
-                        <span className="text-gray-400 dark:text-gray-500 font-semibold">{country.code}</span> {country.name}
+                        <img src={`https://flagcdn.com/w40/${country.code.toLowerCase()}.png`} alt={country.name} className="w-5 rounded-[2px]" /> {country.name}
                       </div>
                       {isLiveSupport ? (
                         <div className="bg-green-100 dark:bg-[#0F291E] text-green-700 dark:text-[#4ADE80] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider transition-colors">

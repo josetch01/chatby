@@ -196,11 +196,10 @@ const Layout = ({ children }) => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(link.to)
-                      ? "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
-                      : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                  }`}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(link.to)
+                    ? "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
+                    : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -290,11 +289,10 @@ const Layout = ({ children }) => {
                     key={link.to}
                     to={link.to}
                     onClick={closeMobileMenu}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      isActive(link.to)
-                        ? "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
-                        : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-                    }`}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive(link.to)
+                      ? "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
+                      : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -480,7 +478,7 @@ const Layout = ({ children }) => {
                     className="border border-white text-[#F129A1] bg-white px-3 py-2 sm:px-5 sm:py-2 rounded-3xl font-normal cursor-pointer text-xs sm:text-2xl transition-colors"
                     onClick={() =>
                       window.open(
-                        "https://chatby.io/",
+                        "https://meet.google.com/epq-kqqc-dam",
                         "_blank",
                         "noopener,noreferrer"
                       )
@@ -728,7 +726,7 @@ const Layout = ({ children }) => {
                   </div>
                 </div>
               </div>
-               {/* Chatby links */}
+              {/* Chatby links */}
               <div>
                 <h3 className="text-lg font-semibold mb-10">Chatby</h3>
                 <ul className="space-y-2">
@@ -873,7 +871,7 @@ const Layout = ({ children }) => {
                   TÉRMINOS DE SERVICIO
                 </a>
               </div>
-              
+
             </div>
           </div>
         </div>
