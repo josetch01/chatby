@@ -33,6 +33,7 @@ import rocketLogo from "../assets/logo-alianzas/rocket-web.svg";
 import rocketLogoLight from "../assets/logo-alianzas/rocket-web-orange.svg";
 import dropiLogo from "../assets/logo-alianzas/dropi-wt-web.svg";
 import beepingLogo from "../assets/logo-alianzas/beeping-web.svg";
+import boxfulLogo from "../assets/logo-alianzas/boxful-web.svg";
 import dropiproLogo from "../assets/logo-alianzas/dropipro-wt-web.svg";
 import venndeloLogoLight from "../assets/logo-alianzas/venndelo-wt-web.svg";
 import gpt from "../assets/logos integraciones/6.svg";
@@ -238,6 +239,7 @@ const Home = () => {
     { src: darkMode ? rocketLogo : rocketLogoLight, alt: "Rocket", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: dropiLogo, alt: "Dropi", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: beepingLogo, alt: "Beeping", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: boxfulLogo, alt: "Boxful", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: dropiproLogo, alt: "Dropi Pro", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
   ];
 
