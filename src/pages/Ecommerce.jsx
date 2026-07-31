@@ -248,11 +248,26 @@ const Ecommerce = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-[#F129A1]/90 to-[#A83CC1]/90 backdrop-blur-sm shadow-lg shadow-[#F129A1]/40 text-white px-8 py-3.5 rounded-full text-base font-medium transition-all duration-300 hover:from-[#E01A96] hover:to-[#9A37B2] hover:shadow-xl hover:shadow-[#F129A1]/50 w-full sm:w-auto">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://chatby.io/register?ref=WebTrial",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                className="bg-gradient-to-r from-[#F129A1]/90 to-[#A83CC1]/90 backdrop-blur-sm shadow-lg shadow-[#F129A1]/40 text-white px-8 py-3.5 rounded-full text-base font-medium transition-all duration-300 hover:from-[#E01A96] hover:to-[#9A37B2] hover:shadow-xl hover:shadow-[#F129A1]/50 w-full sm:w-auto cursor-pointer"
+              >
                 Empezar gratis
               </button>
               <button
-                onClick={handleSupportClick}
+                onClick={() =>
+                  window.open(
+                    "https://wa.me/51970739901?text=Hola,%20Quiero%20que%20me%20ayuden%20a%20configurar%20mi%20tienda%20de%20Ecommerce",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
                 className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7] bg-transparent px-8 py-3.5 rounded-full text-base font-medium transition-colors hover:bg-pink-600 hover:text-white dark:hover:bg-[#FFE8F7] dark:hover:text-[#2C011B] w-full sm:w-auto cursor-pointer flex items-center justify-center gap-2"
               >
                 <ChatBubbleLeftEllipsisIcon className="w-5 h-5" /> Hablar con un experto

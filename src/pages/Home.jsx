@@ -29,11 +29,12 @@ import shalomLogo from "../assets/logo-alianzas/shalom-wt-web.svg";
 import venndeloLogo from "../assets/logo-alianzas/venndelo-web.svg";
 import dropeaLogoLight from "../assets/logo-alianzas/dropea-wt-web.svg";
 import dropeaLogoDark from "../assets/logo-alianzas/dropea-web.svg";
-import rocketLogo from "../assets/logos empresas/rocket.svg";
+import rocketLogo from "../assets/logo-alianzas/rocket-web.svg";
+import rocketLogoLight from "../assets/logo-alianzas/rocket-web-orange.svg";
 import dropiLogo from "../assets/logo-alianzas/dropi-wt-web.svg";
 import beepingLogo from "../assets/logo-alianzas/beeping-web.svg";
 import dropiproLogo from "../assets/logo-alianzas/dropipro-wt-web.svg";
-import line_logo from "../assets/logos integraciones/23.svg";
+import venndeloLogoLight from "../assets/logo-alianzas/venndelo-wt-web.svg";
 import gpt from "../assets/logos integraciones/6.svg";
 import deepseek from "../assets/logos integraciones/deppseek.svg";
 import gemini from "../assets/logos integraciones/gemini.svg";
@@ -156,8 +157,8 @@ const Home = () => {
 
   const mockups = [
     { src: mockup_wsp, alt: "WhatsApp Business mockup" },
-    { src: mockup_ig, alt: "Instagram Direct mockup" },
-    { src: mockup_msn, alt: "Facebook Messenger mockup" },
+    { src: mockup_ig, alt: "Instagram Direct mockup", rotateClass: "rotate-[15deg]  " },
+    { src: mockup_msn, alt: "Facebook Messenger mockup", rotateClass: "rotate-[15deg]  " },
   ];
   // Auto-carousel for desktop
   useEffect(() => {
@@ -232,9 +233,9 @@ const Home = () => {
 
   const logos_alianzas = [
     { src: shalomLogo, alt: "Shalom", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
-    { src: venndeloLogo, alt: "Venndelo", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: darkMode ? venndeloLogo : venndeloLogoLight, alt: "Venndelo", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: darkMode ? dropeaLogoDark : dropeaLogoLight, alt: "Dropea", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
-    { src: rocketLogo, alt: "Rocket", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
+    { src: darkMode ? rocketLogo : rocketLogoLight, alt: "Rocket", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: dropiLogo, alt: "Dropi", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: beepingLogo, alt: "Beeping", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
     { src: dropiproLogo, alt: "Dropi Pro", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
@@ -287,7 +288,7 @@ const Home = () => {
             </p>
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white mb-6 leading-tight">
               Responde al instante y{" "}
-              <span className="text-pink-600 dark:text-pink-400">
+              <span className="bg-gradient-to-r from-[#F129A1] to-[#A83CC1] bg-clip-text text-transparent">
                 vende más
               </span>
               <br className="hidden sm:block" />
@@ -308,13 +309,9 @@ const Home = () => {
               </button>
               <button
                 className="border-2 border-pink-600 dark:border-[#FFE8F7] text-pink-600 dark:text-[#FFE8F7]  bg-transparent px-6 sm:px-8 py-2 rounded-full text-sm sm:text-lg font-medium transition-colors w-full sm:w-auto cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent"
-                onClick={() => {
-                  if (window.Calendly) {
-                    window.Calendly.initPopupWidget({ url: 'https://calendly.com/chatby/chatby-soporte' });
-                  } else {
-                    window.open("https://calendly.com/chatby/chatby-soporte", "_blank", "noopener,noreferrer");
-                  }
-                  return false;
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('soporte-en-vivo')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
                 Soporte en vivo
@@ -346,17 +343,21 @@ const Home = () => {
               />
 
               {/* Mockup superpuesto */}
-              <img
-                key={currentDesktopMockupIndex}
-                src={mockups[currentDesktopMockupIndex].src}
-                alt={mockups[currentDesktopMockupIndex].alt}
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl ${imagesLoaded ? 'opacity-100' : 'opacity-0'
+              <div
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl overflow-hidden flex items-center justify-center ${imagesLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                 style={{
                   animation: imagesLoaded ? "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s" : "none"
                 }}
-                loading="eager"
-              />
+              >
+                <img
+                  key={currentDesktopMockupIndex}
+                  src={mockups[currentDesktopMockupIndex].src}
+                  alt={mockups[currentDesktopMockupIndex].alt}
+                  className={`w-full h-full transition-transform duration-500 ${mockups[currentDesktopMockupIndex].rotateClass || ''}`}
+                  loading="eager"
+                />
+              </div>
             </div>
           </div>
 
@@ -383,17 +384,21 @@ const Home = () => {
                   }}
                   loading="eager"
                 />
-                <img
-                  key={currentMockupIndex}
-                  src={mockups[currentMockupIndex].src}
-                  alt={mockups[currentMockupIndex].alt}
-                  className={`absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl ${imagesLoaded ? 'opacity-100' : 'opacity-0'
+                <div
+                  className={`absolute max-w-[72%] sm:max-w-[68%] transition-all duration-500 will-change-transform rounded-xl shadow-2xl overflow-hidden flex justify-center items-center ${imagesLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
                   style={{
                     animation: imagesLoaded ? "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1.5s" : "none",
                   }}
-                  loading="eager"
-                />
+                >
+                  <img
+                    key={currentMockupIndex}
+                    src={mockups[currentMockupIndex].src}
+                    alt={mockups[currentMockupIndex].alt}
+                    className={`max-w-full h-auto block transition-transform duration-500 ${mockups[currentMockupIndex].rotateClass || ''}`}
+                    loading="eager"
+                  />
+                </div>
               </div>
 
               {/* Navigation buttons */}
@@ -870,7 +875,7 @@ const Home = () => {
             </div>
 
             {/* Feature 4 - Soporte en Vivo Section */}
-            <div className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-[0_8px_30px_rgba(241,41,161,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+            <div id="soporte-en-vivo" className="bg-white dark:bg-[#0F172A] rounded-3xl p-8 lg:p-12 shadow-[0_8px_30px_rgba(241,41,161,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8 lg:mb-10">
                 <div>
                   {isLiveSupport && (

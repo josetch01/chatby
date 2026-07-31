@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -25,8 +25,21 @@ import cuadricula from "../assets/cuadricula fondo.svg";
 import wsp from "../assets/logos integraciones/16.svg";
 const Layout = ({ children }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
+
+  const handleSupportClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      document.getElementById('soporte-en-vivo')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById('soporte-en-vivo')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
 
 
   // Estado para la animación de iconos
@@ -476,15 +489,9 @@ const Layout = ({ children }) => {
                   </button>
                   <button
                     className="border border-white text-[#F129A1] bg-white px-3 py-2 sm:px-5 sm:py-2 rounded-3xl font-normal cursor-pointer text-xs sm:text-2xl transition-colors"
-                    onClick={() =>
-                      window.open(
-                        "https://meet.google.com/epq-kqqc-dam",
-                        "_blank",
-                        "noopener,noreferrer"
-                      )
-                    }
+                    onClick={handleSupportClick}
                   >
-                    Asesoría gratuita
+                    Soporte en vivo
                   </button>
                 </div>
               </div>
