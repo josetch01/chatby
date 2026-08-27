@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 import mockup_wsp from "../assets/mockup-for-whatsApp 1.svg";
 import hero_degradado from "../assets/hero degradado y logos.svg";
-import hero_degradado_dark from "../assets/Hero con logos dark mode.svg"
+import hero_degradado_dark from "../assets/Hero con logos dark mode.png"
 import dropi from "../assets/logos empresas/dropi.svg";
 import triidy from "../assets/logos empresas/triidy.svg";
 import rocketfy from "../assets/logos empresas/rocket.svg";
