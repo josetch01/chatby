@@ -242,7 +242,7 @@ const Eventos = () => {
               <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* Dirección */}
-              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 max-w-full sm:max-w-[280px] lg:max-w-[260px] xl:max-w-[300px]">
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4" style={{ width: '200px', flexShrink: 0 }}>
                 <MapPinIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
                   <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">DIRECCIÓN</div>
@@ -255,7 +255,7 @@ const Eventos = () => {
               <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* País */}
-              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 shrink-0">
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4" style={{ width: '160px', flexShrink: 0 }}>
                 <FlagIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
                   <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">PAÍS</div>
@@ -343,7 +343,7 @@ const Eventos = () => {
               <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* Dirección */}
-              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 max-w-full sm:max-w-[280px] lg:max-w-[260px] xl:max-w-[300px]">
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4" style={{ width: '200px', flexShrink: 0 }}>
                 <MapPinIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
                   <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">DIRECCIÓN</div>
@@ -356,7 +356,7 @@ const Eventos = () => {
               <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* País / Ciudad */}
-              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 shrink-0">
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4" style={{ width: '160px', flexShrink: 0 }}>
                 <FlagIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
                   <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">PAÍS / CIUDAD</div>
