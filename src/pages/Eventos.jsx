@@ -33,13 +33,23 @@ const Eventos = () => {
           font-family: "FrancyEvent", cursive !important;
           -webkit-text-stroke: 1.5px #000;
           text-shadow: 0 0 10px rgba(255,255,255,0.5), -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-          font-size: clamp(1.6rem,3.8rem, 3.8rem);
-          line-height: 1;
+          font-size: clamp(2rem, 7vw, 3.8rem);
+          line-height: 1.1;
           color: #fff;
           font-weight: normal;
-          white-space: nowrap;
           display: block;
           margin-bottom: 10px;
+        }
+        @media (min-width: 1024px) {
+          .titulo-feria,
+          body .titulo-feria,
+          body span.titulo-feria,
+          #root .titulo-feria,
+          #root span.titulo-feria {
+            font-size: 3.8rem !important;
+            white-space: nowrap !important;
+            line-height: 1 !important;
+          }
         }
         .emoji {
           font-family: 'Twemoji Mozilla', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif !important;
@@ -50,18 +60,18 @@ const Eventos = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header Section */}
-        <div className="mb-10 pt-4 relative">
-          <p className="text-[#847b96] text-xs font-semibold tracking-widest mb-3 uppercase relative z-10">Eventos</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 relative z-10">
+        <div className="mb-8 sm:mb-10 pt-2 sm:pt-4 relative">
+          <p className="text-[#847b96] text-xs font-semibold tracking-widest mb-2 sm:mb-3 uppercase relative z-10">Eventos</p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 relative z-10">
             Próximos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#9b66ff] to-[#6b38fb]">eventos</span>
           </h1>
-          <p className="text-gray-400 text-base max-w-lg leading-relaxed relative z-10">
+          <p className="text-gray-400 text-sm sm:text-base max-w-lg leading-relaxed relative z-10">
             Conoce todos los eventos en los que Chatby estará presente.<br className="hidden sm:block" />
             Conéctate, aprende y lleva tu negocio al siguiente nivel.
           </p>
         </div>
 
-        {/* Globe SVG - spans header and card, card sits on top hiding lower half */}
+        {/* Globe SVG - spans header and card, card sits on top hiding lower half (Desktop only) */}
         <div
           className="absolute pointer-events-none hidden lg:block"
           style={{
@@ -157,7 +167,7 @@ const Eventos = () => {
 
         {/* Featured Event Card - z-10 so it covers the bottom of the globe */}
         <div
-          className="bg-[#09071a] border border-[#1e1240] rounded-2xl p-6 sm:p-6 mb-8 relative overflow-hidden"
+          className="bg-[#09071a] border border-[#1e1240] rounded-2xl p-5 sm:p-6 mb-8 relative overflow-hidden"
           style={{
             zIndex: 10,
             boxShadow: `
@@ -177,15 +187,15 @@ const Eventos = () => {
             <ellipse cx="820" cy="100" rx="160" ry="55" stroke="#6938ef" strokeWidth="0.8" strokeDasharray="4 7" opacity="0.2" transform="rotate(12 820 100)" />
           </svg>
 
-          <div className="inline-flex items-center gap-2 bg-[#110b2a] border border-[#221450] text-[#a57cf8] text-[16px] font-semibold px-4 py-1.5 rounded-full mb-6">
-            <StarIcon className="w-3 h-3" /> EVENTO DESTACADO
+          <div className="inline-flex items-center gap-2 bg-[#110b2a] border border-[#221450] text-[#a57cf8] text-[13px] sm:text-[16px] font-semibold px-3.5 py-1.5 rounded-full mb-5 sm:mb-6">
+            <StarIcon className="w-3.5 h-3.5" /> EVENTO DESTACADO
           </div>
 
-          {/* Single horizontal row */}
-          <div className="flex flex-row items-center gap-4 xl:gap-6">
+          {/* Main content: flex-col on mobile/tablet, single horizontal row on desktop (lg+) */}
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-6 xl:gap-6">
 
             {/* LEFT: Title + Description */}
-            <div className="shrink-0" style={{ width: '28%', minWidth: '240px', maxWidth: '320px' }}>
+            <div className="w-full lg:w-[28%] lg:min-w-[240px] lg:max-w-[320px] shrink-0">
               <span className="titulo-feria">Feria Effix 2026</span>
               <p className="text-[#847b96] text-[13px] leading-relaxed">
                 El evento más importante de la industria del marketing, la publicidad y los negocios en Colombia y Latinoamérica.
@@ -193,43 +203,49 @@ const Eventos = () => {
             </div>
 
             {/* CENTER: Info columns */}
-            <div className="flex-1 flex flex-row items-center justify-center min-w-0 gap-8">
+            <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between lg:justify-center min-w-0 gap-4 sm:gap-6 lg:gap-8 py-4 lg:py-0 border-y lg:border-y-0 border-[#1f1638]">
 
               {/* Fechas */}
-              <div className="flex flex-col items-start px-5">
-                <CalendarIcon className="w-7 h-7 text-[#9b66ff] mb-2" />
-                <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-1">FECHAS</div>
-                <div className="text-[#d4cce6] text-[18px] font-medium leading-tight">Del 15 al 19<br />de Octubre</div>
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-5">
+                <CalendarIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
+                <div>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">FECHAS</div>
+                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium leading-tight">Del 15 al 19<br className="hidden sm:inline" /> de Octubre</div>
+                </div>
               </div>
 
-              <div className="w-[1px] h-16 bg-[#1f1638] shrink-0"></div>
+              <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* Dirección */}
-              <div className="flex flex-col items-start px-5">
-                <MapPinIcon className="w-7 h-7 text-[#9b66ff] mb-2" />
-                <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-1">DIRECCIÓN</div>
-                <div className="text-[#d4cce6] text-[18px] font-medium leading-tight">Plaza Mayor -<br />Medellín</div>
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-5">
+                <MapPinIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
+                <div>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">DIRECCIÓN</div>
+                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium leading-tight">Plaza Mayor -<br className="hidden sm:inline" /> Medellín</div>
+                </div>
               </div>
 
-              <div className="w-[1px] h-16 bg-[#1f1638] shrink-0"></div>
+              <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* País */}
-              <div className="flex flex-col items-start px-5">
-                <FlagIcon className="w-7 h-7 text-[#9b66ff] mb-2" />
-                <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-1">PAÍS</div>
-                <div className="text-[#d4cce6] text-[18px] font-medium flex items-center gap-2">
-                  Colombia <img src="https://flagcdn.com/w20/co.png" alt="🇨🇴" width="20" height="15" style={{ display: 'inline', verticalAlign: 'middle' }} />
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-5">
+                <FlagIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
+                <div>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">PAÍS</div>
+                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium flex items-center gap-2">
+                    Colombia <img src="https://flagcdn.com/w20/co.png" alt="🇨🇴" width="20" height="15" style={{ display: 'inline', verticalAlign: 'middle' }} />
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* RIGHT: Action Panel */}
-            <div className="shrink-0 w-[250px] bg-[#140e2b] rounded-2xl p-6 border border-[#21163f] flex flex-col items-center text-center">
-              <div className="flex items-center gap-2 text-[#9b66ff] text-[9px] font-bold tracking-widest uppercase mb-3">
+            <div className="w-full lg:w-[250px] shrink-0 bg-[#140e2b] rounded-2xl p-5 sm:p-6 border border-[#21163f] flex flex-col items-center text-center">
+              <div className="flex items-center gap-2 text-[#9b66ff] text-[9px] font-bold tracking-widest uppercase mb-2 sm:mb-3">
                 <StarIcon className="w-3 h-3" /> BENEFICIO EXCLUSIVO
               </div>
-              <p className="text-[#e2dcf2] text-sm mb-5 leading-relaxed">
-                Obtén beneficios<br />exclusivos en tu entrada
+              <p className="text-[#e2dcf2] text-sm mb-4 sm:mb-5 leading-relaxed">
+                Obtén beneficios<br className="hidden sm:inline" /> exclusivos en tu entrada
               </p>
               <button className="bg-gradient-to-r from-[#6938ef] to-[#8b5cf6] hover:from-[#5b21b6] hover:to-[#7c3aed] text-white font-medium py-3 px-4 rounded-xl w-full transition-all duration-300 text-sm mb-3">
                 Comprar entradas →
@@ -246,7 +262,7 @@ const Eventos = () => {
 
           {/* Secondary Event - ECOM NOW */}
           <div
-            className="w-full lg:w-1/2 bg-[#09071a] border border-[#1e1240] rounded-2xl p-6 flex flex-col sm:flex-row gap-5 relative overflow-hidden"
+            className="w-full lg:w-1/2 bg-[#09071a] border border-[#1e1240] rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row gap-5 relative overflow-hidden"
             style={{
               boxShadow: `
                 0 0 0 1px rgba(105, 56, 239, 0.1),
@@ -266,9 +282,9 @@ const Eventos = () => {
             <div className="flex-1 flex flex-col justify-between z-10">
               {/* Top Row: Logo side by side with Title & Description */}
               <div className="flex flex-row items-center gap-4 mb-4">
-                <img src={logoEcomnow} alt="ECOM NOW" className="h-16 sm:h-20 object-contain shrink-0" />
+                <img src={logoEcomnow} alt="ECOM NOW" className="h-14 sm:h-20 object-contain shrink-0" />
                 <div>
-                  <h3 className="text-white text-lg font-bold tracking-tight mb-1">ECOM NOW</h3>
+                  <h3 className="text-white text-base sm:text-lg font-bold tracking-tight mb-1">ECOM NOW</h3>
                   <p className="text-[#847b96] text-[12px] leading-relaxed">
                     El evento de ecommerce más importante de México, con presencia de Europa y Latinoamérica.
                   </p>
@@ -276,34 +292,34 @@ const Eventos = () => {
               </div>
 
               {/* Bottom Row: Info Items with icon on the left */}
-              <div className="flex flex-row items-center justify-between pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pt-3 sm:pt-2 border-t sm:border-t-0 border-[#1f1638]">
                 {/* FECHA */}
                 <div className="flex items-center gap-2.5">
-                  <CalendarIcon className="w-6 h-6 text-[#9b66ff] shrink-0" />
+                  <CalendarIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#9b66ff] shrink-0" />
                   <div>
                     <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase">FECHA</div>
                     <div className="text-white text-xs font-bold mt-0.5">31 OCT</div>
                   </div>
                 </div>
 
-                <div className="w-[1px] h-9 bg-[#1f1638] shrink-0"></div>
+                <div className="hidden sm:block w-[1px] h-9 bg-[#1f1638] shrink-0"></div>
 
                 {/* DIRECCIÓN */}
                 <div className="flex items-center gap-2.5">
-                  <MapPinIcon className="w-6 h-6 text-[#9b66ff] shrink-0" />
+                  <MapPinIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#9b66ff] shrink-0" />
                   <div>
                     <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase">DIRECCIÓN</div>
                     <div className="text-[#d4cce6] text-[10px] font-medium leading-tight mt-0.5">
-                      Teatro Complejo Cultural<br />Universitario (CCU)
+                      Teatro Complejo Cultural<br className="hidden sm:inline" /> Universitario (CCU)
                     </div>
                   </div>
                 </div>
 
-                <div className="w-[1px] h-9 bg-[#1f1638] shrink-0"></div>
+                <div className="hidden sm:block w-[1px] h-9 bg-[#1f1638] shrink-0"></div>
 
                 {/* PAÍS / CIUDAD */}
                 <div className="flex items-center gap-2.5">
-                  <FlagIcon className="w-6 h-6 text-[#9b66ff] shrink-0" />
+                  <FlagIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#9b66ff] shrink-0" />
                   <div>
                     <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase">PAÍS / CIUDAD</div>
                     <div className="text-[#d4cce6] text-[11px] font-medium flex items-center gap-1.5 mt-0.5">
@@ -320,7 +336,7 @@ const Eventos = () => {
                 <StarIcon className="w-3 h-3" /> BENEFICIOS EXCLUSIVOS
               </div>
               <p className="text-[#e2dcf2] text-xs mb-3 leading-snug">
-                Obtén descuentos<br />exclusivos en tu entrada
+                Obtén descuentos<br className="hidden sm:inline" /> exclusivos en tu entrada
               </p>
               <button className="bg-gradient-to-r from-[#6938ef] to-[#8b5cf6] hover:from-[#5b21b6] hover:to-[#7c3aed] text-white font-medium py-2.5 px-3 rounded-xl w-full transition-all duration-300 text-xs mb-2.5 flex items-center justify-center gap-1">
                 Comprar entradas →
@@ -334,7 +350,7 @@ const Eventos = () => {
           {/* Upcoming Events Skeletons */}
           <div className="w-full lg:w-1/2 flex flex-col">
             <h3 className="text-[#e2dcf2] text-[15px] font-medium mb-3 ml-1">Próximamente más eventos</h3>
-            <div className="flex flex-row gap-4 flex-1">
+            <div className="flex flex-col sm:flex-row gap-4 flex-1">
 
               {/* Skeleton 1 */}
               <div className="flex-1 bg-[#0b081a] border border-[#1f1638] rounded-2xl p-5 flex flex-col justify-between">
