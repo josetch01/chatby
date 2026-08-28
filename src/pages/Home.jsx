@@ -131,8 +131,8 @@ const Home = () => {
   // Desktop hero mockup state
   const [currentDesktopMockupIndex, setCurrentDesktopMockupIndex] = useState(0);
 
-  // Estado para controlar la carga de imágenes
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  // Las imágenes se muestran de inmediato, el navegador gestiona la carga naturalmente
+  const [imagesLoaded, setImagesLoaded] = useState(true);
 
   // Estado para el soporte en vivo (11:00 AM - 12:00 PM hora Perú)
   const [isLiveSupport, setIsLiveSupport] = useState(false);
@@ -196,41 +196,6 @@ const Home = () => {
     );
   };
 
-  // Precargar imágenes críticas
-  useEffect(() => {
-    const imagesToPreload = [
-      hero_degradado,
-      hero_degradado_dark,
-      ...mockups.map(mockup => mockup.src)
-    ];
-
-    let loadedCount = 0;
-    const totalImages = imagesToPreload.length;
-
-    imagesToPreload.forEach((src) => {
-      const img = new Image();
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          setImagesLoaded(true);
-        }
-      };
-      img.onerror = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          setImagesLoaded(true);
-        }
-      };
-      img.src = src;
-    });
-
-    // Fallback: marcar como cargado después de 2 segundos
-    const fallbackTimer = setTimeout(() => {
-      setImagesLoaded(true);
-    }, 2000);
-
-    return () => clearTimeout(fallbackTimer);
-  }, []);
 
   const logos_alianzas = [
     { src: shalomLogo, alt: "Shalom", size: "w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32" },
@@ -324,10 +289,10 @@ const Home = () => {
           {/* Chat mockup - Desktop */}
           <div className="hidden md:flex justify-center px-4">
             <div className="relative flex justify-center items-center min-h-[400px]">
-              {/* Placeholder mientras cargan las imágenes */}
+              {/* Spaceholder transparente mientras cargan las imágenes */}
               {!imagesLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg w-full h-96"></div>
+                  <div className="w-full h-96"></div>
                 </div>
               )}
 
@@ -346,9 +311,11 @@ const Home = () => {
 
               {/* Mockup superpuesto */}
               <div
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 h-1/2 w-1/2 will-change-transform rounded-xl shadow-2xl overflow-hidden flex items-center justify-center ${imagesLoaded ? 'opacity-100' : 'opacity-0'
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 will-change-transform rounded-xl shadow-2xl overflow-hidden flex items-center justify-center ${imagesLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                 style={{
+                  width: '36%',
+                  height: 'auto',
                   animation: imagesLoaded ? "slideInUp 600ms ease-out, subtleGlow 3s ease-in-out infinite 1s" : "none"
                 }}
               >
@@ -356,7 +323,7 @@ const Home = () => {
                   key={currentDesktopMockupIndex}
                   src={mockups[currentDesktopMockupIndex].src}
                   alt={mockups[currentDesktopMockupIndex].alt}
-                  className={`w-full h-full transition-transform duration-500 ${mockups[currentDesktopMockupIndex].rotateClass || ''}`}
+                  className={`w-full h-auto object-contain transition-transform duration-500 ${mockups[currentDesktopMockupIndex].rotateClass || ''}`}
                   loading="eager"
                 />
               </div>
@@ -366,10 +333,10 @@ const Home = () => {
           {/* Chat mockup carousel - Mobile */}
           <div className="md:hidden flex justify-center px-3 sm:px-4 mt-6">
             <div className="relative w-full max-w-[360px] xs:max-w-[400px] sm:max-w-sm min-h-[300px]">
-              {/* Placeholder para móvil */}
+              {/* Spaceholder transparente para móvil */}
               {!imagesLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg w-full h-72"></div>
+                  <div className="w-full h-72"></div>
                 </div>
               )}
 
