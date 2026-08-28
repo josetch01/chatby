@@ -1,6 +1,7 @@
 import React from 'react';
 import { StarIcon, CalendarIcon, MapPinIcon, FlagIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
-import logoEcomnow from '../assets/eventos/logo_ecomnow.svg';
+import logoEcomnowHorizontal from '../assets/eventos/logo_ecomnow_horizontal.svg';
+import logoFeriaEffix from '../assets/eventos/img-logo-feria-effix-2026-3.webp';
 import francyOtf from '../assets/eventos/FrancyFont/Francy.otf';
 import globeImg from '../assets/eventos/globe_chatby.jpg';
 
@@ -195,10 +196,14 @@ const Eventos = () => {
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-6 xl:gap-6">
 
             {/* LEFT: Title + Description */}
-            <div className="w-full lg:w-[28%] lg:min-w-[240px] lg:max-w-[320px] shrink-0">
-              <span className="titulo-feria">Feria Effix 2026</span>
+            <div className="w-full lg:w-[28%] lg:min-w-[240px] lg:max-w-[360px] shrink-0">
+              <img
+                src={logoFeriaEffix}
+                alt="Feria Effix 2026"
+                className="max-w-[360px] sm:max-w-[360px] w-full h-auto object-contain mb-3"
+              />
               <p className="text-[#847b96] text-[13px] leading-relaxed">
-                El evento más importante de la industria del marketing, la publicidad y los negocios en Colombia y Latinoamérica.
+                El evento de comercio electrónico <strong className="text-[#ca72ef] font-bold">MÁS GRANDE DEL MUNDO</strong>. Reúne a diversos actores del sector, incluyendo proveedores de servicios y productos, fabricantes, agencias, comunidades, transportadoras, <strong className="text-[#ca72ef] font-bold">Y MUCHO MÁS.</strong>
               </p>
             </div>
 
@@ -206,33 +211,37 @@ const Eventos = () => {
             <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between lg:justify-center min-w-0 gap-4 sm:gap-6 lg:gap-8 py-4 lg:py-0 border-y lg:border-y-0 border-[#1f1638]">
 
               {/* Fechas */}
-              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-5">
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 shrink-0">
                 <CalendarIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
                   <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">FECHAS</div>
-                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium leading-tight">Del 15 al 19<br className="hidden sm:inline" /> de Octubre</div>
+                  <div className="text-[#d4cce6] text-[15px] sm:text-[15px] font-medium leading-tight whitespace-nowrap">
+                    Del 15 al 19<br className="hidden sm:inline" /> de Octubre
+                  </div>
                 </div>
               </div>
 
               <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* Dirección */}
-              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-5">
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 max-w-full sm:max-w-[280px] lg:max-w-[260px] xl:max-w-[300px]">
                 <MapPinIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
                   <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">DIRECCIÓN</div>
-                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium leading-tight">Plaza Mayor -<br className="hidden sm:inline" /> Medellín</div>
+                  <div className="text-[#d4cce6] text-[13px] sm:text-[13px] xl:text-[14px] font-medium leading-snug">
+                    Centro de Convenciones Plaza Mayor, Calle 41 # 55-80 (AM50 Pabellón Amarillo)
+                  </div>
                 </div>
               </div>
 
               <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
               {/* País */}
-              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-5">
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 shrink-0">
                 <FlagIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
                   <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">PAÍS</div>
-                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium flex items-center gap-2">
+                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium flex items-center gap-2 whitespace-nowrap">
                     Colombia <img src="https://flagcdn.com/w20/co.png" alt="🇨🇴" width="20" height="15" style={{ display: 'inline', verticalAlign: 'middle' }} />
                   </div>
                 </div>
@@ -245,11 +254,16 @@ const Eventos = () => {
                 <StarIcon className="w-3 h-3" /> BENEFICIO EXCLUSIVO
               </div>
               <p className="text-[#e2dcf2] text-sm mb-4 sm:mb-5 leading-relaxed">
-                Obtén beneficios<br className="hidden sm:inline" /> exclusivos en tu entrada
+                Obtén un 50% de descuento usando código <strong className="text-[#ca72ef] font-bold">CHATBY50</strong>
               </p>
-              <button className="bg-gradient-to-r from-[#6938ef] to-[#8b5cf6] hover:from-[#5b21b6] hover:to-[#7c3aed] text-white font-medium py-3 px-4 rounded-xl w-full transition-all duration-300 text-sm mb-3">
+              <a
+                href="https://latiquetera.com/site/effix/events/view/feria-comercio-electronico-effix2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer bg-gradient-to-r from-[#6938ef] to-[#8b5cf6] hover:from-[#5b21b6] hover:to-[#7c3aed] text-white font-medium py-3 px-4 rounded-xl w-full transition-all duration-300 text-sm mb-3 text-center inline-block"
+              >
                 Comprar entradas →
-              </button>
+              </a>
               <div className="flex items-center gap-1.5 text-[#685c7f] text-[10px]">
                 <ShieldCheckIcon className="w-3.5 h-3.5" /> Pago seguro y oficial
               </div>
@@ -257,164 +271,105 @@ const Eventos = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+        {/* Evento ECOM NOW - Full Width */}
+        <div
+          className="bg-[#09071a] border border-[#1e1240] rounded-2xl p-5 sm:p-6 mb-8 relative overflow-hidden"
+          style={{
+            zIndex: 10,
+            boxShadow: `
+              0 0 0 1px rgba(105, 56, 239, 0.15),
+              0 0 30px -5px rgba(105, 56, 239, 0.25),
+              0 0 60px -15px rgba(105, 56, 239, 0.2),
+              4px 4px 40px -10px rgba(140, 40, 200, 0.3),
+              -4px -4px 40px -10px rgba(80, 30, 200, 0.25),
+              4px -4px 40px -10px rgba(120, 40, 220, 0.2),
+              -4px 4px 40px -10px rgba(100, 30, 180, 0.2)
+            `
+          }}
+        >
+          {/* Decorative orbit lines */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 900 200" preserveAspectRatio="xMidYMid slice" fill="none">
+            <ellipse cx="820" cy="100" rx="220" ry="80" stroke="#4a2aaa" strokeWidth="1" strokeDasharray="5 6" opacity="0.35" transform="rotate(-10 820 100)" />
+            <ellipse cx="820" cy="100" rx="160" ry="55" stroke="#6938ef" strokeWidth="0.8" strokeDasharray="4 7" opacity="0.2" transform="rotate(12 820 100)" />
+          </svg>
 
-          {/* Secondary Event - ECOM NOW */}
-          <div
-            className="w-full lg:w-1/2 bg-[#09071a] border border-[#1e1240] rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row gap-5 relative overflow-hidden"
-            style={{
-              boxShadow: `
-                0 0 0 1px rgba(105, 56, 239, 0.1),
-                0 0 25px -5px rgba(105, 56, 239, 0.18),
-                4px 4px 30px -10px rgba(140, 40, 200, 0.2),
-                -4px -4px 30px -10px rgba(80, 30, 200, 0.15)
-              `
-            }}
-          >
-            {/* Decorative orbit lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 500 220" preserveAspectRatio="xMidYMid slice" fill="none">
-              <ellipse cx="430" cy="110" rx="160" ry="70" stroke="#4a2aaa" strokeWidth="1" strokeDasharray="5 6" opacity="0.3" transform="rotate(-8 430 110)" />
-              <ellipse cx="430" cy="110" rx="110" ry="45" stroke="#6938ef" strokeWidth="0.7" strokeDasharray="4 7" opacity="0.18" transform="rotate(14 430 110)" />
-            </svg>
+          {/* Main content: flex-col on mobile/tablet, single horizontal row on desktop (lg+) */}
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-6 xl:gap-6">
 
-            {/* Left Content Column */}
-            <div className="flex-1 flex flex-col justify-between z-10">
-              {/* Top Row: Logo side by side with Title & Description */}
-              <div className="flex flex-row items-center gap-4 mb-4">
-                <img src={logoEcomnow} alt="ECOM NOW" className="h-14 sm:h-20 object-contain shrink-0" />
+            {/* LEFT: Logo + Description */}
+            <div className="w-full lg:w-[28%] lg:min-w-[240px] lg:max-w-[360px] shrink-0">
+              <img
+                src={logoEcomnowHorizontal}
+                alt="ECOM NOW"
+                className="max-w-[240px] sm:max-w-[280px] w-full h-auto object-contain mb-3"
+              />
+              <p className="text-[#847b96] text-[13px] leading-relaxed">
+                El evento de ecommerce más importante de México, con presencia de Europa y Latinoamérica.
+              </p>
+            </div>
+
+            {/* CENTER: Info columns */}
+            <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between lg:justify-center min-w-0 gap-4 sm:gap-6 lg:gap-8 py-4 lg:py-0 border-y lg:border-y-0 border-[#1f1638]">
+
+              {/* Fechas */}
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 shrink-0">
+                <CalendarIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
-                  <h3 className="text-white text-base sm:text-lg font-bold tracking-tight mb-1">ECOM NOW</h3>
-                  <p className="text-[#847b96] text-[12px] leading-relaxed">
-                    El evento de ecommerce más importante de México, con presencia de Europa y Latinoamérica.
-                  </p>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">FECHAS</div>
+                  <div className="text-[#d4cce6] text-[15px] sm:text-[15px] font-medium leading-tight whitespace-nowrap">
+                    31 de Octubre
+                  </div>
                 </div>
               </div>
 
-              {/* Bottom Row: Info Items with icon on the left */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pt-3 sm:pt-2 border-t sm:border-t-0 border-[#1f1638]">
-                {/* FECHA */}
-                <div className="flex items-center gap-2.5">
-                  <CalendarIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#9b66ff] shrink-0" />
-                  <div>
-                    <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase">FECHA</div>
-                    <div className="text-white text-xs font-bold mt-0.5">31 OCT</div>
+              <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
+
+              {/* Dirección */}
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 max-w-full sm:max-w-[280px] lg:max-w-[260px] xl:max-w-[300px]">
+                <MapPinIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
+                <div>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">DIRECCIÓN</div>
+                  <div className="text-[#d4cce6] text-[13px] sm:text-[13px] xl:text-[14px] font-medium leading-snug">
+                    Teatro Complejo Cultural Universitario (CCU)
                   </div>
                 </div>
+              </div>
 
-                <div className="hidden sm:block w-[1px] h-9 bg-[#1f1638] shrink-0"></div>
+              <div className="hidden sm:block w-[1px] h-12 lg:h-16 bg-[#1f1638] shrink-0"></div>
 
-                {/* DIRECCIÓN */}
-                <div className="flex items-center gap-2.5">
-                  <MapPinIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#9b66ff] shrink-0" />
-                  <div>
-                    <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase">DIRECCIÓN</div>
-                    <div className="text-[#d4cce6] text-[10px] font-medium leading-tight mt-0.5">
-                      Teatro Complejo Cultural<br className="hidden sm:inline" /> Universitario (CCU)
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hidden sm:block w-[1px] h-9 bg-[#1f1638] shrink-0"></div>
-
-                {/* PAÍS / CIUDAD */}
-                <div className="flex items-center gap-2.5">
-                  <FlagIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#9b66ff] shrink-0" />
-                  <div>
-                    <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase">PAÍS / CIUDAD</div>
-                    <div className="text-[#d4cce6] text-[11px] font-medium flex items-center gap-1.5 mt-0.5">
-                      Puebla, México <img src="https://flagcdn.com/w20/mx.png" alt="🇲🇽" width="16" height="12" className="inline rounded-sm" />
-                    </div>
+              {/* País / Ciudad */}
+              <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4 shrink-0">
+                <FlagIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
+                <div>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">PAÍS / CIUDAD</div>
+                  <div className="text-[#d4cce6] text-[15px] sm:text-[18px] font-medium flex items-center gap-2 whitespace-nowrap">
+                    Puebla, México <img src="https://flagcdn.com/w20/mx.png" alt="🇲🇽" width="20" height="15" style={{ display: 'inline', verticalAlign: 'middle' }} />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Action Box */}
-            <div className="shrink-0 bg-[#0e0b25] border border-[#1e1240] rounded-xl p-4 w-full sm:w-[185px] flex flex-col justify-center text-center z-10">
-              <div className="flex items-center justify-center gap-1 text-[#9b66ff] text-[9px] font-bold tracking-widest uppercase mb-2">
+            {/* RIGHT: Action Panel */}
+            <div className="w-full lg:w-[250px] shrink-0 bg-[#140e2b] rounded-2xl p-5 sm:p-6 border border-[#21163f] flex flex-col items-center text-center">
+              <div className="flex items-center gap-2 text-[#9b66ff] text-[9px] font-bold tracking-widest uppercase mb-2 sm:mb-3">
                 <StarIcon className="w-3 h-3" /> BENEFICIOS EXCLUSIVOS
               </div>
-              <p className="text-[#e2dcf2] text-xs mb-3 leading-snug">
-                Obtén descuentos<br className="hidden sm:inline" /> exclusivos en tu entrada
+              <p className="text-[#e2dcf2] text-sm mb-4 sm:mb-5 leading-relaxed">
+                Obtén 2 meses gratis de <strong className="text-[#ca72ef] font-bold">Chatby</strong>
               </p>
-              <button className="bg-gradient-to-r from-[#6938ef] to-[#8b5cf6] hover:from-[#5b21b6] hover:to-[#7c3aed] text-white font-medium py-2.5 px-3 rounded-xl w-full transition-all duration-300 text-xs mb-2.5 flex items-center justify-center gap-1">
+              <a
+                href="https://ecomnow.mx/#tickets"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer bg-gradient-to-r from-[#6938ef] to-[#8b5cf6] hover:from-[#5b21b6] hover:to-[#7c3aed] text-white font-medium py-3 px-4 rounded-xl w-full transition-all duration-300 text-sm mb-3 text-center inline-block"
+              >
                 Comprar entradas →
-              </button>
-              <div className="flex items-center justify-center gap-1 text-[#685c7f] text-[9px]">
-                <ShieldCheckIcon className="w-3 h-3" /> Pago seguro y oficial
+              </a>
+              <div className="flex items-center gap-1.5 text-[#685c7f] text-[10px]">
+                <ShieldCheckIcon className="w-3.5 h-3.5" /> Pago seguro y oficial
               </div>
             </div>
           </div>
-
-          {/* Upcoming Events Skeletons */}
-          <div className="w-full lg:w-1/2 flex flex-col">
-            <h3 className="text-[#e2dcf2] text-[15px] font-medium mb-3 ml-1">Próximamente más eventos</h3>
-            <div className="flex flex-col sm:flex-row gap-4 flex-1">
-
-              {/* Skeleton 1 */}
-              <div className="flex-1 bg-[#0b081a] border border-[#1f1638] rounded-2xl p-5 flex flex-col justify-between">
-                <div>
-                  <div className="bg-[#1b1236] text-[#7854c4] text-[9px] font-bold px-3 py-1.5 rounded-full inline-block mb-5 uppercase tracking-wider">PRÓXIMAMENTE</div>
-                  <div className="flex gap-3 items-center mb-8">
-                    <div className="w-14 h-14 bg-[#16122d] border border-[#21163f] rounded-xl flex items-center justify-center text-[#342a54] shrink-0">
-                      <CalendarIcon className="w-5 h-5" />
-                    </div>
-                    <div className="flex-1 space-y-2.5">
-                      <div className="h-2.5 bg-[#1f1638] rounded-full w-full"></div>
-                      <div className="h-2.5 bg-[#1f1638] rounded-full w-2/3"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center border-t border-[#1f1638] pt-3">
-                  <div className="flex items-center gap-1.5 text-[#342a54]">
-                    <CalendarIcon className="w-3.5 h-3.5" />
-                    <div className="w-5 h-1.5 bg-[#1f1638] rounded-full"></div>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[#342a54]">
-                    <MapPinIcon className="w-3.5 h-3.5" />
-                    <div className="w-5 h-1.5 bg-[#1f1638] rounded-full"></div>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[#342a54]">
-                    <FlagIcon className="w-3.5 h-3.5" />
-                    <div className="w-5 h-1.5 bg-[#1f1638] rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Skeleton 2 */}
-              <div className="flex-1 bg-[#0b081a] border border-[#1f1638] rounded-2xl p-5 flex flex-col justify-between">
-                <div>
-                  <div className="bg-[#1b1236] text-[#7854c4] text-[9px] font-bold px-3 py-1.5 rounded-full inline-block mb-5 uppercase tracking-wider">PRÓXIMAMENTE</div>
-                  <div className="flex gap-3 items-center mb-8">
-                    <div className="w-14 h-14 bg-[#16122d] border border-[#21163f] rounded-xl flex items-center justify-center text-[#342a54] shrink-0">
-                      <CalendarIcon className="w-5 h-5" />
-                    </div>
-                    <div className="flex-1 space-y-2.5">
-                      <div className="h-2.5 bg-[#1f1638] rounded-full w-full"></div>
-                      <div className="h-2.5 bg-[#1f1638] rounded-full w-2/3"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center border-t border-[#1f1638] pt-3">
-                  <div className="flex items-center gap-1.5 text-[#342a54]">
-                    <CalendarIcon className="w-3.5 h-3.5" />
-                    <div className="w-5 h-1.5 bg-[#1f1638] rounded-full"></div>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[#342a54]">
-                    <MapPinIcon className="w-3.5 h-3.5" />
-                    <div className="w-5 h-1.5 bg-[#1f1638] rounded-full"></div>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[#342a54]">
-                    <FlagIcon className="w-3.5 h-3.5" />
-                    <div className="w-5 h-1.5 bg-[#1f1638] rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
