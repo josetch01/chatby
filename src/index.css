@@ -25,6 +25,19 @@ html {
   font-weight: bold;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Francy";
+  src: url("./assets/eventos/FrancyFont/Francy.otf") format("opentype"),
+       url("./assets/eventos/FrancyFont/Francy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-francy {
+  font-family: "Francy", cursive !important;
+}
 *, *::before, *::after {
   font-family: "Axiforma", sans-serif !important;
 }

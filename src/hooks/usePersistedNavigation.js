@@ -72,11 +72,10 @@ export const usePersistedNavigation = (options = {}) => {
 
       // Lógica de restauración
       const shouldRestore =
-        lastPage !== location.pathname && // No restaurar si ya estamos en esa página
-        isValidRoute(lastPage) && // Solo restaurar rutas válidas (incluyendo dinámicas)
-        (!excludeHomePage || lastPage !== '/') && // Excluir home si está configurado
-        (location.pathname === '/' || !excludeHomePage) && // Solo restaurar desde home o si no excluimos home
-        !location.pathname.startsWith('/partner/'); // No restaurar si estamos navegando a un perfil de partner
+        location.pathname === '/' && // ¡CRÍTICO! Solo restaurar si el usuario entra a la raíz (/)
+        lastPage !== '/' && // No tiene sentido restaurar a '/' si ya estamos en '/'
+        isValidRoute(lastPage) && // Solo restaurar rutas válidas
+        !lastPage.startsWith('/partner/'); // No restaurar a perfiles de partner
 
       if (shouldRestore) {
         console.log('🔄 Restaurando página:', lastPage);

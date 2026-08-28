@@ -82,24 +82,29 @@ const Layout = ({ children }) => {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/ecommerce", label: "Ecommerce" },
+    { to: "/eventos", label: "Eventos" },
     { to: "/planes", label: "Planes" },
     { to: "/marca-blanca", label: "Marca blanca" },
     { to: "/calculadora", label: "Calculadora" },
   ];
 
+  const isEventos = location.pathname === "/eventos";
+
   return (
-    <div className="min-h-screen bg-white dark:bg-[#122030] ">
+    <div className={`min-h-screen transition-colors duration-300 ${isEventos ? "bg-[#06040f] text-white" : "bg-white dark:bg-[#122030]"}`}>
       {/* Background grid for all pages except footer */}
-      <div className="fixed inset-0 opacity-30 dark:opacity-20 pointer-events-none z-0">
-        <img
-          src={cuadricula}
-          alt=""
-          className="w-full h-full object-cover object-center opacity-20 dark:opacity-10"
-        />
-      </div>
+      {!isEventos && (
+        <div className="fixed inset-0 opacity-30 dark:opacity-20 pointer-events-none z-0">
+          <img
+            src={cuadricula}
+            alt=""
+            className="w-full h-full object-cover object-center opacity-20 dark:opacity-10"
+          />
+        </div>
+      )}
 
       {/* Header */}
-      <header className="relative bg-transparent py-4 ">
+      <header className="relative bg-transparent py-4 z-20">
         <nav className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -204,15 +209,20 @@ const Layout = ({ children }) => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(link.to)
-                    ? "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
-                    : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                    }`}
+                  className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
+                    isActive(link.to)
+                      ? isEventos
+                        ? "text-[#e2dcf2] bg-[#1d1238] border border-[#3b1f66] shadow-sm"
+                        : "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
+                      : isEventos
+                      ? "text-[#847b96] hover:text-white"
+                      : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -237,7 +247,11 @@ const Layout = ({ children }) => {
               </button>
 
               <button
-                className="text-pink-600 dark:text-[#F5F5F5] px-4 py-2 rounded-2xl text-sm font-normal border-2 border-[#F129A1] dark:border-[#F5F5F5] transition-colors cursor-pointer hover:bg-[#F129A1] hover:text-white hover:border-transparent"
+                className={`px-4 py-2 rounded-2xl text-sm font-normal border-2 transition-colors cursor-pointer ${
+                  isEventos
+                    ? "text-[#F5F5F5] border-[#F5F5F5] hover:bg-white/10"
+                    : "text-pink-600 dark:text-[#F5F5F5] border-[#F129A1] dark:border-[#F5F5F5] hover:bg-[#F129A1] hover:text-white hover:border-transparent"
+                }`}
                 onClick={() =>
                   window.open(
                     "https://app.chatby.io/login",
@@ -295,17 +309,22 @@ const Layout = ({ children }) => {
 
           {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+            <div className={`md:hidden border-t ${isEventos ? "border-[#1e1240] bg-[#09071a]" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"}`}>
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
                     onClick={closeMobileMenu}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive(link.to)
-                      ? "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
-                      : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-                      }`}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      isActive(link.to)
+                        ? isEventos
+                          ? "text-white bg-[#1d1238] border border-[#3b1f66]"
+                          : "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20"
+                        : isEventos
+                        ? "text-[#847b96] hover:text-white hover:bg-[#110b2a]"
+                        : "text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                    }`}
                   >
                     {link.label}
                   </Link>
@@ -502,10 +521,10 @@ const Layout = ({ children }) => {
 
       {/* Simple curved section for other pages */}
       {location.pathname !== "/" && (
-        <section className="relative overflow-hidden dark:bg-[#122030]">
+        <section className={`relative overflow-hidden ${isEventos ? "bg-[#06040f]" : "dark:bg-[#122030]"}`}>
           <svg
             className="w-full h-10 sm:h-96 lg:h-[20rem]"
-            viewBox="0 0 1200 100" // 1200 320
+            viewBox="0 0 1200 100"
             preserveAspectRatio="none"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
