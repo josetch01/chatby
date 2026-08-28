@@ -52,6 +52,24 @@ const Eventos = () => {
             line-height: 1 !important;
           }
         }
+        @keyframes globeFloat {
+          0% {
+            transform: translate(0px, 0px) rotate(0deg);
+          }
+          33% {
+            transform: translate(12px, -16px) rotate(1.5deg);
+          }
+          66% {
+            transform: translate(-10px, -8px) rotate(-1.5deg);
+          }
+          100% {
+            transform: translate(0px, 0px) rotate(0deg);
+          }
+        }
+        .animate-globe-float {
+          animation: globeFloat 8s ease-in-out infinite;
+          will-change: transform;
+        }
         .emoji {
           font-family: 'Twemoji Mozilla', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif !important;
         }
@@ -74,7 +92,7 @@ const Eventos = () => {
 
         {/* Globe SVG - spans header and card, card sits on top hiding lower half (Desktop only) */}
         <div
-          className="absolute pointer-events-none hidden lg:block"
+          className="absolute pointer-events-none hidden lg:block animate-globe-float"
           style={{
             right: '-10px',
             top: '-80px',
