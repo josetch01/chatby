@@ -258,7 +258,7 @@ const Eventos = () => {
               <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4" style={{ width: '160px', flexShrink: 0 }}>
                 <FlagIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
-                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">PAÍS</div>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">CIUDAD / PAÍS</div>
                   <div className="text-[#d4cce6] text-[15px] sm:text-[15px] font-medium flex items-center gap-2 whitespace-nowrap">
                     Medellín, Colombia <img src="https://flagcdn.com/w20/co.png" alt="🇨🇴" width="20" height="15" style={{ display: 'inline', verticalAlign: 'middle' }} />
                   </div>
@@ -359,7 +359,7 @@ const Eventos = () => {
               <div className="flex items-center sm:flex-col sm:items-start gap-3 sm:gap-0 sm:px-3 lg:px-4" style={{ width: '160px', flexShrink: 0 }}>
                 <FlagIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#9b66ff] sm:mb-2 shrink-0" />
                 <div>
-                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1">PAÍS / CIUDAD</div>
+                  <div className="text-[#685c7f] text-[9px] font-bold tracking-widest uppercase mb-0.5 sm:mb-1"> CIUDAD / PAÍS </div>
                   <div className="text-[#d4cce6] text-[15px] sm:text-[15px] font-medium flex items-center gap-2 whitespace-nowrap">
                     Puebla, México <img src="https://flagcdn.com/w20/mx.png" alt="🇲🇽" width="20" height="15" style={{ display: 'inline', verticalAlign: 'middle' }} />
                   </div>
