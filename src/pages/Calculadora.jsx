@@ -116,6 +116,26 @@ if (typeof document !== "undefined") {
   document.head.appendChild(styleSheet);
 }
 
+const FAQItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="border border-[#CFDBE9] dark:border-white/10 rounded-xl mb-4 bg-white dark:bg-[#010F1F80] overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left p-5 focus:outline-none"
+      >
+        <h4 className="text-base sm:text-lg font-semibold text-[#2C011B] dark:text-white">{question}</h4>
+        <ChevronDownIcon className={`w-5 h-5 text-[#F129A1] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen && (
+        <div className="px-5 pb-5 text-[#2C011B] dark:text-gray-400 font-medium text-sm sm:text-[16px] whitespace-pre-line">
+          {answer}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Calculadora = () => {
   const [formData, setFormData] = useState({
     mensajesDiarios: "",
@@ -460,7 +480,7 @@ const Calculadora = () => {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Plantilla de Marketing
+                    Tarifa de plantilla de marketing
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
@@ -528,7 +548,7 @@ const Calculadora = () => {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Plantilla de Utilidad (Utility)
+                    Tarifa de plantilla de utilidad
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
@@ -588,15 +608,11 @@ const Calculadora = () => {
                 </div>
               </div>
 
-              {/* Authentication Conversations */}
-
-             
-            </div>
-                        <div className="mt-8 grid grid-cols-1 md:grid-cols-1 gap-8 ">
-                          <div>
+              {/* Service Conversations */}
+              <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Plantilla de Autenticación (Authentication)
+                    Tarifa de mensajes de servicio
                   </label>
                   <div className="flex items-center space-x-2">
                     <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
@@ -607,16 +623,74 @@ const Calculadora = () => {
                       <input
                         type="number"
                         min="0"
-                        max={(10000 * getCurrentPrices().authentication).toFixed(
-                          4
-                        )}
+                        max={(10000 * getCurrentPrices().service).toFixed(4)}
+                        step="0.01"
+                        value={inputValues.service}
+                        onChange={(e) =>
+                          handleConversationInputChange("service", e.target.value)
+                        }
+                        className="w-24 pl-6 pr-2 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                        placeholder="0.0000"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                  Excluyendo los 1,000 mensajes gratuitos por número por mes
+                </p>
+                <div className="flex items-center space-x-3">
+                  <input
+                    type="range"
+                    min="0"
+                    max="10000"
+                    value={conversationCounts.service}
+                    className="flex-1 h-2 rounded-lg appearance-none cursor-pointer slider-pink"
+                    onInput={(e) => {
+                      setSliderProgress(e.target);
+                      handleSliderChange("service", e.target.value);
+                    }}
+                    onChange={(e) => {
+                      setSliderProgress(e.target);
+                      handleSliderChange("service", e.target.value);
+                    }}
+                  />
+                  <div className="flex items-center space-x-1 min-w-[80px]">
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Mensajes:</span>
+                    <input
+                      type="number"
+                      min="0"
+                      max="10000"
+                      value={conversationCounts.service}
+                      onChange={(e) => {
+                        const value = Math.max(0, Math.min(10000, parseInt(e.target.value) || 0));
+                        handleSliderChange("service", value.toString());
+                      }}
+                      className="w-12 px-1 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Authentication Conversations */}
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Tarifa de plantilla de autenticación
+                  </label>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Monto:</span>
+                    <div className="relative">
+                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400">
+                        {getCurrencySymbol()}
+                      </span>
+                      <input
+                        type="number"
+                        min="0"
+                        max={(10000 * getCurrentPrices().authentication).toFixed(4)}
                         step="0.01"
                         value={inputValues.authentication}
                         onChange={(e) =>
-                          handleConversationInputChange(
-                            "authentication",
-                            e.target.value
-                          )
+                          handleConversationInputChange("authentication", e.target.value)
                         }
                         className="w-24 pl-6 pr-2 py-1 text-xs border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#F129A1] focus:border-[#F129A1] transition-colors [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                         placeholder="0.0000"
@@ -660,7 +734,7 @@ const Calculadora = () => {
                   </div>
                 </div>
               </div>
-</div>
+            </div>
           </div>
 
           {/* Right Column - Estimation */}
@@ -811,6 +885,65 @@ const Calculadora = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* SECCIÓN 3: PREGUNTAS FRECUENTES (FAQ) */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F129A1] to-[#A83CC1]">
+            Preguntas Frecuentes
+          </h2>
+          <p className="mt-4 text-[#2C011B] dark:text-gray-400">
+            Todo lo que necesitas saber sobre los precios de la API de WhatsApp Business
+          </p>
+        </div>
+        
+        <div className="space-y-2">
+          <FAQItem
+            question="1. ¿Qué son las plantillas de mensajes?"
+            answer={"Las plantillas de mensajes son mensajes aprobados previamente necesarios para iniciar una conversación en la API de WhatsApp Business cuando el cliente no te ha enviado un mensaje primero o la ventana de atención al cliente de 24 horas ha expirado.\n\nDeben ser presentadas y aprobadas por Meta, y se utilizan para:\n* Marketing: promociones y ofertas.\n* Utilidad: actualizaciones de transacciones o pedidos.\n* Autenticación: códigos de acceso de un solo uso.\n\n*Todos los mensajes de plantilla se cobran, a menos que se envíen dentro de una ventana de Punto de acceso gratuito activa, donde todos los mensajes son gratuitos.*"}
+          />
+          <FAQItem
+            question="2. ¿Qué son los Puntos de acceso gratuitos?"
+            answer={"Los anuncios Click to WhatsApp y los botones de llamada a la acción de WhatsApp en las páginas de Facebook son Puntos de acceso gratuitos. Si los clientes te envían mensajes a través de estos puntos y respondes dentro de las 24 horas, la ventana de atención al cliente se extiende a 72 horas. Todos los mensajes, incluidas las Plantillas de Mensajes, se pueden enviar de forma gratuita dentro de esta ventana de punto de acceso gratuito."}
+          />
+          <FAQItem
+            question="3. ¿Qué son los mensajes de utilidad?"
+            answer={"Los mensajes de utilidad son un tipo de mensaje de plantilla que se utiliza para ayudar a los clientes con una solicitud o transacción específica, tales como:\n* Actualizaciones de entrega o de pedido.\n* Notificaciones posteriores a la compra.\n* Recordatorios de facturación.\n\n*Los mensajes de plantilla de utilidad se cobran a menos que se envíen dentro de una ventana de Punto de acceso gratuito activa.*"}
+          />
+          <FAQItem
+            question="4. ¿Qué son los mensajes de autenticación?"
+            answer={"Los mensajes de autenticación son mensajes de plantilla que se utilizan para verificar la identidad del usuario mediante códigos de acceso de un solo uso, para escenarios como:\n* Iniciar sesión o crear una nueva cuenta.\n* Recuperar una contraseña olvidada.\n* Completar transacciones sensibles.\n\n*Se cobran a menos que se envíen dentro de una ventana de Punto de acceso gratuito activa.*"}
+          />
+          <FAQItem
+            question="5. ¿Qué son los mensajes de autenticación internacional?"
+            answer={"Los mensajes de autenticación internacional son mensajes de plantilla que se cobran a tarifas más altas cuando se envían a usuarios en países específicos fuera de la ubicación principal de tu empresa.\n\nEstas tarifas más altas solo se aplican si:\n* Tu empresa envía más de 750,000 mensajes en un periodo de 30 días.\n* El país del usuario está en la lista de tarifas de autenticación internacional de Meta.\n\nUna vez desbloqueadas, las tarifas internacionales permanecen activas de forma permanente. Aún se aplican descuentos por volumen, pero las tarifas siempre son superiores a las de los mensajes de autenticación nacionales."}
+          />
+          <FAQItem
+            question="6. ¿Qué son los mensajes de marketing?"
+            answer={"Los mensajes de marketing son mensajes de plantilla utilizados para promocionar tu negocio, como por ejemplo:\n* Anuncio de ofertas especiales.\n* Comunicar nuevos lanzamientos de productos.\n* Envío de boletines informativos.\n\n*Se cobran a menos que se envíen dentro de una ventana de Punto de acceso gratuito activa.*"}
+          />
+          <FAQItem
+            question="7. ¿Qué son los mensajes de servicio en WhatsApp?"
+            answer={"Los mensajes de servicio (también conocidos como mensajes de formato libre) son aquellos que escribes y envías sin usar una plantilla aprobada previamente.\n\n* Se utilizan para responder a los clientes durante una ventana de atención al cliente abierta de 24 horas (conversaciones informales, soporte o seguimiento).\n* No requieren la aprobación de Meta.\n* Una vez que la ventana de atención al cliente se cierra, las empresas deben usar plantillas de mensajes para reiniciar la conversación.\n* Los mensajes de servicio que excedan la asignación gratuita mensual de 1,000 mensajes por número se cobran por mensaje, a menos que se envíen dentro de una ventana de Punto de acceso gratuito activa."}
+          />
+          <FAQItem
+            question="8. ¿Qué es una ventana de atención al cliente?"
+            answer={"Cada vez que un usuario de WhatsApp envía un mensaje a tu empresa, se inicia un temporizador de 24 horas llamado ventana de atención al cliente (o se actualiza si ya había uno activo). Este temporizador se reinicia con cada nuevo mensaje del usuario. Mientras la ventana permanezca abierta, la empresa puede responder mediante mensajes de servicio."}
+          />
+          <FAQItem
+            question="9. ¿Cómo se cobran a las empresas los mensajes entrantes?"
+            answer={"No se cobran. Todos los mensajes entrantes son completamente gratuitos, independientemente del estado de la ventana de atención al cliente. A las empresas solo se les factura por los mensajes salientes basados en plantillas."}
+          />
+          <FAQItem
+            question="10. ¿Cómo se cobran a las empresas los mensajes salientes?"
+            answer={"Se cobra por los mensajes salientes según la cantidad de mensajes de plantilla enviados. El costo varía en función del país del destinatario, el tipo de mensaje (marketing, utilidad, autenticación) y el volumen de mensajes enviados en el mes. Los mensajes de formato libre y los mensajes de utilidad dentro de la ventana de atención al cliente no generan cargos adicionales."}
+          />
+          <FAQItem
+            question="11. ¿Cómo calculo el costo de usar la API de WhatsApp Business para mi empresa?"
+            answer={"Para estimar el costo total de uso de la API de WhatsApp Business, se debe considerar:\n1. Acceso a la API: Es gratuito.\n2. Tarifas de la plataforma de mensajería: Dependen del Proveedor de Soluciones de WhatsApp (BSP). Algunos cobran por cada cuenta de WhatsApp o aplican tarifas de mantenimiento o recargos por mensaje.\n3. Mensajes salientes: Se facturan individualmente según el tipo de mensaje, el país del destinatario y el volumen mensual."}
+          />
         </div>
       </section>
     </div>
